@@ -42,8 +42,8 @@ export function About() {
             {[
               ["Insurance", "insurance"],
               ["Home services", "home-services"],
-              ["Financial services", "financial-services"],
-              ["Legal", "legal"],
+              ["Finance insurance", "finance-insurance"],
+              ["Legal insurance", "legal-insurance"],
             ].map(([label, id]) => (
               <li key={id}>
                 <a

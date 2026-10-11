@@ -10,6 +10,7 @@ Living document. Last update: 2026-10-11 (implementation complete, verification 
 | Legal operator | TOPDEVELOPER INC (registered name as supplied by the owner on 2026-10-11; `operatorLegalName` in config) |
 | Relationship wording | "Westlink Solutions is operated by TOPDEVELOPER INC." in footer; operator identified in legal pages. No claim of separate incorporation or completed DBA filing. |
 | Positioning | B2B customer-acquisition partner: leads, inbound calls, and campaign support for buyers and service providers in insurance, home services, financial services, and legal. |
+| Hero message | Reworded from the reference: "Leads that convert. Calls that connect. Growth that lasts." + "Westlink Solutions powers high-intent calls and leads for insurance, financial, and home-service businesses." Hero copy and illustration mention only these three categories. |
 | Primary CTA | "Become a Partner" (opens onboarding modal). "Discuss Your Campaign" heads the contact section. |
 | Secondary CTA | "Explore industries" → scrolls to `#industries`. |
 | Voice | Plain American English, written for business buyers. Westlink does not issue policies, lend money, or represent legal clients. No "fully compliant", guaranteed conversion, exclusive-lead, nationwide, or volume claims. |
@@ -31,7 +32,7 @@ Inspected with the in-app browser (desktop 1024px and mobile 375px emulation), D
   - Home Services: HVAC, Plumbing, Roofing, "And Many more".
   - "Finance Insurance": Debt Settlement, Student Loans, Mortgage.
   - "Legal Insurance": Torts, SSDI, MVA.
-  - Reference copy addresses consumers ("Protect what matters most…"); Westlink rewrites for B2B buyers.
+  - Westlink (per owner, 2026-10-12): same tab and service names as the reference, summaries rephrased, Mortgage removed.
 - "Business Problems We Solve": 4 columns (Customer Acquisition, Transparency, Compliance Assurance, Ethical Marketing). Contains compliance claims that are not repeated.
 - "Our Solutions" gradient band: headline + paragraph.
 - "Our Happy Clients": Bootstrap carousel, 3 consumer-style testimonials (not reused).

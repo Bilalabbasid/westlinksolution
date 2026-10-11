@@ -4,7 +4,7 @@
  */
 export interface VerticalOption {
   value: string;
-  group: "Insurance" | "Home Services" | "Financial Services" | "Legal" | "Other";
+  group: "Insurance" | "Home Services" | "Finance Insurance" | "Legal Insurance" | "Other";
 }
 
 export const verticalOptions: VerticalOption[] = [
@@ -19,16 +19,15 @@ export const verticalOptions: VerticalOption[] = [
   { value: "Plumbing", group: "Home Services" },
   { value: "Roofing", group: "Home Services" },
   { value: "Solar", group: "Home Services" },
-  { value: "Debt Settlement", group: "Financial Services" },
-  { value: "Student Loans", group: "Financial Services" },
-  { value: "Mortgage", group: "Financial Services" },
-  { value: "Mass Torts", group: "Legal" },
-  { value: "SSDI", group: "Legal" },
-  { value: "MVA", group: "Legal" },
+  { value: "Debt Settlement", group: "Finance Insurance" },
+  { value: "Student Loans", group: "Finance Insurance" },
+  { value: "Torts", group: "Legal Insurance" },
+  { value: "SSDI", group: "Legal Insurance" },
+  { value: "MVA", group: "Legal Insurance" },
   { value: "SEO", group: "Other" },
   { value: "Other", group: "Other" },
 ];
 
 export const verticalValues = verticalOptions.map((v) => v.value);
 
-export const verticalGroups = ["Insurance", "Home Services", "Financial Services", "Legal", "Other"] as const;
+export const verticalGroups = ["Insurance", "Home Services", "Finance Insurance", "Legal Insurance", "Other"] as const;

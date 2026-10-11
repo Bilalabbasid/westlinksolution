@@ -9,6 +9,8 @@ interface BlurTextProps {
   text: string;
   /** Delay between segments in ms. */
   delay?: number;
+  /** Delay before the first segment in ms. */
+  startDelay?: number;
   animateBy?: "words" | "characters";
   direction?: "top" | "bottom";
   className?: string;
@@ -28,6 +30,7 @@ interface BlurTextProps {
 export function BlurText({
   text,
   delay = 70,
+  startDelay = 0,
   animateBy = "words",
   direction = "top",
   className,
@@ -58,7 +61,7 @@ export function BlurText({
               className="inline-block will-change-transform"
               initial={{ filter: "blur(12px)", opacity: 0, y: fromY }}
               animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: (i * delay) / 1000, ease: [0.2, 0.7, 0.2, 1] }}
+              transition={{ duration: 0.55, delay: (startDelay + i * delay) / 1000, ease: [0.2, 0.7, 0.2, 1] }}
             >
               {inner}
             </motion.span>

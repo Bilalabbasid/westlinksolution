@@ -18,12 +18,12 @@ import { VerticalMarquee } from "@/components/home/VerticalMarquee";
 export const metadata: Metadata = {
   title: `${siteConfig.brandName} | B2B Lead Generation, Inbound Calls & Campaign Support`,
   description:
-    "Westlink Solutions delivers qualified leads, inbound calls, and campaign support for insurance, home-services, financial-services, and legal businesses. Apply to become a partner.",
+    "Leads that convert, calls that connect, growth that lasts. Westlink Solutions powers high-intent calls and leads for insurance, financial, and home-service businesses. Apply to become a partner.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `${siteConfig.brandName} | B2B Lead Generation, Inbound Calls & Campaign Support`,
     description:
-      "Qualified leads, inbound calls, and campaign support for insurance, home-services, financial-services, and legal teams.",
+      "High-intent calls and leads for insurance, financial, and home-service businesses.",
     url: "/",
   },
 };

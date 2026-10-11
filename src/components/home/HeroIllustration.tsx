@@ -6,16 +6,16 @@
  * reduced motion.
  */
 const PROSPECTS = [
-  { y: 70, label: "Comparing quotes", tone: "teal" },
+  { y: 70, label: "Comparing auto quotes", tone: "teal" },
   { y: 150, label: "Needs a roof repair", tone: "amber" },
-  { y: 230, label: "Asking about debt relief", tone: "teal" },
-  { y: 310, label: "Looking for a lawyer", tone: "amber" },
+  { y: 230, label: "Choosing a Medicare plan", tone: "teal" },
+  { y: 310, label: "Reviewing a loan plan", tone: "amber" },
 ] as const;
 
 const PARTNERS = [
   { y: 96, label: "Licensed agency", sub: "Insurance" },
   { y: 190, label: "Contractor intake", sub: "Home services" },
-  { y: 284, label: "Firm intake desk", sub: "Legal and finance" },
+  { y: 284, label: "Advisor intake", sub: "Financial services" },
 ] as const;
 
 const HUB = { x: 332, y: 190 };
@@ -30,7 +30,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
       <title id="hero-illustration-title">How Westlink connects prospects with partners</title>
       <desc id="hero-illustration-desc">
         People with a specific need on the left flow through the Westlink hub in the middle to the intake teams of
-        insurance, home-service, financial, and legal partners on the right.
+        insurance, home-service, and financial partners on the right.
       </desc>
       <defs>
         <linearGradient id="hub-grad" x1="0" y1="0" x2="1" y2="1">

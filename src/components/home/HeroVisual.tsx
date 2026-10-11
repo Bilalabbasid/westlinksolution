@@ -9,7 +9,7 @@ import { HeroIllustration } from "./HeroIllustration";
 const signals = [
   { label: "Insurance", sub: "Final expense, auto, Medicare, health", tone: "bg-teal" },
   { label: "Home services", sub: "HVAC, plumbing, roofing, solar", tone: "bg-amber" },
-  { label: "Financial and legal", sub: "Debt, loans, mortgage, torts, SSDI, MVA", tone: "bg-navy" },
+  { label: "Financial", sub: "Debt settlement, student loans", tone: "bg-navy" },
 ];
 
 const strip = {

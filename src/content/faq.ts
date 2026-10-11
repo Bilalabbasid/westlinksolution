@@ -8,7 +8,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What does Westlink Solutions actually deliver?",
     answer:
-      "Leads, inbound calls, and campaign support for businesses that sell insurance, home services, financial services, and legal help. We plan the campaign around your products, service area, and hours, then deliver prospects in the form your team can act on.",
+      "High-intent leads, inbound calls, and campaign support for businesses in insurance, financial, home services, and legal protection. We plan the campaign around your products, service area, and hours, then deliver prospects in the form your team can act on.",
   },
   {
     question: "Does Westlink sell insurance, lend money, or provide legal services?",
@@ -23,7 +23,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "Which campaign verticals can we run?",
     answer:
-      "Insurance (final expense, auto, Medicare, health, ACA, USA health), home services (HVAC, plumbing, roofing, solar, and other trades), financial services (debt settlement, student loans, mortgage), legal (mass torts, SSDI, motor vehicle accidents), SEO, and other campaigns on request.",
+      "Insurance (Final Expense, Auto Insurance, Medicare, Health, ACA, USA Health), Home Services (HVAC, Plumbing, Roofing, Solar, and many more), Finance Insurance (Debt Settlement, Student Loans), Legal Insurance (Torts, SSDI, MVA), SEO, and other campaigns on request.",
   },
   {
     question: "How do leads and calls reach our team?",

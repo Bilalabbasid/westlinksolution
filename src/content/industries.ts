@@ -1,4 +1,4 @@
-export type IndustryId = "insurance" | "home-services" | "financial-services" | "legal";
+export type IndustryId = "insurance" | "home-services" | "finance-insurance" | "legal-insurance";
 
 export interface SubService {
   name: string;
@@ -21,16 +21,15 @@ export const industries: Industry[] = [
     id: "insurance",
     label: "Insurance",
     eyebrow: "Insurance carriers, agencies, and brokers",
-    headline: "Reach shoppers while they are comparing coverage.",
+    headline: "The right coverage, matched to the right provider.",
     description:
-      "We run campaigns that put consumers who are actively researching coverage in front of licensed agents and call centers. You set the products, states, and hours you can serve, and we shape the campaign around them.",
-    buyerNote:
-      "Westlink does not sell or issue insurance. We connect your licensed team with people asking about it.",
+      "People want protection for what matters most. Whether they are looking at health, auto, or life coverage, Westlink connects them with trusted insurance providers so they stay covered and confident, and so your team talks to shoppers who are ready to choose.",
+    buyerNote: "Westlink does not sell or issue insurance. We connect your licensed team with people asking about it.",
     subServices: [
-      { name: "Final Expense", summary: "Prospects asking about burial and final-expense coverage." },
-      { name: "Auto Insurance", summary: "Drivers comparing quotes or looking to switch carriers." },
-      { name: "Medicare", summary: "Beneficiaries researching plan options during eligible periods." },
-      { name: "Health", summary: "Individuals and families comparing health coverage." },
+      { name: "Final Expense", summary: "Shoppers looking for burial and final-expense protection." },
+      { name: "Auto Insurance", summary: "Drivers comparing quotes or ready to switch carriers." },
+      { name: "Medicare", summary: "Beneficiaries reviewing plan options during eligible periods." },
+      { name: "Health", summary: "Individuals and families choosing health coverage." },
     ],
     deliverables: [
       "Inbound calls routed to your agents during the hours you choose",
@@ -43,16 +42,15 @@ export const industries: Industry[] = [
     id: "home-services",
     label: "Home Services",
     eyebrow: "Contractors and multi-location service brands",
-    headline: "Fill the schedule with homeowners who need work done.",
+    headline: "Homes kept safe, efficient, and comfortable.",
     description:
-      "Home-service campaigns are built around your service area and trade. We focus on homeowners with a specific, time-sensitive need and send them to your intake team or booking line.",
-    buyerNote:
-      "Westlink does not perform home services. Your team handles estimates, scheduling, and the work.",
+      "From repairs to routine maintenance, homeowners want professionals who keep their homes in top condition. Westlink connects them with the service providers best suited to the job, and sends your team the homeowners who need work done now.",
+    buyerNote: "Westlink does not perform home services. Your team handles estimates, scheduling, and the work.",
     subServices: [
       { name: "HVAC", summary: "Repair, replacement, and seasonal maintenance requests." },
       { name: "Plumbing", summary: "Urgent repairs and planned upgrades." },
       { name: "Roofing", summary: "Inspections, repairs, and full replacements." },
-      { name: "Additional campaigns", summary: "Solar, windows, electrical, and other trades on request." },
+      { name: "And Many More", summary: "Solar, windows, electrical, and other trades on request." },
     ],
     deliverables: [
       "Calls and form leads limited to the ZIP codes you serve",
@@ -62,18 +60,16 @@ export const industries: Industry[] = [
     ],
   },
   {
-    id: "financial-services",
-    label: "Financial Services",
-    eyebrow: "Debt relief, lending, and mortgage teams",
-    headline: "Talk to consumers who are ready to act on their finances.",
+    id: "finance-insurance",
+    label: "Finance Insurance",
+    eyebrow: "Debt relief and lending providers",
+    headline: "Financial futures, secured with the right plan.",
     description:
-      "Financial campaigns are planned with your intake criteria first: debt thresholds, loan types, credit profiles, and the states where you operate. We bring you people who meet them and want to have the conversation.",
-    buyerNote:
-      "Westlink does not lend, settle debt, or give financial advice. We introduce prospects to providers who do.",
+      "People want to protect their assets, investments, and loved ones from unexpected financial risk. Westlink connects them with providers offering finance coverage that fits their needs and goals, so your team meets consumers who are ready to act.",
+    buyerNote: "Westlink does not lend, settle debt, or give financial advice. We introduce prospects to providers who do.",
     subServices: [
       { name: "Debt Settlement", summary: "Consumers carrying unsecured debt above your minimum." },
       { name: "Student Loans", summary: "Borrowers exploring consolidation or repayment options." },
-      { name: "Mortgage", summary: "Homeowners and buyers comparing purchase or refinance options." },
     ],
     deliverables: [
       "Pre-screened calls and leads matched to your intake criteria",
@@ -83,18 +79,17 @@ export const industries: Industry[] = [
     ],
   },
   {
-    id: "legal",
-    label: "Legal",
+    id: "legal-insurance",
+    label: "Legal Insurance",
     eyebrow: "Law firms and legal intake centers",
-    headline: "Connect potential claimants with your intake team.",
+    headline: "Protection from unexpected legal costs.",
     description:
-      "Legal campaigns are case-type specific. We work from your intake questionnaire so that the people who reach you have described a situation your firm actually handles.",
-    buyerNote:
-      "Westlink is not a law firm and does not provide legal advice or represent clients. Your firm evaluates every case.",
+      "Individuals and businesses want cover for legal consultations, attorney fees, and court costs before a problem becomes expensive. Westlink connects them with the right legal protection partners, and routes qualified matters to your intake team.",
+    buyerNote: "Westlink is not a law firm and does not provide legal advice or represent clients. Your firm evaluates every case.",
     subServices: [
-      { name: "Mass Torts", summary: "People reporting exposure or injury tied to a specific product or event." },
+      { name: "Torts", summary: "People reporting exposure or injury tied to a specific product or event." },
       { name: "SSDI", summary: "Individuals pursuing Social Security Disability claims." },
-      { name: "Motor Vehicle Accidents", summary: "Injured parties seeking representation after a collision." },
+      { name: "MVA", summary: "Injured parties seeking representation after a motor vehicle accident." },
     ],
     deliverables: [
       "Intake-aligned screening questions before a transfer",

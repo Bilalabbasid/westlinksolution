@@ -22,9 +22,9 @@ export const siteConfig = {
   /** Production domain. Overridden by NEXT_PUBLIC_SITE_URL at build time. */
   defaultSiteUrl: "https://westlinksolution.com",
 
-  tagline: "Customer acquisition for teams that sell insurance, home services, financial services, and legal help.",
+  tagline: "High-intent calls and leads for insurance, financial, home-service, and legal-protection businesses.",
   description:
-    "Westlink Solutions is a B2B customer-acquisition partner. We deliver leads, inbound calls, and campaign support for insurance, home-services, financial-services, and legal buyers.",
+    "Westlink Solutions powers high-intent calls and leads for insurance, financial, and home-service businesses, with campaign support from a named account manager.",
 
   contact: {
     // Leave a value empty ("") to hide it from the site.

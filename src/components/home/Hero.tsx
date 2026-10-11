@@ -8,10 +8,8 @@ import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { HeroBackdrop } from "./HeroBackdrop";
 import { HeroCta } from "./HeroCta";
 import { HeroVisual } from "./HeroVisual";
-import { RotatingPhrase } from "./RotatingPhrase";
 
-const HEADLINE_LEAD = "Put your sales team in front of buyers who are";
-const PHRASES = ["ready to talk.", "comparing quotes.", "booking repairs.", "asking for help."];
+const LINES = ["Leads that convert.", "Calls that connect.", "Growth that lasts."];
 
 const column = {
   hidden: {},
@@ -44,21 +42,20 @@ export function Hero() {
             </motion.p>
           </Reveal>
 
-          <h1 id="hero-title" className="mt-6 max-w-[15ch] break-words text-[clamp(2.1rem,9.4vw,2.9rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-navy sm:text-6xl lg:text-[3.6rem] xl:text-[4.1rem] 2xl:text-[4.4rem]">
-            <span className="sr-only">
-              {HEADLINE_LEAD} {PHRASES[0]}
-            </span>
+          <h1 id="hero-title" className="mt-6 max-w-[16ch] break-words text-[clamp(2.1rem,9.4vw,2.9rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-navy sm:text-6xl lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.3rem]">
+            <span className="sr-only">{LINES.join(" ")}</span>
             <span aria-hidden="true">
-              <BlurText text={HEADLINE_LEAD} delay={55} />
-              <br />
-              <RotatingPhrase phrases={PHRASES} />
+              {LINES.map((line, i) => (
+                <span key={line} className="block">
+                  <BlurText text={line} delay={70} startDelay={i * 240} highlightFrom={i === LINES.length - 1 ? 0 : undefined} highlightClassName="gradient-text" />
+                </span>
+              ))}
             </span>
           </h1>
 
           <motion.p variants={item} className="mt-7 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">
-            {siteConfig.brandName} delivers qualified leads, inbound calls, and campaign support for insurance,
-            home-services, financial-services, and legal teams. You define who you can serve. We build the campaign that
-            brings them to you.
+            {siteConfig.brandName} powers high-intent calls and leads for insurance, financial, and home-service
+            businesses. You define who you can serve. We build the campaign that brings them to you.
           </motion.p>
 
           <motion.div variants={item} className="mt-9">

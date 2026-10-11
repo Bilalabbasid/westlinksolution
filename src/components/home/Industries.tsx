@@ -15,10 +15,10 @@ const icons: Record<IndustryId, React.ReactNode> = {
   "home-services": (
     <path d="M4 11 12 4l8 7M6 10v9h12v-9M10 19v-5h4v5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
   ),
-  "financial-services": (
+  "finance-insurance": (
     <path d="M4 19h16M6 16V9M10 16V6M14 16v-4M18 16V8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" fill="none" />
   ),
-  legal: (
+  "legal-insurance": (
     <path d="M12 4v16M5 8h14M7 8l-3 6c1 1.5 2.5 2 3.5 2s2.5-.5 3.5-2L8 8M17 8l-3 6c1 1.5 2.5 2 3.5 2s2.5-.5 3.5-2L18 8M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
   ),
 };
