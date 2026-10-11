@@ -83,6 +83,12 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Before/after screenshots: `docs/screenshots/before/` and `docs/screenshots/after/` (desktop 1440, mobile 375, menu, legal pages).
 - Hero second pass with the `motion-framer` skill patterns: staggered variant choreography for the copy column (spring transitions), a rotating headline phrase using `AnimatePresence mode="wait"` with the full sentence kept static for assistive tech, pointer-driven 3D tilt on the illustration card via `useMotionValue` + `useSpring` + `useTransform` (disabled for touch and reduced motion), live routing dots travelling along the illustration links (SMIL `animateMotion`, omitted under reduced motion), scroll-linked parallax orbs via `useScroll`, hover/tap spring gestures on the CTAs, and a non-overlapping industry signal strip under the visual.
 
+## Update: hero layout and responsiveness (2026-10-12, later)
+- Hero row widened at xl/2xl (90rem/96rem container) with the visual taking the larger share; illustration labels enlarged; hub rebuilt with the wordmark inside and an opaque "matching and routing" chip so no connector crosses text; connectors start at the hub edge.
+- Rotating headline phrase no longer reserves the widest phrase (no wrapped-reserve gap) and wraps on narrow screens; headline scales with the viewport on phones.
+- New responsiveness sweep (`docs/responsive.playwright.js`): 320, 375, 414, 768, 1024, 1280, 1440, 1920 px. Checks no horizontal overflow, no element past the viewport outside scroll containers, headline and phrase inside their column, and no console errors. 8 / 8 pass; captures in `docs/screenshots/responsive/`.
+- Browser suite 55 / 55, toast suite 14 / 14, production build pass.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

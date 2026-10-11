@@ -29,7 +29,7 @@ export function Hero() {
     <section className="relative overflow-hidden pb-20 pt-14 sm:pb-28 sm:pt-20" aria-labelledby="hero-title">
       <HeroBackdrop />
 
-      <div className="container-x relative grid items-center gap-14 lg:grid-cols-[1.02fr_1fr] lg:gap-12">
+      <div className="container-x relative grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.2fr)] lg:gap-10 xl:max-w-[90rem] xl:gap-14 2xl:max-w-[96rem]">
         <motion.div variants={column} initial={reduce ? false : "hidden"} animate="visible">
           <Reveal>
             <motion.p
@@ -44,7 +44,7 @@ export function Hero() {
             </motion.p>
           </Reveal>
 
-          <h1 id="hero-title" className="mt-6 max-w-[14ch] break-words text-[clamp(2.1rem,9.4vw,2.9rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-navy sm:text-6xl lg:text-[4.35rem]">
+          <h1 id="hero-title" className="mt-6 max-w-[15ch] break-words text-[clamp(2.1rem,9.4vw,2.9rem)] font-extrabold leading-[1.02] tracking-[-0.035em] text-navy sm:text-6xl lg:text-[3.6rem] xl:text-[4.1rem] 2xl:text-[4.4rem]">
             <span className="sr-only">
               {HEADLINE_LEAD} {PHRASES[0]}
             </span>
@@ -79,7 +79,7 @@ export function Hero() {
           </motion.ul>
         </motion.div>
 
-        <div className="relative lg:pl-4">
+        <div className="relative min-w-0">
           <HeroVisual />
         </div>
       </div>

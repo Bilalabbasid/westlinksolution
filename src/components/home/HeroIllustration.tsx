@@ -6,21 +6,22 @@
  * reduced motion.
  */
 const PROSPECTS = [
-  { y: 72, label: "Comparing quotes", tone: "teal" },
-  { y: 154, label: "Needs a roof repair", tone: "amber" },
-  { y: 236, label: "Asking about debt relief", tone: "teal" },
-  { y: 318, label: "Looking for a lawyer", tone: "amber" },
+  { y: 70, label: "Comparing quotes", tone: "teal" },
+  { y: 150, label: "Needs a roof repair", tone: "amber" },
+  { y: 230, label: "Asking about debt relief", tone: "teal" },
+  { y: 310, label: "Looking for a lawyer", tone: "amber" },
 ] as const;
 
 const PARTNERS = [
-  { y: 100, label: "Licensed agency", sub: "Insurance" },
-  { y: 195, label: "Contractor intake", sub: "Home services" },
-  { y: 290, label: "Firm intake desk", sub: "Legal and finance" },
+  { y: 96, label: "Licensed agency", sub: "Insurance" },
+  { y: 190, label: "Contractor intake", sub: "Home services" },
+  { y: 284, label: "Firm intake desk", sub: "Legal and finance" },
 ] as const;
 
-const HUB = { x: 330, y: 195 };
-const PILL = { x: 22, w: 196, h: 44 };
-const CARD = { x: 446, w: 172, h: 60 };
+const HUB = { x: 332, y: 190 };
+const HUB_R = 60;
+const PILL = { x: 20, w: 204, h: 46 };
+const CARD = { x: 440, w: 180, h: 62 };
 const FONT = "Manrope, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 export function HeroIllustration({ animated = false }: { animated?: boolean }) {
@@ -56,7 +57,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
         {PROSPECTS.map((p) => (
           <path
             key={p.label}
-            d={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 110} ${HUB.y}, ${HUB.x - 52} ${HUB.y}`}
+            d={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 120} ${HUB.y}, ${HUB.x - HUB_R - 4} ${HUB.y}`}
             stroke="#008c82"
             strokeOpacity="0.55"
             className="link-flow"
@@ -65,7 +66,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
         {PARTNERS.map((p) => (
           <path
             key={p.label}
-            d={`M${HUB.x + 52} ${HUB.y} C ${HUB.x + 110} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
+            d={`M${HUB.x + HUB_R + 4} ${HUB.y} C ${HUB.x + 120} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
             stroke="#e7ad52"
             strokeOpacity="0.9"
             className="link-flow"
@@ -82,7 +83,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
                 dur="3.6s"
                 begin={`${i * 0.9}s`}
                 repeatCount="indefinite"
-                path={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 110} ${HUB.y}, ${HUB.x - 52} ${HUB.y}`}
+                path={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 120} ${HUB.y}, ${HUB.x - HUB_R - 4} ${HUB.y}`}
                 calcMode="spline"
                 keySplines="0.4 0 0.2 1"
                 keyTimes="0;1"
@@ -96,7 +97,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
                 dur="3.2s"
                 begin={`${1.2 + i * 1.1}s`}
                 repeatCount="indefinite"
-                path={`M${HUB.x + 52} ${HUB.y} C ${HUB.x + 110} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
+                path={`M${HUB.x + HUB_R + 4} ${HUB.y} C ${HUB.x + 120} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
                 calcMode="spline"
                 keySplines="0.4 0 0.2 1"
                 keyTimes="0;1"
@@ -126,7 +127,7 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
                   display: "flex",
                   alignItems: "center",
                   fontFamily: FONT,
-                  fontSize: 11.5,
+                  fontSize: 12.5,
                   fontWeight: 700,
                   lineHeight: 1.1,
                   color: "#14253d",
@@ -142,20 +143,20 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
 
       {/* Hub */}
       <g transform={`translate(${HUB.x} ${HUB.y})`}>
-        <circle r="70" fill="#008c82" opacity="0.07" className="node-pulse" />
-        <circle r="50" fill="url(#hub-grad)" filter="url(#soft)" />
-        <path d="M-19 10 -11 -10 0 10 11 -10 19 10" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="27" cy="-18" r="6" fill="#e7ad52" />
-        <foreignObject x="-70" y="60" width="140" height="40">
-          <div
-            // @ts-expect-error xmlns is required for HTML inside SVG
-            xmlns="http://www.w3.org/1999/xhtml"
-            style={{ textAlign: "center", fontFamily: FONT, color: "#14253d", lineHeight: 1.25 }}
-          >
-            <div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: 2 }}>WESTLINK</div>
-            <div style={{ fontSize: 9.5, fontWeight: 600, color: "#52637a" }}>matching and routing</div>
-          </div>
-        </foreignObject>
+        <circle r={HUB_R + 22} fill="#008c82" opacity="0.07" className="node-pulse" />
+        <circle r={HUB_R} fill="url(#hub-grad)" filter="url(#soft)" />
+        <path d="M-20 2 -12 -18 0 2 12 -18 20 2" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="28" cy="-26" r="6" fill="#e7ad52" />
+        <text y="26" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#ffffff" letterSpacing="2.5" fontFamily={FONT}>
+          WESTLINK
+        </text>
+        {/* Opaque chip so the subtitle never collides with connector lines */}
+        <g transform={`translate(0 ${HUB_R + 14})`}>
+          <rect x="-70" y="0" width="140" height="26" rx="13" fill="#ffffff" stroke="#e2e8f0" />
+          <text y="17" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#52637a" fontFamily={FONT}>
+            matching and routing
+          </text>
+        </g>
       </g>
 
       {/* Partner cards */}
@@ -180,8 +181,8 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
                 overflow: "hidden",
               }}
             >
-              <div style={{ fontSize: 11.5, fontWeight: 800 }}>{p.label}</div>
-              <div style={{ fontSize: 9.5, fontWeight: 600, color: "#52637a" }}>{p.sub}</div>
+              <div style={{ fontSize: 12.5, fontWeight: 800 }}>{p.label}</div>
+              <div style={{ fontSize: 10.5, fontWeight: 600, color: "#52637a" }}>{p.sub}</div>
             </div>
           </foreignObject>
         </g>
@@ -195,20 +196,20 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
           <div
             // @ts-expect-error xmlns is required for HTML inside SVG
             xmlns="http://www.w3.org/1999/xhtml"
-            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 10.5, fontWeight: 700, color: "#52637a", overflow: "hidden" }}
+            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 11, fontWeight: 700, color: "#52637a", overflow: "hidden" }}
           >
             Prospects routed by the criteria you set
           </div>
         </foreignObject>
       </g>
-      <g transform="translate(446 368)">
-        <rect width="172" height="32" rx="16" fill="#14253d" />
+      <g transform="translate(440 368)">
+        <rect width="180" height="32" rx="16" fill="#14253d" />
         <circle cx="17" cy="16" r="4.5" fill="#e7ad52" />
-        <foreignObject x="28" y="0" width="138" height="32">
+        <foreignObject x="28" y="0" width="146" height="32">
           <div
             // @ts-expect-error xmlns is required for HTML inside SVG
             xmlns="http://www.w3.org/1999/xhtml"
-            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 10.5, fontWeight: 700, color: "#ffffff", overflow: "hidden" }}
+            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 11, fontWeight: 700, color: "#ffffff", overflow: "hidden" }}
           >
             Delivered to your team
           </div>

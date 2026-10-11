@@ -177,7 +177,7 @@
   {
     "name": "UI onboarding submission accepted by backend",
     "pass": true,
-    "detail": "id=b1dc0578-4589-4c4f-a7cc-796b4f8bbb4f"
+    "detail": "id=342cb276-8455-4602-8114-fcd52691c9f0"
   },
   {
     "name": "success state shown after backend confirmation",
@@ -207,7 +207,7 @@
   {
     "name": "UI contact submission accepted by backend",
     "pass": true,
-    "detail": "id=f049c47a-914e-45ce-9330-16e1b110bfd3"
+    "detail": "id=ef3dcff8-e81c-4a6f-a7be-8f1e50120992"
   },
   {
     "name": "/terms: one h1, unique title, operator named",
