@@ -68,6 +68,12 @@ All test submissions were isolated to the local build. Nothing was sent to the r
 - Phone and email links (`src/components/ui/ContactLink.tsx`) copy the value and show a toast with an "Open in calling/mail app" action on desktop, avoiding the operating system "Pick an app" prompt; on touch devices they dial or open mail natively.
 - Toast suite (`docs/verify-toast.playwright.js`): 13 / 13 pass. Full browser suite re-run: 54 / 54 pass.
 
+## Update: illustration labels and WhatsApp-first phone links (2026-10-11, night)
+- Hero illustration labels are now HTML inside SVG `<foreignObject>` with overflow clipping, so text stays inside the pills and cards on every device and font. Labels shortened for balance.
+- Phone links open WhatsApp first (`siteConfig.contact.whatsapp`): on touch devices the app link is tried and the dialer (`tel:`) is used if nothing takes over within 1.5 s; on desktop WhatsApp Web opens in a new tab, the number is copied, and the toast offers "Call with your phone app instead". Email links keep the copy-and-open behavior.
+- Hostinger deployment notes added to README; `engines.node >= 20` and `.nvmrc` added.
+- Toast suite: 14 / 14 pass (including the WhatsApp popup). Full browser suite: 54 / 54 pass. Production build: pass.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

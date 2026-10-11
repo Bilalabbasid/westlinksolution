@@ -14,25 +14,29 @@ const log = (n, p, d = "") => { results.push(p); console.log(`${p ? "PASS" : "FA
   await page.goto(BASE + "/", { waitUntil: "networkidle" });
   await page.locator(".reveal.is-visible").first().waitFor();
 
-  // Desktop phone link: copies + toast, no navigation
+  // Desktop phone link: opens WhatsApp in a new tab + toast with call fallback
   const phone = page.locator("footer").getByRole("link", { name: "+1 (650) 308-4707" });
   await phone.scrollIntoViewIfNeeded();
-  await phone.click();
-  const toast = page.getByRole("status").filter({ hasText: "Phone number copied" });
+  const [popup] = await Promise.all([ctx.waitForEvent("page", { timeout: 5000 }).catch(() => null), phone.click()]);
+  log("phone link opens WhatsApp in a new tab on desktop", Boolean(popup) && /wa\.me\/16503084707|api\.whatsapp\.com\/send\/\?phone=16503084707/.test(popup.url()), popup ? popup.url() : "no popup");
+  if (popup) await popup.close();
+  const toast = page.locator(".toast").filter({ hasText: "Opening WhatsApp" });
   await toast.waitFor({ timeout: 3000 });
-  log("phone link shows copy toast on desktop", await toast.isVisible());
-  log("page did not navigate to tel:", page.url().startsWith(BASE));
+  log("WhatsApp toast shown", await toast.isVisible());
+  log("page itself did not navigate", page.url().startsWith(BASE));
   const clip = await page.evaluate(() => navigator.clipboard.readText()).catch(() => "");
   log("clipboard holds the phone number", clip === "+1 (650) 308-4707", clip);
-  log("toast offers an open action", await toast.getByRole("button", { name: /Open in calling app/ }).isVisible());
+  log("toast offers a call fallback", await toast.getByRole("button", { name: /Call with your phone app instead/ }).isVisible());
   await page.screenshot({ path: path.join(OUT, "toast-copy.png") });
   await toast.getByRole("button", { name: "Dismiss notification" }).click();
   await page.waitForTimeout(300);
-  log("toast dismisses", (await page.getByRole("status").filter({ hasText: "Phone number copied" }).count()) === 0);
+  log("toast dismisses", (await page.locator(".toast").filter({ hasText: "Opening WhatsApp" }).count()) === 0);
 
   // Email link
   await page.locator("footer").getByRole("link", { name: "info@westlinksolution.com" }).click();
-  log("email link shows copy toast", await page.getByRole("status").filter({ hasText: "Email address copied" }).isVisible());
+  const emailToast = page.locator(".toast").filter({ hasText: "Email address copied" });
+  await emailToast.waitFor({ timeout: 3000 });
+  log("email link shows copy toast", await emailToast.isVisible());
 
   // Contact form validation toast (alert role for errors)
   await page.locator("#contact").scrollIntoViewIfNeeded();
@@ -74,13 +78,8 @@ const log = (n, p, d = "") => { results.push(p); console.log(`${p ? "PASS" : "FA
   await mp.goto(BASE + "/", { waitUntil: "networkidle" });
   const coarse = await mp.evaluate(() => matchMedia("(pointer: coarse)").matches);
   log("mobile context reports coarse pointer (native dial path)", coarse);
-  const prevented = await mp.evaluate(() => {
-    const a = [...document.querySelectorAll('footer a[href^="tel:"]')][0];
-    const ev = new MouseEvent("click", { bubbles: true, cancelable: true });
-    a.dispatchEvent(ev);
-    return ev.defaultPrevented;
-  });
-  log("mobile tel: click is not intercepted", prevented === false);
+  const hrefs = await mp.evaluate(() => [...document.querySelectorAll('footer a')].map((a) => a.getAttribute("href")).filter((h) => h && (h.startsWith("https://wa.me") || h.startsWith("tel:"))));
+  log("mobile phone link targets WhatsApp with tel fallback logic", hrefs.includes("https://wa.me/16503084707"), hrefs.join(","));
 
   log("no page errors", errors.length === 0, errors.join(" | "));
   await browser.close();

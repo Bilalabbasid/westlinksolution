@@ -1,13 +1,15 @@
 /**
  * Original hero illustration: prospects on the left, the Westlink hub in the
  * middle, and partner intake teams on the right, joined by flowing links.
- * Pure SVG, no raster assets, animation disabled under reduced motion.
+ * Labels are HTML inside <foreignObject> so they wrap/clip inside their
+ * shapes no matter which font is available. Animation is disabled under
+ * reduced motion.
  */
 const PROSPECTS = [
-  { y: 72, label: "Comparing insurance quotes", tone: "teal" },
+  { y: 72, label: "Comparing quotes", tone: "teal" },
   { y: 154, label: "Needs a roof repair", tone: "amber" },
-  { y: 236, label: "Asking about debt options", tone: "teal" },
-  { y: 318, label: "Looking for legal help", tone: "amber" },
+  { y: 236, label: "Asking about debt relief", tone: "teal" },
+  { y: 318, label: "Looking for a lawyer", tone: "amber" },
 ] as const;
 
 const PARTNERS = [
@@ -17,8 +19,9 @@ const PARTNERS = [
 ] as const;
 
 const HUB = { x: 330, y: 195 };
-const PILL = { x: 22, w: 178, h: 42 };
-const CARD = { x: 450, w: 168, h: 58 };
+const PILL = { x: 22, w: 196, h: 44 };
+const CARD = { x: 446, w: 172, h: 60 };
+const FONT = "Manrope, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif";
 
 export function HeroIllustration() {
   return (
@@ -48,12 +51,12 @@ export function HeroIllustration() {
       <rect width="640" height="420" rx="28" fill="url(#bg-grad)" />
       <rect width="640" height="420" rx="28" fill="url(#dots)" />
 
-      {/* Links from prospects to the hub */}
+      {/* Links */}
       <g fill="none" strokeWidth="2.5" strokeLinecap="round">
         {PROSPECTS.map((p) => (
           <path
             key={p.label}
-            d={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 60} ${p.y}, ${HUB.x - 110} ${HUB.y}, ${HUB.x - 50} ${HUB.y}`}
+            d={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 110} ${HUB.y}, ${HUB.x - 52} ${HUB.y}`}
             stroke="#008c82"
             strokeOpacity="0.55"
             className="link-flow"
@@ -62,7 +65,7 @@ export function HeroIllustration() {
         {PARTNERS.map((p) => (
           <path
             key={p.label}
-            d={`M${HUB.x + 50} ${HUB.y} C ${HUB.x + 110} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
+            d={`M${HUB.x + 52} ${HUB.y} C ${HUB.x + 110} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
             stroke="#e7ad52"
             strokeOpacity="0.9"
             className="link-flow"
@@ -77,12 +80,28 @@ export function HeroIllustration() {
         return (
           <g key={p.label} transform={`translate(${PILL.x} ${p.y - PILL.h / 2})`} filter="url(#soft)">
             <rect width={PILL.w} height={PILL.h} rx={PILL.h / 2} fill="#ffffff" stroke="#e2e8f0" />
-            <circle cx="21" cy="21" r="11" fill={tint} />
-            <circle cx="21" cy="17.5" r="3.4" fill={accent} />
-            <path d="M14.5 27c1.6-3.2 4-4.8 6.5-4.8s4.9 1.6 6.5 4.8" fill="none" stroke={accent} strokeWidth="2.2" strokeLinecap="round" />
-            <text x="40" y="25" fontSize="11" fontWeight="700" fill="#14253d" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-              {p.label}
-            </text>
+            <circle cx="22" cy="22" r="11" fill={tint} />
+            <circle cx="22" cy="18.5" r="3.4" fill={accent} />
+            <path d="M15.5 28c1.6-3.2 4-4.8 6.5-4.8s4.9 1.6 6.5 4.8" fill="none" stroke={accent} strokeWidth="2.2" strokeLinecap="round" />
+            <foreignObject x="40" y="0" width={PILL.w - 52} height={PILL.h}>
+              <div
+                // @ts-expect-error xmlns is required for HTML inside SVG
+                xmlns="http://www.w3.org/1999/xhtml"
+                style={{
+                  height: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                  fontFamily: FONT,
+                  fontSize: 11.5,
+                  fontWeight: 700,
+                  lineHeight: 1.1,
+                  color: "#14253d",
+                  overflow: "hidden",
+                }}
+              >
+                {p.label}
+              </div>
+            </foreignObject>
           </g>
         );
       })}
@@ -93,12 +112,16 @@ export function HeroIllustration() {
         <circle r="50" fill="url(#hub-grad)" filter="url(#soft)" />
         <path d="M-19 10 -11 -10 0 10 11 -10 19 10" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
         <circle cx="27" cy="-18" r="6" fill="#e7ad52" />
-        <text y="78" textAnchor="middle" fontSize="11.5" fontWeight="800" fill="#14253d" letterSpacing="2" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-          WESTLINK
-        </text>
-        <text y="93" textAnchor="middle" fontSize="9.5" fontWeight="600" fill="#52637a" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-          matching and routing
-        </text>
+        <foreignObject x="-70" y="60" width="140" height="40">
+          <div
+            // @ts-expect-error xmlns is required for HTML inside SVG
+            xmlns="http://www.w3.org/1999/xhtml"
+            style={{ textAlign: "center", fontFamily: FONT, color: "#14253d", lineHeight: 1.25 }}
+          >
+            <div style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: 2 }}>WESTLINK</div>
+            <div style={{ fontSize: 9.5, fontWeight: 600, color: "#52637a" }}>matching and routing</div>
+          </div>
+        </foreignObject>
       </g>
 
       {/* Partner cards */}
@@ -106,31 +129,56 @@ export function HeroIllustration() {
         <g key={p.label} transform={`translate(${CARD.x} ${p.y - CARD.h / 2})`} filter="url(#soft)">
           <rect width={CARD.w} height={CARD.h} rx="14" fill="#ffffff" stroke="#e2e8f0" />
           <rect x="0" y="12" width="4" height={CARD.h - 24} rx="2" fill="#e7ad52" />
-          <rect x="16" y="15" width="26" height="26" rx="8" fill="#14253d" />
-          <path d="M23 28h12M29 22v12" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" />
-          <text x="52" y="26" fontSize="11" fontWeight="800" fill="#14253d" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-            {p.label}
-          </text>
-          <text x="52" y="41" fontSize="9.5" fontWeight="600" fill="#52637a" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-            {p.sub}
-          </text>
+          <rect x="16" y="17" width="26" height="26" rx="8" fill="#14253d" />
+          <path d="M23 30h12M29 24v12" stroke="#ffffff" strokeWidth="2.2" strokeLinecap="round" />
+          <foreignObject x="52" y="0" width={CARD.w - 60} height={CARD.h}>
+            <div
+              // @ts-expect-error xmlns is required for HTML inside SVG
+              xmlns="http://www.w3.org/1999/xhtml"
+              style={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                fontFamily: FONT,
+                color: "#14253d",
+                lineHeight: 1.2,
+                overflow: "hidden",
+              }}
+            >
+              <div style={{ fontSize: 11.5, fontWeight: 800 }}>{p.label}</div>
+              <div style={{ fontSize: 9.5, fontWeight: 600, color: "#52637a" }}>{p.sub}</div>
+            </div>
+          </foreignObject>
         </g>
       ))}
 
-      {/* Caption chip */}
+      {/* Caption chips */}
       <g transform="translate(22 368)">
-        <rect width="262" height="32" rx="16" fill="#ffffff" stroke="#e2e8f0" />
+        <rect width="250" height="32" rx="16" fill="#ffffff" stroke="#e2e8f0" />
         <circle cx="17" cy="16" r="4.5" fill="#008c82" />
-        <text x="30" y="20" fontSize="10.5" fontWeight="700" fill="#52637a" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-          Prospects routed by the criteria you set
-        </text>
+        <foreignObject x="28" y="0" width="214" height="32">
+          <div
+            // @ts-expect-error xmlns is required for HTML inside SVG
+            xmlns="http://www.w3.org/1999/xhtml"
+            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 10.5, fontWeight: 700, color: "#52637a", overflow: "hidden" }}
+          >
+            Prospects routed by the criteria you set
+          </div>
+        </foreignObject>
       </g>
-      <g transform="translate(450 368)">
-        <rect width="168" height="32" rx="16" fill="#14253d" />
+      <g transform="translate(446 368)">
+        <rect width="172" height="32" rx="16" fill="#14253d" />
         <circle cx="17" cy="16" r="4.5" fill="#e7ad52" />
-        <text x="30" y="20" fontSize="10.5" fontWeight="700" fill="#ffffff" fontFamily="Manrope, ui-sans-serif, system-ui, sans-serif">
-          Delivered to your team
-        </text>
+        <foreignObject x="28" y="0" width="138" height="32">
+          <div
+            // @ts-expect-error xmlns is required for HTML inside SVG
+            xmlns="http://www.w3.org/1999/xhtml"
+            style={{ height: "100%", display: "flex", alignItems: "center", fontFamily: FONT, fontSize: 10.5, fontWeight: 700, color: "#ffffff", overflow: "hidden" }}
+          >
+            Delivered to your team
+          </div>
+        </foreignObject>
       </g>
     </svg>
   );

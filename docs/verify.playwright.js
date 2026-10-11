@@ -58,7 +58,7 @@ const log = (name, pass, detail = "") => {
   const links = await page.evaluate(() => [...document.querySelectorAll("header a, footer a")].map((a) => a.getAttribute("href")));
   const broken = [];
   for (const href of new Set(links)) {
-    if (!href || href.startsWith("mailto:") || href.startsWith("tel:")) continue;
+    if (!href || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("http")) continue;
     const [p, hash] = href.split("#");
     const url = BASE + (p || "/");
     const r = await page.request.get(url);

@@ -31,6 +31,8 @@ export const siteConfig = {
     email: "info@westlinksolution.com",
     phone: "+1 (650) 308-4707",
     phoneHref: "tel:+16503084707",
+    /** WhatsApp number in international digits (no +). Empty disables WhatsApp-first phone links. */
+    whatsapp: "16503084707",
     privacyEmail: "", // falls back to `email` when empty
     address: {
       line1: "44240 Fremont Blvd",

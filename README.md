@@ -87,6 +87,24 @@ npx tsc --noEmit # type check
 5. Deploy with `npm run build` and `npm run start` (Node 20+; Node 24 was used for development), or on Vercel/another Next.js host. The in-memory rate limiter is per instance; for multi-instance or serverless deployments, replace `src/lib/rate-limit.ts` with a shared store (for example Upstash Redis) or add a rate limit at the edge.
 6. After deployment, open `/api/health` and confirm `database.status = ok` and the expected integrations read `true`.
 
+## Deploying on Hostinger
+
+This is a Node.js application (not static HTML), so it needs Hostinger's **Node.js hosting** (VPS or a plan that runs Node apps), not plain shared hosting.
+
+1. In hPanel create a Node.js application pointing at this repository (branch `main`), Node 20 or newer. Build command `npm ci && npm run build`, start command `npm run start`. Hostinger passes the port through `PORT`; Next.js honors it.
+2. Add the environment variables from the table above. Minimum for production: `NEXT_PUBLIC_SITE_URL=https://westlinksolution.com`, `ALLOW_INDEXING=true`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `IP_HASH_SALT`, plus Resend variables if you want email notifications.
+3. Run `db/supabase.sql` once in the Supabase SQL editor before the first request.
+4. Point the domain at the app and enable HTTPS. Then open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`.
+5. If you ever must deploy on a plan that cannot run Node, the forms will not work; the site relies on its API routes for submissions.
+
+On a VPS without hPanel's Node runner, the equivalent is:
+
+```bash
+npm ci && npm run build && PORT=3000 npm run start
+```
+
+behind Nginx or Caddy as a reverse proxy, kept alive with pm2 or a systemd unit.
+
 ## Replacing placeholders before launch
 
 Search the code for `TODO(owner)` and the `[For review: …]` markers on the legal pages. The handover list in `plan.md` section 7 enumerates every open business detail (operator legal name, contact details, account managers, domain, credentials, legal review, testimonials, partners, response-time commitment).

@@ -172,12 +172,12 @@
   {
     "name": "focus restored to opener",
     "pass": true,
-    "detail": "BODY:Skip to contentWestlinkSolutio"
+    "detail": "BUTTON:Become a Partner"
   },
   {
     "name": "UI onboarding submission accepted by backend",
     "pass": true,
-    "detail": "id=85f898c7-8802-4ef0-92c4-3c8df0ec0e3b"
+    "detail": "id=b0f6e44f-2b0e-4ec0-ae10-8e4204f40d92"
   },
   {
     "name": "success state shown after backend confirmation",
@@ -207,7 +207,7 @@
   {
     "name": "UI contact submission accepted by backend",
     "pass": true,
-    "detail": "id=2e37690a-cfcb-416f-af5e-269def477b93"
+    "detail": "id=291cb7a2-3b33-4c97-b882-eb01bba06120"
   },
   {
     "name": "/terms: one h1, unique title, operator named",
