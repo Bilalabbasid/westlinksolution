@@ -1,0 +1,272 @@
+[
+  {
+    "name": "exactly one h1 on home",
+    "pass": true,
+    "detail": "count=1"
+  },
+  {
+    "name": "home title set",
+    "pass": true,
+    "detail": "Westlink Solutions | B2B Lead Generation, Inbound Calls & Campaign Support"
+  },
+  {
+    "name": "canonical present",
+    "pass": true,
+    "detail": "http://localhost:3000"
+  },
+  {
+    "name": "preview is noindex",
+    "pass": true,
+    "detail": "noindex, nofollow, nocache"
+  },
+  {
+    "name": "og:image present",
+    "pass": true,
+    "detail": "http://localhost:3100/opengraph-image?8cbd46d37bb94d42"
+  },
+  {
+    "name": "organization JSON-LD present",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "no reference branding or destinations in HTML",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "operator disclosure in footer",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "no testimonials/partners sections while empty",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "no third-party scripts loaded",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "all header/footer links resolve",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "four industry tabs",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "home services tab selected on click",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "home services panel shows HVAC",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "arrow key moves to financial services",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "End key moves to legal",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "legal panel lists SSDI",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "secondary CTA scrolls to industries",
+    "pass": true,
+    "detail": "top=176"
+  },
+  {
+    "name": "modal opens from hero CTA",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "focus moves into modal",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "focus trapped after 40 tabs",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "focus trapped on shift+tab",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "progress indicator shows step 1 of 2",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "step 1 validation shows errors",
+    "pass": true,
+    "detail": "alerts=7"
+  },
+  {
+    "name": "focus moved to first invalid field",
+    "pass": true,
+    "detail": "company"
+  },
+  {
+    "name": "email + phone field errors shown",
+    "pass": true,
+    "detail": "Enter a valid work email address. | Enter a valid phone number for the selected country."
+  },
+  {
+    "name": "terms consent required separately",
+    "pass": true,
+    "detail": "You must agree to the Terms of Service to continue."
+  },
+  {
+    "name": "marketing opt-in is unchecked by default and separate",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "advanced to step 2",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "progress indicator shows step 2",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "previous returns to step 1 with values preserved",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "step 2 validation shows errors",
+    "pass": true,
+    "detail": "alerts=6"
+  },
+  {
+    "name": "billing email validated when present",
+    "pass": true,
+    "detail": "Enter a valid billing contact email."
+  },
+  {
+    "name": "escape closes modal",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "focus restored to opener",
+    "pass": true,
+    "detail": "BUTTON:Become a Partner"
+  },
+  {
+    "name": "UI onboarding submission accepted by backend",
+    "pass": true,
+    "detail": "id=64b86ad8-043e-43e5-a8d6-a9e33421d941"
+  },
+  {
+    "name": "success state shown after backend confirmation",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "no confirmation-email promise when none sent",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "response-time wording shown",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "contact validation shows errors",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "contact phone is a tel input",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "UI contact submission accepted by backend",
+    "pass": true,
+    "detail": "id=2036a856-6104-4500-81c1-4f4c8ef51b32"
+  },
+  {
+    "name": "/terms: one h1, unique title, operator named",
+    "pass": true,
+    "detail": "Terms of Service | Westlink Solutions"
+  },
+  {
+    "name": "/privacy: one h1, unique title, operator named",
+    "pass": true,
+    "detail": "Privacy Policy | Westlink Solutions"
+  },
+  {
+    "name": "/california-privacy: one h1, unique title, operator named",
+    "pass": true,
+    "detail": "California Privacy Notice | Westlink Solutions"
+  },
+  {
+    "name": "no horizontal overflow at 375px",
+    "pass": true,
+    "detail": "overflow=0px"
+  },
+  {
+    "name": "mobile menu button present",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile menu expands",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile menu lists nav links",
+    "pass": true,
+    "detail": "links=5"
+  },
+  {
+    "name": "escape closes mobile menu",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "mobile menu CTA opens modal",
+    "pass": true,
+    "detail": ""
+  },
+  {
+    "name": "no horizontal overflow at 320px",
+    "pass": true,
+    "detail": "overflow=0px"
+  },
+  {
+    "name": "reduced motion: all content visible",
+    "pass": true,
+    "detail": "hidden=0"
+  },
+  {
+    "name": "no console errors across runs",
+    "pass": true,
+    "detail": ""
+  }
+]

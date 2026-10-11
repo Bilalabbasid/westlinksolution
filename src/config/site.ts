@@ -16,32 +16,31 @@ export const siteConfig = {
    * Legal operator. Use the exact registered corporate name once supplied.
    * Do not describe Westlink as a separately incorporated company.
    */
-  operatorLegalName: "Top Developers Inc.", // TODO(owner): confirm exact registered name
-  operatorDisclosure: "Westlink Solutions is operated by Top Developers Inc.",
+  operatorLegalName: "TOPDEVELOPER INC", // registered corporate name as supplied by the owner (2026-10-11)
+  operatorDisclosure: "Westlink Solutions is operated by TOPDEVELOPER INC.",
 
   /** Production domain. Overridden by NEXT_PUBLIC_SITE_URL at build time. */
-  defaultSiteUrl: "https://www.westlinksolutions.com", // TODO(owner): confirm final domain
+  defaultSiteUrl: "https://westlinksolution.com",
 
   tagline: "Customer acquisition for teams that sell insurance, home services, financial services, and legal help.",
   description:
     "Westlink Solutions is a B2B customer-acquisition partner. We deliver leads, inbound calls, and campaign support for insurance, home-services, financial-services, and legal buyers.",
 
   contact: {
-    // TODO(owner): replace placeholders with Westlink's own details. Leave a value
-    // empty ("") to hide it from the site until it is confirmed.
-    email: "", // e.g. "hello@westlinksolutions.com"
-    phone: "", // e.g. "+1 (555) 010-0100"
-    phoneHref: "", // e.g. "tel:+15550100100"
-    privacyEmail: "", // e.g. "privacy@westlinksolutions.com"
+    // Leave a value empty ("") to hide it from the site.
+    email: "info@westlinksolution.com",
+    phone: "+1 (650) 308-4707",
+    phoneHref: "tel:+16503084707",
+    privacyEmail: "", // falls back to `email` when empty
     address: {
-      line1: "", // street address
-      line2: "", // suite
-      city: "",
-      region: "",
-      postalCode: "",
+      line1: "44240 Fremont Blvd",
+      line2: "",
+      city: "Fremont",
+      region: "CA",
+      postalCode: "94538",
       country: "US",
     },
-    hours: "Monday to Friday, 9:00 a.m. to 6:00 p.m. Eastern", // TODO(owner): confirm
+    hours: "Monday to Friday, 9:00 a.m. to 6:00 p.m. Pacific", // TODO(owner): confirm
   },
 
   /**
@@ -85,6 +84,7 @@ export const siteConfig = {
     { label: "About", href: "/#about" },
     { label: "Industries", href: "/#industries" },
     { label: "How it works", href: "/#how-it-works" },
+    { label: "FAQ", href: "/#faq" },
     { label: "Contact", href: "/#contact" },
   ],
 
@@ -94,6 +94,7 @@ export const siteConfig = {
       { label: "About Westlink", href: "/#about" },
       { label: "Industries", href: "/#industries" },
       { label: "How partnership works", href: "/#how-it-works" },
+      { label: "FAQ", href: "/#faq" },
       { label: "Contact", href: "/#contact" },
     ],
     legal: [

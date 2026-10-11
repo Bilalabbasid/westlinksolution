@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Keep Tailwind's source scanner away from runtime data (SQLite files are
+   locked while the server runs, which crashes Turbopack on Windows). */
+@source not "../../data";
+@source not "../../db";
+
 @theme {
   --color-canvas: #f8fafc;
   --color-navy: #14253d;
@@ -190,6 +195,12 @@
 }
 
 @layer utilities {
+  .dot-grid {
+    background-image: radial-gradient(rgba(20, 37, 61, 0.09) 1.2px, transparent 1.2px);
+    background-size: 22px 22px;
+    background-position: center top;
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(18px);
