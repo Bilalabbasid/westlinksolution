@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   partialPrefetching: true,
   poweredByHeader: false,
   serverExternalPackages: ["pg"],
+  turbopack: {},
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
