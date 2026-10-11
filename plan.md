@@ -144,7 +144,7 @@ Built with the `animated-component-libraries` and `motion-framer` skill patterns
 3. Named Westlink account managers (placeholder "No preference, assign for me" only).
 4. ~~Production domain~~ supplied: westlinksolution.com (`https://westlinksolution.com` set as default; set `NEXT_PUBLIC_SITE_URL` to match, including `www` if the live site uses it).
 5. Credentials: Supabase project URL + service-role key (owner said these will be added to the env; run `db/supabase.sql` in that project first), Resend API key + verified sender, CRM webhook URL/secret, Google Places API key, Turnstile keys.
-6. Legal review of the Terms, Privacy Policy, and California notice drafts (governing state, arbitration, hosting provider, retention period, CCPA applicability, "do not sell" confirmation, privacy contact). Every open point is marked `[For review: …]` on the pages.
+6. ~~Legal review~~ Owner reviewed and approved the Terms, Privacy Policy, and California notice on 2026-10-12; draft notices and review markers removed.
 7. Confirm whether Westlink sends SMS/text messages; set `consent.smsMessagingEnabled` accordingly.
 8. Approved testimonials and partner logos (components ready, hidden while empty).
 9. Confirm the response-time commitment (`responseTimeText`).

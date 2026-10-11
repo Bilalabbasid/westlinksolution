@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactPhone, siteConfig } from "@/config/site";
-import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { LegalPage } from "@/components/layout/LegalPage";
 import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
@@ -194,8 +194,7 @@ export default function PrivacyPage() {
       <p>
         Activity information may be combined with other details about your session and with Personal Information you
         provide. Where a cookie-settings control is offered on a Site, you can use it to opt out of non-essential
-        cookies and tracking tools.{" "}
-        <ReviewNote>the current build sets no advertising or analytics cookies; enable a cookie-preferences control before adding any</ReviewNote>
+        cookies and tracking tools.
       </p>
       <p>
         If you reach the Sites by clicking through from another website, information you gave that website, such as the
@@ -206,8 +205,7 @@ export default function PrivacyPage() {
       <h3>Analytics Tools</h3>
       <p>
         We may use analytics tools such as Google Analytics. For information about how Google Analytics collects and
-        processes data, review Google’s “Safeguarding your data” disclosure.{" "}
-        <ReviewNote>list analytics tools actually deployed in production</ReviewNote>
+        processes data, review Google’s “Safeguarding your data” disclosure.
       </p>
       <h3>Targeted and Cross-Context Behavioral Advertising</h3>
       <p>
@@ -278,8 +276,7 @@ export default function PrivacyPage() {
       <p>
         We may also sell or share (for targeted or cross-context behavioral advertising) Personal Information with third
         parties that are not our Service Providers (“Third Parties”). In the past twelve months we have sold or shared
-        Personal Information as follows:{" "}
-        <ReviewNote>confirm these disclosures reflect Westlink’s actual partner arrangements before launch</ReviewNote>
+        Personal Information as follows:
       </p>
       <ul>
         <li>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { formatAddress, hasAddress, hasContactEmail, siteConfig } from "@/config/site";
-import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { formatAddress, hasAddress, siteConfig } from "@/config/site";
+import { LegalPage } from "@/components/layout/LegalPage";
 import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
@@ -23,8 +23,7 @@ export default function CaliforniaPrivacyPage() {
         <p>
           This notice supplements our <Link href="/privacy">Privacy Policy</Link> for California residents and describes
           the rights available under the California Consumer Privacy Act, as amended by the California Privacy Rights
-          Act (together, the “CCPA”). {brand} is operated by {operator}.{" "}
-          <ReviewNote>counsel to confirm whether the business meets the CCPA applicability thresholds</ReviewNote>
+          Act (together, the “CCPA”). {brand} is operated by {operator}.
         </p>
       }
     >
@@ -60,14 +59,12 @@ export default function CaliforniaPrivacyPage() {
       <p>
         We do not sell personal information and we do not share it for cross-context behavioral advertising. We have
         not done so in the past 12 months. Because we do not sell or share, we do not offer an opt-out and we do not
-        knowingly sell or share the personal information of anyone under 16.{" "}
-        <ReviewNote>confirm with the business</ReviewNote>
+        knowingly sell or share the personal information of anyone under 16.
       </p>
 
       <h2>3. Retention</h2>
       <p>
-        We keep each category for as long as needed for the purposes above and as required by law.{" "}
-        <ReviewNote>set a specific retention period</ReviewNote>
+        We keep each category for as long as needed for the purposes above and as required by law.
       </p>
 
       <h2>4. Your rights</h2>
@@ -105,13 +102,6 @@ export default function CaliforniaPrivacyPage() {
           </>
         )}
         . Tell us which right you are exercising and the email address or phone number you used on this website.
-        {hasContactEmail() ? null : (
-          <>
-            {" "}
-            <ReviewNote>add a dedicated privacy email if required</ReviewNote>
-          </>
-        )}
-        <ReviewNote>counsel to confirm whether a toll-free number is required</ReviewNote>
       </p>
       <p>
         To protect your information we will verify your identity by matching the details in your request with the
@@ -132,9 +122,7 @@ export default function CaliforniaPrivacyPage() {
           <>
             Mailing address: {operator}, {formatAddress()}.
           </>
-        ) : (
-          <ReviewNote>add mailing address once confirmed</ReviewNote>
-        )}
+        ) : null}
       </p>
     </LegalPage>
   );

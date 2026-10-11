@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, siteConfig } from "@/config/site";
-import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { LegalPage } from "@/components/layout/LegalPage";
 import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
@@ -125,8 +125,7 @@ export default function TermsPage() {
         to eight companies, which may include our Providers and marketing partners, including calls placed with an
         automatic telephone dialing system or a prerecorded voice to the wireless or landline number you provided, even if
         that number is on a state or federal Do Not Call registry. You understand that your carrier may charge for these
-        calls or texts, that consent is not a condition of any purchase, and that you may revoke consent at any time.{" "}
-        <ReviewNote>confirm the maximum number of partners named in this consent and the exact wording your compliance team requires</ReviewNote>
+        calls or texts, that consent is not a condition of any purchase, and that you may revoke consent at any time.
       </p>
       <p>
         By including your email address in a Submission, you are expressly inviting each matched Provider to email you at
@@ -251,8 +250,7 @@ export default function TermsPage() {
         arbitrations involving our other users but is bound by rulings in prior arbitrations involving the same user to
         the extent the law requires. The award is final and binding, and judgment on it may be entered in any court with
         jurisdiction. This arbitration provision survives termination of this Agreement and the end of your use of our
-        services.{" "}
-        <ReviewNote>governing law follows the reference document; confirm with counsel</ReviewNote>
+        services.
       </p>
       <h3>7.3 Costs of arbitration</h3>
       <p>

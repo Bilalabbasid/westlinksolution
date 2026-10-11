@@ -87,24 +87,33 @@ npx tsc --noEmit # type check
 5. Deploy with `npm run build` and `npm run start` (Node 20+; Node 24 was used for development), or on Vercel/another Next.js host. The in-memory rate limiter is per instance; for multi-instance or serverless deployments, replace `src/lib/rate-limit.ts` with a shared store (for example Upstash Redis) or add a rate limit at the edge.
 6. After deployment, open `/api/health` and confirm `database.status = ok` and the expected integrations read `true`.
 
-## Deploying on Hostinger
+## Deploying on Hostinger (Node.js web app)
 
-This is a Node.js application (not static HTML), so it needs Hostinger's **Node.js hosting** (VPS or a plan that runs Node apps), not plain shared hosting.
+Per Hostinger's Node.js documentation, the site deploys as a **Node.js web app** on Business or Cloud plans (hPanel → Websites → Add Website → Node.js web app → Import Git repository). Hostinger auto-detects Next.js and pre-fills the settings; use these values:
 
-1. In hPanel create a Node.js application pointing at this repository (branch `main`), Node 20 or newer (Node 22 recommended). Build command `npm ci && npm run build`, start command `npm run start`. Hostinger passes the port through `PORT`; Next.js honors it. The build uses webpack (`next build --webpack`), which is the more robust bundler in constrained build containers; Tailwind runs through PostCSS so both bundlers produce identical CSS.
-2. Add the environment variables from the table above. Minimum for production: `NEXT_PUBLIC_SITE_URL=https://westlinksolution.com`, `ALLOW_INDEXING=true`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `IP_HASH_SALT`, plus Resend variables if you want email notifications.
-3. Run `db/supabase.sql` once in the Supabase SQL editor before the first request.
-4. Point the domain at the app and enable HTTPS. Then open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`.
-5. If you ever must deploy on a plan that cannot run Node, the forms will not work; the site relies on its API routes for submissions.
-6. The build has no outbound network dependencies: the Manrope font is self-hosted in `src/app/fonts/`, so builds succeed even when the build container cannot reach Google Fonts.
+| Setting | Value |
+| --- | --- |
+| Framework preset | Next.js |
+| Branch | `main` |
+| Node.js version | 22 (20 and 24 also work) |
+| Package manager | npm (detected from `package-lock.json`) |
+| Build command | `npm run build` (runs `next build --webpack`) |
+| Output directory | `.next` |
+| Entry file | leave empty (Hostinger starts Next.js with `npm start`) |
 
-On a VPS without hPanel's Node runner, the equivalent is:
+Environment variables (hPanel → the app → Environment Variables), minimum for production:
 
-```bash
-npm ci && npm run build && PORT=3000 npm run start
+```
+NEXT_PUBLIC_SITE_URL=https://westlinksolution.com
+ALLOW_INDEXING=true
+SUPABASE_URL=https://<project>.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=<service role key>
+IP_HASH_SALT=<long random string>
 ```
 
-behind Nginx or Caddy as a reverse proxy, kept alive with pm2 or a systemd unit.
+Add `RESEND_API_KEY`, `NOTIFY_EMAIL_TO`, and `NOTIFY_EMAIL_FROM` for email notifications, and the optional CRM, Places, and Turnstile variables as needed. Hostinger's **Connect a database → Supabase** wizard sets `SUPABASE_URL` and `SUPABASE_ANON_KEY`; this app writes with the **service-role key** (the tables have Row Level Security on), so add `SUPABASE_SERVICE_ROLE_KEY` manually from Supabase → Project Settings → API. Run `db/supabase.sql` once in the Supabase SQL editor before the first submission.
+
+After the build turns green, open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`. Pushes to `main` redeploy automatically. If a build fails, open the deployment in hPanel for the full log; the build has no outbound network dependencies (fonts are self-hosted) and uses webpack, which is the more robust bundler in Hostinger's build containers.
 
 ## Replacing placeholders before launch
 

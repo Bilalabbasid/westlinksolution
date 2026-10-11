@@ -11,7 +11,7 @@ interface LegalPageProps {
   draft?: boolean;
 }
 
-export function LegalPage({ title, lastUpdated, intro, children, draft = true }: LegalPageProps) {
+export function LegalPage({ title, lastUpdated, intro, children, draft = false }: LegalPageProps) {
   return (
     <article>
       <header className="relative overflow-hidden border-b border-line bg-white">
@@ -27,8 +27,7 @@ export function LegalPage({ title, lastUpdated, intro, children, draft = true }:
           <div className="mt-6 max-w-3xl text-base leading-relaxed text-ink-muted sm:text-lg">{intro}</div>
           {draft ? (
             <p className="mt-6 max-w-3xl rounded-xl border border-amber/50 bg-amber-50 px-4 py-3 text-sm text-navy" role="note">
-              This document is a working draft prepared for review by {siteConfig.operatorLegalName} and its counsel. Items marked
-              for review will be finalized before this page is treated as the governing version.
+              This document is a working draft under review by {siteConfig.operatorLegalName}.
             </p>
           ) : null}
         </div>
@@ -46,9 +45,4 @@ export function LegalPage({ title, lastUpdated, intro, children, draft = true }:
       </div>
     </article>
   );
-}
-
-/** Inline marker for details that still need confirmation. */
-export function ReviewNote({ children }: { children: ReactNode }) {
-  return <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-bold text-amber-700">[For review: {children}]</span>;
 }
