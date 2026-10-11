@@ -4,6 +4,7 @@ import { getSiteUrl, isIndexingAllowed, siteConfig } from "@/config/site";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { OnboardingProvider } from "@/components/forms/OnboardingProvider";
+import { ToastProvider } from "@/components/ui/Toaster";
 import "./globals.css";
 
 const manrope = Manrope({
@@ -77,13 +78,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <OnboardingProvider>
+        <ToastProvider>
+          <OnboardingProvider>
           <Header />
           <main id="main" className="flex-1">
             {children}
           </main>
           <Footer />
-        </OnboardingProvider>
+          </OnboardingProvider>
+        </ToastProvider>
       </body>
     </html>
   );

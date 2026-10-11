@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, siteConfig } from "@/config/site";
 import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
   title: "California Privacy Notice",
@@ -94,7 +95,7 @@ export default function CaliforniaPrivacyPage() {
         You or an authorized agent can submit a request{" "}
         {privacyEmail ? (
           <>
-            by emailing <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a> with the subject line “California privacy
+            by emailing <ContactLink kind="email" value={privacyEmail} /> with the subject line “California privacy
             request”
           </>
         ) : (
@@ -123,7 +124,7 @@ export default function CaliforniaPrivacyPage() {
         Questions about this notice can be directed to {operator}, operating as {brand}
         {privacyEmail ? (
           <>
-            , at <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>
+            , at <ContactLink kind="email" value={privacyEmail} />
           </>
         ) : null}
         .{" "}

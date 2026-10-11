@@ -2,6 +2,7 @@ import { formatAddress, hasAddress, hasContactEmail, hasContactPhone, siteConfig
 import { ContactForm } from "@/components/forms/ContactForm";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
 import { ArrowIcon } from "@/components/ui/Button";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { Reveal } from "@/components/ui/Reveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -38,9 +39,7 @@ export function ContactSection() {
                 <div>
                   <dt className="font-extrabold text-navy">Email</dt>
                   <dd>
-                    <a href={`mailto:${siteConfig.contact.email}`} className="text-teal-700 underline underline-offset-2">
-                      {siteConfig.contact.email}
-                    </a>
+                    <ContactLink kind="email" value={siteConfig.contact.email} className="text-teal-700 underline underline-offset-2" />
                   </dd>
                 </div>
               ) : null}
@@ -48,9 +47,7 @@ export function ContactSection() {
                 <div>
                   <dt className="font-extrabold text-navy">Phone</dt>
                   <dd>
-                    <a href={siteConfig.contact.phoneHref} className="text-teal-700 underline underline-offset-2">
-                      {siteConfig.contact.phone}
-                    </a>
+                    <ContactLink kind="phone" value={siteConfig.contact.phone} href={siteConfig.contact.phoneHref} className="text-teal-700 underline underline-offset-2" />
                     <span className="block text-ink-muted">{siteConfig.contact.hours}</span>
                   </dd>
                 </div>

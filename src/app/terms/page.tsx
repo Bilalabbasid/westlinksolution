@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, siteConfig } from "@/config/site";
 import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -147,7 +148,7 @@ export default function TermsPage() {
         Questions about these Terms can be sent to {operator}, operating as {brand}
         {hasContactEmail() ? (
           <>
-            , at <a href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
+            , at <ContactLink kind="email" value={siteConfig.contact.email} />
           </>
         ) : (
           <>

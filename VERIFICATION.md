@@ -62,6 +62,12 @@ All test submissions were isolated to the local build. Nothing was sent to the r
 - Supabase adapter added (`src/lib/db/supabase.ts`) and selected automatically when `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` are set; schema in `db/supabase.sql`. Not yet tested: no Supabase credentials were present in the environment at the time of this report.
 - Browser suite re-run after the redesign: 54 / 54 pass. Production build: pass.
 
+## Update: toast notifications (2026-10-11, late evening)
+- Added a dependency-free toast system (`src/components/ui/Toaster.tsx`): bottom-right stack (bottom-center on phones), `role="status"` for success/info and `role="alert"` for errors, auto-dismiss with hover pause, dismiss button, optional action, reduced-motion aware.
+- Contact form and onboarding modal now raise toasts for validation problems, backend failures, and backend-confirmed success, alongside the existing inline states.
+- Phone and email links (`src/components/ui/ContactLink.tsx`) copy the value and show a toast with an "Open in calling/mail app" action on desktop, avoiding the operating system "Pick an app" prompt; on touch devices they dial or open mail natively.
+- Toast suite (`docs/verify-toast.playwright.js`): 13 / 13 pass. Full browser suite re-run: 54 / 54 pass.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

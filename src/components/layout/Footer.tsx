@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, hasContactPhone, siteConfig } from "@/config/site";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { CurrentYear } from "@/components/ui/CurrentYear";
 import { Logo } from "./Logo";
 
@@ -53,16 +54,12 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5 text-sm text-white/80">
                 {hasContactEmail() ? (
                   <li>
-                    <a href={`mailto:${siteConfig.contact.email}`} className="transition-colors hover:text-white">
-                      {siteConfig.contact.email}
-                    </a>
+                    <ContactLink kind="email" value={siteConfig.contact.email} className="transition-colors hover:text-white" />
                   </li>
                 ) : null}
                 {hasContactPhone() ? (
                   <li>
-                    <a href={siteConfig.contact.phoneHref} className="transition-colors hover:text-white">
-                      {siteConfig.contact.phone}
-                    </a>
+                    <ContactLink kind="phone" value={siteConfig.contact.phone} href={siteConfig.contact.phoneHref} className="transition-colors hover:text-white" />
                   </li>
                 ) : null}
                 {hasAddress() ? <li className="leading-relaxed">{formatAddress()}</li> : null}

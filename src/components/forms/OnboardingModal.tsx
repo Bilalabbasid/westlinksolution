@@ -11,6 +11,7 @@ import { CheckboxField, FormStatusMessage, HoneypotField, TextField } from "./fi
 import { PhoneField } from "./PhoneField";
 import { Turnstile, TURNSTILE_SITE_KEY } from "./Turnstile";
 import { VerticalPicker } from "./VerticalPicker";
+import { useToast } from "@/components/ui/Toaster";
 
 interface OnboardingModalProps {
   onClose: () => void;
@@ -73,6 +74,7 @@ function randomKey(): string {
 }
 
 export function OnboardingModal({ onClose }: OnboardingModalProps) {
+  const { toast } = useToast();
   const titleId = useId();
   const descId = useId();
   const dialogRef = useRef<HTMLDivElement | null>(null);
@@ -180,10 +182,13 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
     if (!result.success) {
       setErrors(result.errors);
       focusFirstError(result.errors);
+      const n = Object.keys(result.errors).length;
+      toast({ tone: "error", title: n === 1 ? "One field needs attention" : `${n} fields need attention`, description: "Complete the highlighted fields to continue.", duration: 4000 });
       return;
     }
     setErrors({});
     setStep(2);
+    toast({ tone: "info", title: "Step 1 saved", description: "Now add your address and the campaign verticals you want to run.", duration: 3500 });
   };
 
   const goBack = () => {
@@ -208,6 +213,8 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
     if (!result.success) {
       setErrors(result.errors);
       focusFirstError(result.errors);
+      const n = Object.keys(result.errors).length;
+      toast({ tone: "error", title: n === 1 ? "One field needs attention" : `${n} fields need attention`, description: "Complete the highlighted fields to submit.", duration: 4000 });
       return;
     }
     if (TURNSTILE_SITE_KEY && !turnstileToken) {
@@ -243,6 +250,7 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
           responseTimeText: data.responseTimeText ?? siteConfig.responseTimeText,
         });
         setPhase("success");
+        toast({ tone: "success", title: "Application received", description: data.responseTimeText ?? siteConfig.responseTimeText });
         return;
       }
 
@@ -256,14 +264,16 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
         return;
       }
 
-      setServerMessage(
+      const message =
         (data && !data.ok && data.error?.message) ||
-          "We could not send your application. Please check your connection and try again.",
-      );
+        "We could not send your application. Please check your connection and try again.";
+      setServerMessage(message);
       setPhase("error");
+      toast({ tone: "error", title: "Application not sent", description: message });
     } catch {
       setServerMessage("We could not reach the server. Please check your connection and try again.");
       setPhase("error");
+      toast({ tone: "error", title: "Application not sent", description: "We could not reach the server. Your answers are saved in the form." });
     } finally {
       inFlight.current = false;
     }

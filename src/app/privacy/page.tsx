@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, siteConfig } from "@/config/site";
 import { LegalPage, ReviewNote } from "@/components/layout/LegalPage";
+import { ContactLink } from "@/components/ui/ContactLink";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -156,7 +157,7 @@ export default function PrivacyPage() {
         Privacy questions and requests can be sent to {operator}, operating as {brand}
         {hasContactEmail() || privacyEmail ? (
           <>
-            , at <a href={`mailto:${privacyEmail}`}>{privacyEmail}</a>
+            , at <ContactLink kind="email" value={privacyEmail} />
           </>
         ) : (
           <>

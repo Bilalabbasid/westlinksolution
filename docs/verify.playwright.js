@@ -225,7 +225,7 @@ const log = (name, pass, detail = "") => {
   ]);
   const cjson = await cresp.json();
   log("UI contact submission accepted by backend", cresp.status() === 200 && cjson.ok === true, `id=${cjson.id}`);
-  await page.getByText("Message sent").waitFor();
+  await page.locator("#contact").getByText("Message sent").waitFor();
   await page.screenshot({ path: path.join(OUT, "contact-success.png") });
 
   // Legal pages

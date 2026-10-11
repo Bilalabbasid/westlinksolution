@@ -6,6 +6,7 @@ import { contactFieldsSchema, validate, type FieldErrors } from "@/lib/validatio
 import { ArrowIcon, Button, Spinner } from "@/components/ui/Button";
 import { FormStatusMessage, HoneypotField, TextAreaField, TextField } from "./fields";
 import { Turnstile, TURNSTILE_SITE_KEY } from "./Turnstile";
+import { useToast } from "@/components/ui/Toaster";
 
 interface Values {
   name: string;
@@ -19,6 +20,7 @@ type Phase = "idle" | "submitting" | "error" | "success";
 const empty: Values = { name: "", email: "", phone: "", message: "" };
 
 export function ContactForm() {
+  const { toast } = useToast();
   const [values, setValues] = useState<Values>(empty);
   const [errors, setErrors] = useState<FieldErrors>({});
   const [phase, setPhase] = useState<Phase>("idle");
@@ -55,6 +57,8 @@ export function ContactForm() {
     if (!result.success) {
       setErrors(result.errors);
       focusFirstError(result.errors);
+      const n = Object.keys(result.errors).length;
+      toast({ tone: "error", title: n === 1 ? "One field needs attention" : `${n} fields need attention`, description: "Check the highlighted fields and try again.", duration: 4000 });
       return;
     }
     if (TURNSTILE_SITE_KEY && !turnstileToken) {
@@ -83,6 +87,7 @@ export function ContactForm() {
       if (res.ok && data && data.ok) {
         setLastId(data.id);
         setPhase("success");
+        toast({ tone: "success", title: "Message sent", description: "Thanks. A partnerships specialist will reply by email." });
         return;
       }
       if (data && !data.ok && data.error?.fields) {
@@ -91,11 +96,14 @@ export function ContactForm() {
         focusFirstError(data.error.fields);
         return;
       }
-      setServerMessage((data && !data.ok && data.error?.message) || "We could not send your message. Please try again.");
+      const message = (data && !data.ok && data.error?.message) || "We could not send your message. Please try again.";
+      setServerMessage(message);
       setPhase("error");
+      toast({ tone: "error", title: "Message not sent", description: message });
     } catch {
       setServerMessage("We could not reach the server. Please check your connection and try again.");
       setPhase("error");
+      toast({ tone: "error", title: "Message not sent", description: "We could not reach the server. Check your connection and try again." });
     } finally {
       inFlight.current = false;
     }
