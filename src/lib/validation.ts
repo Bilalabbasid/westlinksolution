@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { isValidPhoneNumber, parsePhoneNumberFromString, type CountryCode } from "libphonenumber-js";
-import { siteConfig } from "@/config/site";
-import { verticalValues } from "@/content/verticals";
+import { siteConfig } from "../config/site";
+import { verticalValues } from "../content/verticals";
 
 /* ------------------------------------------------------------------ */
 /* Shared helpers                                                      */

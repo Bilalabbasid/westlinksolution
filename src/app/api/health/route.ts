@@ -1,8 +1,8 @@
 import { connection, NextResponse } from "next/server";
-import { describeDatabase, getDb } from "@/lib/db";
-import { isConfirmationEmailEnabled, isNotificationEmailConfigured } from "@/lib/email";
-import { isTurnstileConfigured } from "@/lib/spam";
-import { isWebhookConfigured } from "@/lib/webhook";
+import { describeDatabase, getDb } from "../../../lib/db";
+import { isConfirmationEmailEnabled, isNotificationEmailConfigured } from "../../../lib/email";
+import { isTurnstileConfigured } from "../../../lib/spam";
+import { isWebhookConfigured } from "../../../lib/webhook";
 
 
 /**
