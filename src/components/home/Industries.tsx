@@ -61,8 +61,8 @@ export function Industries() {
         <SectionHeading
           id="industries-title"
           eyebrow="Industries and services"
-          title="Campaigns built for the categories you sell in."
-          description="Pick an industry to see the campaign types we run and what you receive as a partner."
+          title="Lead generation for insurance, home services, finance, and legal."
+          description="Pick an industry to see the leads and call campaigns we run and what you receive as a partner."
           align="center"
         />
 

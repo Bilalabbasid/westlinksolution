@@ -26,6 +26,31 @@ export const faqItems: FaqItem[] = [
       "Insurance (Final Expense, Auto Insurance, Medicare, Health, ACA, USA Health), Home Services (HVAC, Plumbing, Roofing, Solar, and many more), Finance Insurance (Debt Settlement, Student Loans), Legal Insurance (Torts, SSDI, MVA), SEO, and other campaigns on request.",
   },
   {
+    question: "What is pay-per-call lead generation?",
+    answer:
+      "In a pay-per-call campaign, prospects who match your criteria call a tracked number and are routed to your team in real time. You receive live, inbound conversations rather than a list, with screening questions and routing hours agreed before launch.",
+  },
+  {
+    question: "Do you offer live transfers, inbound calls, or web leads?",
+    answer:
+      "All three. Live transfers hand a screened prospect from our agent to yours; inbound pay-per-call campaigns route prospects directly to your line; web leads deliver contact and qualification details to your CRM or inbox. The mix is chosen per vertical during the campaign discussion.",
+  },
+  {
+    question: "Are the leads exclusive?",
+    answer:
+      "Exclusivity is set per campaign and written into your specification. Tell us whether you need exclusive delivery or are open to shared leads, and we will scope the campaign and reporting accordingly rather than making a blanket promise.",
+  },
+  {
+    question: "How much do leads and calls cost?",
+    answer:
+      "Pricing depends on the vertical, the states or ZIP codes you serve, the delivery format, and the screening required. We quote after the campaign discussion so the number reflects your actual criteria, and the price is recorded in the written agreement before anything launches.",
+  },
+  {
+    question: "Which states do you cover?",
+    answer:
+      "Campaigns are scoped to the states or ZIP codes you choose. Availability and volume vary by vertical and location, so we confirm coverage for your territory during the campaign discussion rather than claiming nationwide availability.",
+  },
+  {
     question: "How do leads and calls reach our team?",
     answer:
       "Calls are routed to the numbers and hours you specify. Leads can be emailed, posted to your CRM through a webhook, or delivered in another format agreed during setup.",

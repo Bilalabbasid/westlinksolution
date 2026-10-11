@@ -16,14 +16,14 @@ import { Testimonials } from "@/components/home/Testimonials";
 import { VerticalMarquee } from "@/components/home/VerticalMarquee";
 
 export const metadata: Metadata = {
-  title: `${siteConfig.brandName} | B2B Lead Generation, Inbound Calls & Campaign Support`,
+  title: `Lead Generation Company for Insurance, Home Services, Debt & Legal | ${siteConfig.brandName}`,
   description:
-    "Leads that convert, calls that connect, growth that lasts. Westlink Solution powers high-intent calls and leads for insurance, financial, and home-service businesses. Apply to become a partner.",
+    "High-intent insurance leads, live-transfer and pay-per-call campaigns, home services leads, debt settlement and student loan leads, and SSDI, torts and MVA intake calls. Campaigns built to the criteria you approve. Apply to become a partner.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: `${siteConfig.brandName} | B2B Lead Generation, Inbound Calls & Campaign Support`,
+    title: `Lead Generation Company for Insurance, Home Services, Debt & Legal | ${siteConfig.brandName}`,
     description:
-      "High-intent calls and leads for insurance, financial, and home-service businesses.",
+      "Insurance leads, pay-per-call and live-transfer campaigns, home services leads, debt and student loan leads, and legal intake calls, built to your criteria.",
     url: "/",
   },
 };
@@ -54,6 +54,28 @@ function structuredData() {
     };
   }
   if (siteConfig.social.linkedin) organization.sameAs = [siteConfig.social.linkedin];
+  if (hasContactPhone() || hasContactEmail()) {
+    organization.contactPoint = [
+      {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        ...(hasContactPhone() ? { telephone: siteConfig.contact.phone } : {}),
+        ...(hasContactEmail() ? { email: siteConfig.contact.email } : {}),
+        areaServed: "US",
+        availableLanguage: ["en"],
+      },
+    ];
+  }
+
+  const webpage = {
+    "@type": "WebPage",
+    "@id": `${siteUrl}/#webpage`,
+    url: siteUrl,
+    name: `Lead Generation Company for Insurance, Home Services, Debt & Legal | ${siteConfig.brandName}`,
+    isPartOf: { "@id": `${siteUrl}/#website` },
+    about: { "@id": `${siteUrl}/#organization` },
+    inLanguage: "en-US",
+  };
 
   const website = {
     "@type": "WebSite",
@@ -69,7 +91,8 @@ function structuredData() {
     "@id": `${siteUrl}/#service`,
     name: "B2B customer acquisition: leads, inbound calls, and campaign support",
     provider: { "@id": `${siteUrl}/#organization` },
-    serviceType: "Lead generation and inbound call campaigns",
+    serviceType: "Lead generation, pay-per-call, and live-transfer campaigns",
+    areaServed: { "@type": "Country", name: "United States" },
     audience: { "@type": "BusinessAudience", audienceType: "Insurance, home-services, financial-services, and legal businesses" },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -95,7 +118,7 @@ function structuredData() {
     })),
   };
 
-  return { "@context": "https://schema.org", "@graph": [organization, website, services, faq] };
+  return { "@context": "https://schema.org", "@graph": [organization, website, webpage, services, faq] };
 }
 
 export default function HomePage() {

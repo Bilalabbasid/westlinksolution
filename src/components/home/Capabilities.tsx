@@ -23,9 +23,15 @@ export function Capabilities() {
   return (
     <section className="relative py-10 sm:py-14" aria-labelledby="capabilities-title">
       <div className="container-x">
-        <h2 id="capabilities-title" className="sr-only">
-          What Westlink delivers
-        </h2>
+        <div className="mx-auto mb-8 max-w-2xl text-center">
+          <h2 id="capabilities-title" className="text-balance text-2xl font-extrabold tracking-[-0.02em] text-navy sm:text-[2rem]">
+            Lead generation, live-transfer calls, and campaign support in one partner
+          </h2>
+          <p className="mt-3 text-ink-muted">
+            Choose web leads, inbound pay-per-call campaigns, or live transfers for each vertical. Every format is delivered
+            to the criteria your team approves.
+          </p>
+        </div>
         <ul className="grid gap-5 md:grid-cols-3">
           {capabilities.map((c, i) => (
             <Reveal key={c.id} as="li" delay={i * 100}>

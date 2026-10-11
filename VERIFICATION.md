@@ -95,6 +95,13 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Industry panel follows the reference layout: name, description, closing tagline, and a 2×2 grid of icon tiles (Final Expense, Auto Insurance, Medicare, Health, etc.) that spring in with a stagger when a tab is chosen. "Industries" in the navigation scrolls to this section.
 - Responsive sweep 8 / 8, browser suite 55 / 55, toast suite 14 / 14, production build pass, no console errors.
 
+## Update: search-intent SEO pass and Search Console verification (2026-10-12, later)
+- Search-intent research (web search on how insurance, home-services, debt-relief, and legal buyers look for lead vendors) informed the home page title "Lead Generation Company for Insurance, Home Services, Debt & Legal", the meta description, the keyword list (lead generation company, insurance lead generation, live transfer leads, pay per call leads), and the OpenGraph alt text.
+- Visible copy carries the same intent: Capabilities heading and intro (lead generation, live-transfer calls, campaign support), Industries heading ("Lead generation for insurance, home services, finance, and legal."), industry tile summaries naming the lead or call type, and five new FAQ entries (what pay-per-call is, live transfers vs inbound calls vs web leads, exclusivity, pricing after discussion, state coverage). No prices, volumes, or performance guarantees were added.
+- JSON-LD graph extended with a WebPage node, an Organization contactPoint (sales, US, English), Service areaServed United States, and the FAQPage reflects the 12 questions.
+- Google Search Console HTML verification file `public/google4e3facc496f919cf.html` is served at the site root with the exact token (200, text/html).
+- Production build with `ALLOW_INDEXING=true` and the production site URL: robots.txt allows crawling, disallows /api/, and points to the sitemap; sitemap lists /, /terms, /privacy, /california-privacy; browser suite 55 / 55, responsive sweep 8 / 8, one h1 per page.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

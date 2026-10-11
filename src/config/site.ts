@@ -22,7 +22,7 @@ export const siteConfig = {
   /** Production domain. Overridden by NEXT_PUBLIC_SITE_URL at build time. */
   defaultSiteUrl: "https://westlinksolution.com",
 
-  tagline: "High-intent calls and leads for insurance, financial, home-service, and legal-protection businesses.",
+  tagline: "Insurance leads, pay-per-call and live-transfer campaigns, home services leads, debt and student loan leads, and legal intake calls.",
   description:
     "Westlink Solution powers high-intent calls and leads for insurance, financial, and home-service businesses, with campaign support from a named account manager.",
 

@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { siteConfig } from "@/config/site";
 
-export const alt = `${siteConfig.brandName}: leads, calls, and campaign support for B2B buyers`;
+export const alt = `${siteConfig.brandName}: lead generation, pay-per-call and live-transfer campaigns for insurance, home services, debt and legal`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

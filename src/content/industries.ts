@@ -45,10 +45,10 @@ export const industries: Industry[] = [
     tagline: "Help every household find the coverage that fits.",
     buyerNote: "Westlink does not sell or issue insurance. We connect your licensed team with people asking about it.",
     subServices: [
-      { name: "Final Expense", summary: "Shoppers looking for burial and final-expense protection.", icon: "final-expense" },
-      { name: "Auto Insurance", summary: "Drivers comparing quotes or ready to switch carriers.", icon: "auto" },
-      { name: "Medicare", summary: "Beneficiaries reviewing plan options during eligible periods.", icon: "medicare" },
-      { name: "Health", summary: "Individuals and families choosing health coverage.", icon: "health" },
+      { name: "Final Expense", summary: "Final expense leads and calls from shoppers seeking burial protection.", icon: "final-expense" },
+      { name: "Auto Insurance", summary: "Auto insurance leads from drivers comparing quotes or switching carriers.", icon: "auto" },
+      { name: "Medicare", summary: "Medicare leads and live transfers from beneficiaries reviewing plan options.", icon: "medicare" },
+      { name: "Health", summary: "Health insurance leads from individuals and families choosing coverage.", icon: "health" },
     ],
     deliverables: [
       "Inbound calls routed to your agents during the hours you choose",
@@ -67,9 +67,9 @@ export const industries: Industry[] = [
     tagline: "The right solution for every home's needs.",
     buyerNote: "Westlink does not perform home services. Your team handles estimates, scheduling, and the work.",
     subServices: [
-      { name: "HVAC", summary: "Repair, replacement, and seasonal maintenance requests.", icon: "hvac" },
-      { name: "Plumbing", summary: "Urgent repairs and planned upgrades.", icon: "plumbing" },
-      { name: "Roofing", summary: "Inspections, repairs, and full replacements.", icon: "roofing" },
+      { name: "HVAC", summary: "HVAC leads for repair, replacement, and seasonal maintenance.", icon: "hvac" },
+      { name: "Plumbing", summary: "Plumbing leads for urgent repairs and planned upgrades.", icon: "plumbing" },
+      { name: "Roofing", summary: "Roofing leads for inspections, repairs, and full replacements.", icon: "roofing" },
       { name: "And Many More", summary: "Solar, windows, electrical, and other trades on request.", icon: "more" },
     ],
     deliverables: [
@@ -89,8 +89,8 @@ export const industries: Industry[] = [
     tagline: "Coverage that matches each person's needs and goals.",
     buyerNote: "Westlink does not lend, settle debt, or give financial advice. We introduce prospects to providers who do.",
     subServices: [
-      { name: "Debt Settlement", summary: "Consumers carrying unsecured debt above your minimum.", icon: "debt" },
-      { name: "Student Loans", summary: "Borrowers exploring consolidation or repayment options.", icon: "student" },
+      { name: "Debt Settlement", summary: "Debt settlement leads and live transfers from consumers above your debt minimum.", icon: "debt" },
+      { name: "Student Loans", summary: "Student loan leads from borrowers exploring consolidation or repayment options.", icon: "student" },
     ],
     deliverables: [
       "Pre-screened calls and leads matched to your intake criteria",
@@ -109,9 +109,9 @@ export const industries: Industry[] = [
     tagline: "The right protection plan for each person's future.",
     buyerNote: "Westlink is not a law firm and does not provide legal advice or represent clients. Your firm evaluates every case.",
     subServices: [
-      { name: "Torts", summary: "People reporting exposure or injury tied to a specific product or event.", icon: "torts" },
-      { name: "SSDI", summary: "Individuals pursuing Social Security Disability claims.", icon: "ssdi" },
-      { name: "MVA", summary: "Injured parties seeking representation after a motor vehicle accident.", icon: "mva" },
+      { name: "Torts", summary: "Tort intake calls from people reporting exposure or injury tied to a product or event.", icon: "torts" },
+      { name: "SSDI", summary: "SSDI leads and live transfers from people pursuing disability claims.", icon: "ssdi" },
+      { name: "MVA", summary: "MVA leads from injured parties seeking representation after an accident.", icon: "mva" },
     ],
     deliverables: [
       "Intake-aligned screening questions before a transfer",
