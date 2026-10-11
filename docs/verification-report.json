@@ -87,7 +87,7 @@
   {
     "name": "secondary CTA scrolls to industries",
     "pass": true,
-    "detail": "top=176"
+    "detail": "top=190"
   },
   {
     "name": "modal opens from hero CTA",
@@ -177,7 +177,7 @@
   {
     "name": "UI onboarding submission accepted by backend",
     "pass": true,
-    "detail": "id=79834f91-365e-4d4f-83ac-e0b4d95c39d6"
+    "detail": "id=1ade20fb-4ee7-4026-bb32-e158cf7e8efb"
   },
   {
     "name": "success state shown after backend confirmation",
@@ -207,7 +207,7 @@
   {
     "name": "UI contact submission accepted by backend",
     "pass": true,
-    "detail": "id=0a34f086-d0f9-483f-8e17-4f1e2fe07c6a"
+    "detail": "id=2c7a6867-28a4-40ef-a3d8-4f1ba1f4d2e8"
   },
   {
     "name": "/terms: one h1, unique title, operator named",

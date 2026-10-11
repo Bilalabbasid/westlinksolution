@@ -70,11 +70,18 @@ export function HeroVisual() {
         </div>
         <BorderBeam size={130} duration={9} />
       </motion.div>
+    </div>
+  );
+}
 
-      <motion.ul variants={strip} initial="hidden" animate="visible" className="mt-5 grid gap-3 sm:grid-cols-3" aria-label="Industries Westlink serves">
+/** Three industry signal chips; rendered in the hero's second row so they line up with the trust chips. */
+export function HeroSignals({ className = "" }: { className?: string }) {
+  return (
+    <div className={`${className} lg:h-full`}>
+      <motion.ul variants={strip} initial="hidden" animate="visible" className="grid gap-3 sm:grid-cols-3 lg:h-full" aria-label="Industries Westlink serves">
         {signals.map((s) => (
-          <motion.li key={s.label} variants={chip} className="flex items-start gap-2.5 rounded-2xl border border-line bg-white/90 px-3.5 py-3 shadow-card backdrop-blur">
-            <span className="relative mt-1 flex h-2.5 w-2.5 flex-none">
+          <motion.li key={s.label} variants={chip} className="flex h-full items-center gap-2.5 rounded-2xl border border-line bg-white/90 px-3.5 py-3 shadow-card backdrop-blur">
+            <span className="relative flex h-2.5 w-2.5 flex-none">
               <span className={`absolute inline-flex h-full w-full animate-ping rounded-full ${s.tone} opacity-50 motion-reduce:hidden`} />
               <span className={`relative inline-flex h-2.5 w-2.5 rounded-full ${s.tone}`} />
             </span>
