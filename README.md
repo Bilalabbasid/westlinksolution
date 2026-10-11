@@ -72,7 +72,7 @@ Webhook payload shape:
 
 ```bash
 npm run dev      # development server
-npm run build    # production build
+npm run build    # production build (webpack; `npm run build:turbopack` for the Turbopack bundler)
 npm run start    # serve the production build
 npm run lint     # eslint
 npx tsc --noEmit # type check
@@ -91,7 +91,7 @@ npx tsc --noEmit # type check
 
 This is a Node.js application (not static HTML), so it needs Hostinger's **Node.js hosting** (VPS or a plan that runs Node apps), not plain shared hosting.
 
-1. In hPanel create a Node.js application pointing at this repository (branch `main`), Node 20 or newer. Build command `npm ci && npm run build`, start command `npm run start`. Hostinger passes the port through `PORT`; Next.js honors it.
+1. In hPanel create a Node.js application pointing at this repository (branch `main`), Node 20 or newer (Node 22 recommended). Build command `npm ci && npm run build`, start command `npm run start`. Hostinger passes the port through `PORT`; Next.js honors it. The build uses webpack (`next build --webpack`), which is the more robust bundler in constrained build containers; Tailwind runs through PostCSS so both bundlers produce identical CSS.
 2. Add the environment variables from the table above. Minimum for production: `NEXT_PUBLIC_SITE_URL=https://westlinksolution.com`, `ALLOW_INDEXING=true`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `IP_HASH_SALT`, plus Resend variables if you want email notifications.
 3. Run `db/supabase.sql` once in the Supabase SQL editor before the first request.
 4. Point the domain at the app and enable HTTPS. Then open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`.
