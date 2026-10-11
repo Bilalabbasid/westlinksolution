@@ -35,7 +35,7 @@ const log = (name, pass, detail = "") => {
   const h1s = await page.locator("h1").count();
   log("exactly one h1 on home", h1s === 1, `count=${h1s}`);
   const title = await page.title();
-  log("home title set", title.includes("Westlink Solutions"), title);
+  log("home title set", title.includes("Westlink Solution"), title);
   const canonical = await page.locator('link[rel="canonical"]').getAttribute("href");
   log("canonical present", Boolean(canonical), canonical || "");
   const robotsMeta = await page.locator('meta[name="robots"]').getAttribute("content");
@@ -49,7 +49,7 @@ const log = (name, pass, detail = "") => {
   const html = await page.content();
   const leaks = ["adzino", "512-385-4031", "info@adzino", "script.google.com", "submit_form.php", "Adam Palmer", "Trevor Zambrio", "Brian Urich", "Noah Reid", "Sarah Johnson", "BlueCross", "Globe Life"].filter((s) => html.toLowerCase().includes(s.toLowerCase()));
   log("no reference branding or destinations in HTML", leaks.length === 0, leaks.join(", "));
-  log("operator disclosure in footer", html.includes("Westlink Solutions is operated by TOPDEVELOPER INC."));
+  log("operator disclosure in footer", html.includes("Westlink Solution is operated by TOPDEVELOPER INC."));
   log("no testimonials/partners sections while empty", !html.includes('id="testimonials"') && !html.includes('id="partners"'));
   const scripts = await page.evaluate(() => [...document.scripts].map((s) => s.src).filter((s) => s && !s.includes("localhost")));
   log("no third-party scripts loaded", scripts.length === 0, scripts.join(", "));

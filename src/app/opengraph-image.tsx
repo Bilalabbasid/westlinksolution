@@ -68,7 +68,7 @@ export default function OpenGraphImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 38, fontWeight: 800, letterSpacing: -1 }}>Westlink</div>
-            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 6, color: "#52637a" }}>SOLUTIONS</div>
+            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 6, color: "#52637a" }}>SOLUTION</div>
           </div>
         </div>
 

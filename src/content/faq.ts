@@ -6,7 +6,7 @@ export interface FaqItem {
 /** Public FAQ. Also emitted as FAQPage structured data on the home page. */
 export const faqItems: FaqItem[] = [
   {
-    question: "What does Westlink Solutions actually deliver?",
+    question: "What does Westlink Solution actually deliver?",
     answer:
       "High-intent leads, inbound calls, and campaign support for businesses in insurance, financial, home services, and legal protection. We plan the campaign around your products, service area, and hours, then deliver prospects in the form your team can act on.",
   },

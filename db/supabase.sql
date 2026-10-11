@@ -1,4 +1,4 @@
--- Westlink Solutions — Supabase schema
+-- Westlink Solution — Supabase schema
 -- Run once in the Supabase SQL editor (Dashboard → SQL) or with `supabase db push`.
 -- The site writes through the service-role key on the server only. Row Level
 -- Security is enabled with no policies, so the anon/public keys cannot read or

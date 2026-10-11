@@ -1,4 +1,4 @@
--- Westlink Solutions — PostgreSQL schema
+-- Westlink Solution — PostgreSQL schema
 -- The application creates these tables automatically on first use when
 -- DATABASE_URL points at Postgres. This file is provided for teams that
 -- prefer to provision the schema manually or restrict the app's DDL rights.

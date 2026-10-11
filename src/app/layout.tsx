@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     "SSDI leads",
     "MVA leads",
     "customer acquisition partner",
-    "Westlink Solutions",
+    "Westlink Solution",
   ],
   category: "business",
   robots: indexable ? { index: true, follow: true } : { index: false, follow: false, nocache: true },

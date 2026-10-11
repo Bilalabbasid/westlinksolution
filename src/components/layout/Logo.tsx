@@ -40,7 +40,7 @@ export function Logo({ variant = "default", size = "md", className = "" }: LogoP
       <LogoMark className={mark} inverse={inverse} />
       <span className="flex flex-col leading-none">
         <span className={`${name} font-extrabold tracking-[-0.02em] ${text}`}>{siteConfig.shortName}</span>
-        <span className={`mt-0.5 text-[0.62rem] font-bold uppercase tracking-[0.22em] ${sub}`}>Solutions</span>
+        <span className={`mt-0.5 text-[0.62rem] font-bold uppercase tracking-[0.22em] ${sub}`}>Solution</span>
       </span>
     </span>
   );

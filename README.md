@@ -1,6 +1,6 @@
-# Westlink Solutions — website
+# Westlink Solution — website
 
-Marketing website and partner-application backend for **Westlink Solutions**, a brand operated by **TOPDEVELOPER INC**
+Marketing website and partner-application backend for **Westlink Solution**, a brand operated by **TOPDEVELOPER INC**
 
 - Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS v4
 - Server-side form endpoints with durable storage (Supabase in production, SQLite for local development, plain Postgres also supported)
@@ -46,7 +46,7 @@ Content lives in `src/content/` (industries, challenges, partnership steps, vert
 | `DATABASE_SSL` | No | Set `false` to disable TLS for a local Postgres |
 | `RESEND_API_KEY` | For email | Resend API key (server-side only) |
 | `NOTIFY_EMAIL_TO` | For email | Comma-separated recipients for new-submission notifications |
-| `NOTIFY_EMAIL_FROM` | For email | Verified sender, e.g. `Westlink Solutions <no-reply@yourdomain>` |
+| `NOTIFY_EMAIL_FROM` | For email | Verified sender, e.g. `Westlink Solution <no-reply@yourdomain>` |
 | `SEND_CONFIRMATION_EMAILS` | No | `true` to email applicants a receipt. The UI mentions the email only when it was actually sent. |
 | `CRM_WEBHOOK_URL` | For CRM | Endpoint that receives a JSON POST per submission |
 | `CRM_WEBHOOK_SECRET` | No | When set, requests carry `X-Westlink-Signature: sha256=<HMAC-SHA256 of body>` |

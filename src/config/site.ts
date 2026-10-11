@@ -1,5 +1,5 @@
 /**
- * Central business configuration for Westlink Solutions.
+ * Central business configuration for Westlink Solution.
  *
  * Everything that identifies the business (names, contact details, account
  * managers, legal wording, response-time promises) lives here so it can be
@@ -9,7 +9,7 @@
 
 export const siteConfig = {
   /** Public brand name used across marketing content. */
-  brandName: "Westlink Solutions",
+  brandName: "Westlink Solution",
   shortName: "Westlink",
 
   /**
@@ -17,14 +17,14 @@ export const siteConfig = {
    * Do not describe Westlink as a separately incorporated company.
    */
   operatorLegalName: "TOPDEVELOPER INC", // registered corporate name as supplied by the owner (2026-10-11)
-  operatorDisclosure: "Westlink Solutions is operated by TOPDEVELOPER INC.",
+  operatorDisclosure: "Westlink Solution is operated by TOPDEVELOPER INC.",
 
   /** Production domain. Overridden by NEXT_PUBLIC_SITE_URL at build time. */
   defaultSiteUrl: "https://westlinksolution.com",
 
   tagline: "High-intent calls and leads for insurance, financial, home-service, and legal-protection businesses.",
   description:
-    "Westlink Solutions powers high-intent calls and leads for insurance, financial, and home-service businesses, with campaign support from a named account manager.",
+    "Westlink Solution powers high-intent calls and leads for insurance, financial, and home-service businesses, with campaign support from a named account manager.",
 
   contact: {
     // Leave a value empty ("") to hide it from the site.
@@ -68,7 +68,7 @@ export const siteConfig = {
   consent: {
     version: "2026-10-11.v1",
     termsText:
-      "I agree to the Westlink Solutions Terms of Service and acknowledge the Privacy Policy. I confirm that I am authorized to submit this request on behalf of my company.",
+      "I agree to the Westlink Solution Terms of Service and acknowledge the Privacy Policy. I confirm that I am authorized to submit this request on behalf of my company.",
     marketingText:
       "Optional: Westlink may contact me by email and phone about partnership opportunities, campaign updates, and service announcements. I can withdraw this permission at any time.",
     /**

@@ -7,7 +7,7 @@
   {
     "name": "home title set",
     "pass": true,
-    "detail": "Westlink Solutions | B2B Lead Generation, Inbound Calls & Campaign Support"
+    "detail": "Westlink Solution | B2B Lead Generation, Inbound Calls & Campaign Support"
   },
   {
     "name": "canonical present",
@@ -212,17 +212,17 @@
   {
     "name": "/terms: one h1, unique title, operator named",
     "pass": true,
-    "detail": "Terms of Use | Westlink Solutions"
+    "detail": "Terms of Use | Westlink Solution"
   },
   {
     "name": "/privacy: one h1, unique title, operator named",
     "pass": true,
-    "detail": "Privacy Policy | Westlink Solutions"
+    "detail": "Privacy Policy | Westlink Solution"
   },
   {
     "name": "/california-privacy: one h1, unique title, operator named",
     "pass": true,
-    "detail": "California Privacy Notice | Westlink Solutions"
+    "detail": "California Privacy Notice | Westlink Solution"
   },
   {
     "name": "no horizontal overflow at 375px",

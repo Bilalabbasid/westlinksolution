@@ -1,4 +1,4 @@
-# Verification report — Westlink Solutions website
+# Verification report — Westlink Solution website
 
 Date: 2026-10-11 · Environment: Windows 11, Node 24.12, Next.js 16.4 (Turbopack), local SQLite database.
 All test submissions were isolated to the local build. Nothing was sent to the reference company's endpoints.
@@ -16,7 +16,7 @@ All test submissions were isolated to the local build. Nothing was sent to the r
 - Exactly one `h1` on home and on each legal page; unique titles; canonical link; `og:image`; Organization JSON-LD naming TOPDEVELOPER INC with the configured email, phone, and Fremont address
 - Preview mode renders `noindex, nofollow` and a disallow-all `robots.txt`; production build with `ALLOW_INDEXING=true` serves allow rules and a sitemap with the configured domain.
 - No reference branding, staff names, phone/email, partner logos, testimonials, or submission endpoints appear in the HTML. No third-party scripts load.
-- Footer contains “Westlink Solutions is operated by TOPDEVELOPER INC.” Testimonial and partner sections are absent while their content lists are empty.
+- Footer contains “Westlink Solution is operated by TOPDEVELOPER INC.” Testimonial and partner sections are absent while their content lists are empty.
 - Every header and footer link resolves (200) and every hash target exists.
 - Industry tabs: click, ArrowRight/ArrowLeft/Home/End keyboard navigation, correct panels (HVAC, SSDI, etc.).
 - Secondary hero CTA scrolls to the industries section.

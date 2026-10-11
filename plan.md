@@ -1,4 +1,4 @@
-# Westlink Solutions — Website Plan
+# Westlink Solution — Website Plan
 
 Living document. Last update: 2026-10-11 (implementation complete, verification done; see `VERIFICATION.md`).
 
@@ -6,15 +6,15 @@ Living document. Last update: 2026-10-11 (implementation complete, verification 
 
 | Item | Value |
 | --- | --- |
-| Public brand | Westlink Solutions |
+| Public brand | Westlink Solution |
 | Legal operator | TOPDEVELOPER INC (registered name as supplied by the owner on 2026-10-11; `operatorLegalName` in config) |
-| Relationship wording | "Westlink Solutions is operated by TOPDEVELOPER INC." in footer; operator identified in legal pages. No claim of separate incorporation or completed DBA filing. |
+| Relationship wording | "Westlink Solution is operated by TOPDEVELOPER INC." in footer; operator identified in legal pages. No claim of separate incorporation or completed DBA filing. |
 | Positioning | B2B customer-acquisition partner: leads, inbound calls, and campaign support for buyers and service providers in insurance, home services, financial services, and legal. |
-| Hero message | Reworded from the reference: "Leads that convert. Calls that connect. Growth that lasts." + "Westlink Solutions powers high-intent calls and leads for insurance, financial, and home-service businesses." Hero copy and illustration mention only these three categories. |
+| Hero message | Reworded from the reference: "Leads that convert. Calls that connect. Growth that lasts." + "Westlink Solution powers high-intent calls and leads for insurance, financial, and home-service businesses." Hero copy and illustration mention only these three categories. |
 | Primary CTA | "Become a Partner" (opens onboarding modal). "Discuss Your Campaign" heads the contact section. |
 | Secondary CTA | "Explore industries" → scrolls to `#industries`. |
 | Voice | Plain American English, written for business buyers. Westlink does not issue policies, lend money, or represent legal clients. No "fully compliant", guaranteed conversion, exclusive-lead, nationwide, or volume claims. |
-| Visual identity | Warm white `#F8FAFC` background, deep navy `#14253D` text, teal `#008C82` primary, muted amber `#E7AD52` secondary, white cards with subtle borders and restrained shadows. Manrope typeface. Original wordmark ("Westlink" + small-caps "Solutions") and a link symbol: a teal rounded square with a white linked-W path and an amber hand-off point. |
+| Visual identity | Warm white `#F8FAFC` background, deep navy `#14253D` text, teal `#008C82` primary, muted amber `#E7AD52` secondary, white cards with subtle borders and restrained shadows. Manrope typeface. Original wordmark ("Westlink" + small-caps "Solution") and a link symbol: a teal rounded square with a white linked-W path and an amber hand-off point. |
 | Not permitted | Adzino artwork, logos, staff names, testimonials, partner logos, statistics, contact details, endpoints, analytics, or legal text. |
 
 Central configuration: `src/config/site.ts` (contact details, address, account managers, legal names, response-time wording, consent version, navigation, CTAs). Placeholders are marked `TODO(owner)`.
