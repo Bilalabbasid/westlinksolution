@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { errorResponse, getClientIp, isAllowedOrigin, readJsonBody } from "@/lib/request";
+import { checkRateLimit } from "../../../../lib/rate-limit";
+import { errorResponse, getClientIp, isAllowedOrigin, readJsonBody } from "../../../../lib/request";
 
 
 interface AddressComponent {

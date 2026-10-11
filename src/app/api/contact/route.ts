@@ -1,17 +1,19 @@
 import { NextResponse } from "next/server";
-import { siteConfig } from "@/config/site";
-import { getDb } from "@/lib/db";
+import { siteConfig } from "../../../config/site";
+import { getDb } from "../../../lib/db";
 import {
   getNotificationRecipients,
+  isConfirmationEmailEnabled,
   isNotificationEmailConfigured,
+  renderContactConfirmationEmail,
   renderKeyValueEmail,
   sendEmail,
-} from "@/lib/email";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { errorResponse, getClientIp, hashIp, isAllowedOrigin, readJsonBody } from "@/lib/request";
-import { checkSpam } from "@/lib/spam";
-import { contactSubmissionSchema, normalizePhone, validate } from "@/lib/validation";
-import { isWebhookConfigured, sendWebhook } from "@/lib/webhook";
+} from "../../../lib/email";
+import { checkRateLimit } from "../../../lib/rate-limit";
+import { errorResponse, getClientIp, hashIp, isAllowedOrigin, readJsonBody } from "../../../lib/request";
+import { checkSpam } from "../../../lib/spam";
+import { contactSubmissionSchema, normalizePhone, validate } from "../../../lib/validation";
+import { isWebhookConfigured, sendWebhook } from "../../../lib/webhook";
 
 
 const RATE_LIMIT = { limit: 10, windowMs: 10 * 60 * 1000 };
@@ -78,6 +80,7 @@ export async function POST(request: Request) {
     // Downstream delivery: never fail the request because of these.
     const errors: string[] = [];
     let notificationEmailSent = false;
+    let confirmationEmailSent = false;
     let webhookSent = false;
 
     if (isNotificationEmailConfigured()) {
@@ -101,6 +104,25 @@ export async function POST(request: Request) {
       if (!result.sent && result.error) errors.push(`email: ${result.error}`);
     }
 
+    if (isConfirmationEmailEnabled()) {
+      const { text, html } = renderContactConfirmationEmail({
+        id,
+        name: data.name,
+        email: data.email,
+        phone: data.phone || undefined,
+        message: data.message,
+      });
+      const result = await sendEmail({
+        to: data.email,
+        subject: `We received your request — ${siteConfig.brandName}`,
+        text,
+        html,
+        replyTo: siteConfig.contact.email,
+      });
+      confirmationEmailSent = result.sent;
+      if (!result.sent && result.error) errors.push(`confirmation: ${result.error}`);
+    }
+
     if (isWebhookConfigured()) {
       const result = await sendWebhook("contact.submitted", {
         id,
@@ -119,14 +141,14 @@ export async function POST(request: Request) {
     await db.updateContactDelivery(id, {
       status: errors.length > 0 ? "notification_failed" : "notified",
       notificationEmailSent,
-      confirmationEmailSent: false,
+      confirmationEmailSent,
       webhookSent,
       deliveryError: errors.length > 0 ? errors.join("; ").slice(0, 1000) : null,
     });
 
     if (errors.length > 0) console.error("[contact] delivery issues", { id, errors });
 
-    return NextResponse.json({ ok: true, id, notificationEmailSent, webhookSent });
+    return NextResponse.json({ ok: true, id, notificationEmailSent, confirmationEmailSent, webhookSent });
   } catch (err) {
     console.error("[contact] unexpected error", err);
     return errorResponse(500, "server_error", "Something went wrong on our side. Please try again.");

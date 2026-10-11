@@ -1,18 +1,19 @@
 import { NextResponse } from "next/server";
-import { siteConfig } from "@/config/site";
-import { getDb } from "@/lib/db";
+import { siteConfig } from "../../../config/site";
+import { getDb } from "../../../lib/db";
 import {
   getNotificationRecipients,
   isConfirmationEmailEnabled,
   isNotificationEmailConfigured,
   renderKeyValueEmail,
+  renderOnboardingConfirmationEmail,
   sendEmail,
-} from "@/lib/email";
-import { checkRateLimit } from "@/lib/rate-limit";
-import { errorResponse, getClientIp, hashIp, isAllowedOrigin, readJsonBody } from "@/lib/request";
-import { checkSpam } from "@/lib/spam";
-import { normalizePhone, onboardingSubmissionSchema, validate } from "@/lib/validation";
-import { isWebhookConfigured, sendWebhook } from "@/lib/webhook";
+} from "../../../lib/email";
+import { checkRateLimit } from "../../../lib/rate-limit";
+import { errorResponse, getClientIp, hashIp, isAllowedOrigin, readJsonBody } from "../../../lib/request";
+import { checkSpam } from "../../../lib/spam";
+import { normalizePhone, onboardingSubmissionSchema, validate } from "../../../lib/validation";
+import { isWebhookConfigured, sendWebhook } from "../../../lib/webhook";
 
 
 const RATE_LIMIT = { limit: 5, windowMs: 10 * 60 * 1000 };
@@ -163,21 +164,22 @@ export async function POST(request: Request) {
     }
 
     if (isConfirmationEmailEnabled()) {
-      const text = [
-        `Hi ${data.firstName},`,
-        "",
-        `Thanks for applying to partner with ${siteConfig.brandName}. We received your application for ${data.company}.`,
-        siteConfig.responseTimeText,
-        "",
-        `Reference: ${id}`,
-        "",
-        `${siteConfig.brandName}`,
-        siteConfig.operatorDisclosure,
-      ].join("\n");
+      const { text, html } = renderOnboardingConfirmationEmail({
+        id,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        company: data.company,
+        email: data.email,
+        phone: data.phone || undefined,
+        accountManagerName,
+        verticals: data.verticals,
+      });
       const result = await sendEmail({
         to: data.email,
         subject: `We received your ${siteConfig.brandName} partner application`,
         text,
+        html,
+        replyTo: siteConfig.contact.email,
       });
       confirmationEmailSent = result.sent;
       if (!result.sent && result.error) errors.push(`confirmation: ${result.error}`);
