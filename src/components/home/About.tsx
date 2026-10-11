@@ -19,7 +19,7 @@ const pillars = [
 
 export function About() {
   return (
-    <section id="about" className="dot-grid scroll-mt-24 py-16 sm:py-20" aria-labelledby="about-title">
+    <section id="about" className="dot-grid scroll-mt-24 py-20 sm:py-28" aria-labelledby="about-title">
       <div className="container-x grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <Reveal>
           <SectionHeading
@@ -61,7 +61,7 @@ export function About() {
         <ul className="grid gap-4">
           {pillars.map((p, i) => (
             <Reveal key={p.title} as="li" delay={i * 90}>
-              <div className="group flex gap-4 rounded-card border border-line bg-card p-5 shadow-card transition-shadow hover:shadow-card-hover sm:p-6">
+              <div className="card-sheen group flex gap-4 rounded-card border border-line bg-card p-5 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-card-hover sm:p-6">
                 <span className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-navy text-sm font-extrabold text-amber" aria-hidden="true">
                   {String(i + 1).padStart(2, "0")}
                 </span>

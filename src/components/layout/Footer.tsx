@@ -8,8 +8,10 @@ export function Footer() {
   const showContact = hasContactEmail() || hasContactPhone() || hasAddress();
 
   return (
-    <footer className="mt-6 bg-navy text-white">
-      <div className="container-x py-12">
+    <footer className="relative mt-6 overflow-hidden bg-navy text-white">
+      <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/70 to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-teal/20 blur-3xl" aria-hidden="true" />
+      <div className="container-x relative py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div>
             <Link href="/" className="inline-block rounded-lg" aria-label={`${siteConfig.brandName} home`}>

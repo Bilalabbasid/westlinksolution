@@ -74,6 +74,15 @@ All test submissions were isolated to the local build. Nothing was sent to the r
 - Hostinger deployment notes added to README; `engines.node >= 20` and `.nvmrc` added.
 - Toast suite: 14 / 14 pass (including the WhatsApp popup). Full browser suite: 54 / 54 pass. Production build: pass.
 
+## Update: premium redesign with animated components (2026-10-12)
+Implemented with the `animated-component-libraries` skill pattern: Magic UI / React Bits style primitives rebuilt in-house on `motion` (no external component downloads): `AnimatedGridPattern`, `BlurText`, `ShimmerButton`, `BorderBeam`, `Marquee`, plus `useReducedMotionSafe` (hydration-safe reduced-motion hook) and the `cn()` utility.
+- Hero: animated grid background, word-by-word blur-in headline with gradient highlight, shimmer primary CTA, border-beam illustration card, floating industry badges, trust chips. Stronger type scale (up to 4.35rem display) and eyebrow rules throughout.
+- Sections: capability cards with sheen and accent orbs, a scrolling vertical marquee, animated industry panel transitions, a self-drawing step connector, grid-pattern backgrounds on the challenges band and CTA band with beam, polished contact card and footer. Legal pages gained a hero header and a sticky "On this page" table of contents (auto-generated from headings, deep-linkable). 404 page restyled. Modal has an entrance animation and gradient accent.
+- All services, copy, forms, integrations, consent recording, and the TOPDEVELOPER INC disclosures are unchanged.
+- Verification: type-check, lint, production build pass; browser suite 55 / 55 (new check: no element extends past the 375px viewport outside scroll containers); toast suite 14 / 14; zero console or hydration errors on `/` and `/terms` in both normal and `prefers-reduced-motion: reduce` browsers.
+- Before/after screenshots: `docs/screenshots/before/` and `docs/screenshots/after/` (desktop 1440, mobile 375, menu, legal pages).
+- Hero second pass with the `motion-framer` skill patterns: staggered variant choreography for the copy column (spring transitions), a rotating headline phrase using `AnimatePresence mode="wait"` with the full sentence kept static for assistive tech, pointer-driven 3D tilt on the illustration card via `useMotionValue` + `useSpring` + `useTransform` (disabled for touch and reduced motion), live routing dots travelling along the illustration links (SMIL `animateMotion`, omitted under reduced motion), scroll-linked parallax orbs via `useScroll`, hover/tap spring gestures on the CTAs, and a non-overlapping industry signal strip under the visual.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

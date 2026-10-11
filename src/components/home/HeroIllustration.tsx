@@ -23,7 +23,7 @@ const PILL = { x: 22, w: 196, h: 44 };
 const CARD = { x: 446, w: 172, h: 60 };
 const FONT = "Manrope, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif";
 
-export function HeroIllustration() {
+export function HeroIllustration({ animated = false }: { animated?: boolean }) {
   return (
     <svg viewBox="0 0 640 420" className="h-auto w-full" role="img" aria-labelledby="hero-illustration-title hero-illustration-desc">
       <title id="hero-illustration-title">How Westlink connects prospects with partners</title>
@@ -72,6 +72,40 @@ export function HeroIllustration() {
           />
         ))}
       </g>
+
+      {/* Travelling signals (SMIL, only when motion is allowed) */}
+      {animated ? (
+        <g>
+          {PROSPECTS.map((p, i) => (
+            <circle key={`in-${p.label}`} r="4" fill="#008c82">
+              <animateMotion
+                dur="3.6s"
+                begin={`${i * 0.9}s`}
+                repeatCount="indefinite"
+                path={`M${PILL.x + PILL.w} ${p.y} C ${PILL.x + PILL.w + 50} ${p.y}, ${HUB.x - 110} ${HUB.y}, ${HUB.x - 52} ${HUB.y}`}
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1"
+                keyTimes="0;1"
+              />
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.6s" begin={`${i * 0.9}s`} repeatCount="indefinite" />
+            </circle>
+          ))}
+          {PARTNERS.map((p, i) => (
+            <circle key={`out-${p.label}`} r="4" fill="#e7ad52">
+              <animateMotion
+                dur="3.2s"
+                begin={`${1.2 + i * 1.1}s`}
+                repeatCount="indefinite"
+                path={`M${HUB.x + 52} ${HUB.y} C ${HUB.x + 110} ${HUB.y}, ${CARD.x - 60} ${p.y}, ${CARD.x} ${p.y}`}
+                calcMode="spline"
+                keySplines="0.4 0 0.2 1"
+                keyTimes="0;1"
+              />
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.1;0.85;1" dur="3.2s" begin={`${1.2 + i * 1.1}s`} repeatCount="indefinite" />
+            </circle>
+          ))}
+        </g>
+      ) : null}
 
       {/* Prospect pills */}
       {PROSPECTS.map((p) => {

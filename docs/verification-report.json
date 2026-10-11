@@ -177,7 +177,7 @@
   {
     "name": "UI onboarding submission accepted by backend",
     "pass": true,
-    "detail": "id=b0f6e44f-2b0e-4ec0-ae10-8e4204f40d92"
+    "detail": "id=b1dc0578-4589-4c4f-a7cc-796b4f8bbb4f"
   },
   {
     "name": "success state shown after backend confirmation",
@@ -207,7 +207,7 @@
   {
     "name": "UI contact submission accepted by backend",
     "pass": true,
-    "detail": "id=291cb7a2-3b33-4c97-b882-eb01bba06120"
+    "detail": "id=f049c47a-914e-45ce-9330-16e1b110bfd3"
   },
   {
     "name": "/terms: one h1, unique title, operator named",
@@ -228,6 +228,11 @@
     "name": "no horizontal overflow at 375px",
     "pass": true,
     "detail": "overflow=0px"
+  },
+  {
+    "name": "no element extends past the 375px viewport",
+    "pass": true,
+    "detail": ""
   },
   {
     "name": "mobile menu button present",

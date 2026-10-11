@@ -77,7 +77,8 @@ src/
     layout/Header.tsx (sticky, mobile panel), Footer.tsx, Logo.tsx, LegalPage.tsx
     home/Hero.tsx, HeroIllustration.tsx (original SVG), Capabilities.tsx, About.tsx, Industries.tsx (tablist), HowItWorks.tsx, Challenges.tsx, Testimonials.tsx, Partners.tsx, Faq.tsx, ContactSection.tsx, CtaBand.tsx
     forms/OnboardingProvider.tsx, OnboardingModal.tsx, OpenOnboardingButton.tsx, ContactForm.tsx, PhoneField.tsx, AddressFields.tsx, VerticalPicker.tsx, Turnstile.tsx, fields.tsx
-    ui/Button.tsx, Reveal.tsx, SectionHeading.tsx, CurrentYear.tsx
+    ui/Button.tsx, Reveal.tsx, SectionHeading.tsx, CurrentYear.tsx, Toaster.tsx, ContactLink.tsx,
+       AnimatedGridPattern.tsx, BlurText.tsx, ShimmerButton.tsx, BorderBeam.tsx, Marquee.tsx (skill-pattern animated primitives on `motion`)
   config/site.ts                Central business configuration
   content/industries.ts, capabilities.ts, challenges.ts, steps.ts, faq.ts, verticals.ts, testimonials.ts, partners.ts
   lib/validation.ts (zod, shared), countries.ts, db/{index,supabase,sqlite,postgres,types}.ts, email.ts, webhook.ts, rate-limit.ts, spam.ts, request.ts
@@ -115,6 +116,10 @@ Driver priority: `SUPABASE_URL` + `SUPABASE_SERVICE_ROLE_KEY` → Supabase REST 
 | Spam protection | honeypot + timing always on; `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` optional | Honeypot/timing tested. Turnstile untested (no keys). |
 | Rate limiting | none | In-memory per instance; tested. Shared store needed for multi-instance deployments. |
 | Indexing | `NEXT_PUBLIC_SITE_URL`, `ALLOW_INDEXING=true` | Tested: preview = noindex + disallow; production flag = index + sitemap. |
+
+## 5b. Redesign pass (2026-10-12)
+
+Built with the `animated-component-libraries` and `motion-framer` skill patterns on `motion` v14: `AnimatedGridPattern`, `BlurText`, `ShimmerButton`, `BorderBeam`, `Marquee`, `useReducedMotionSafe` (hydration-safe), `cn()`. Hero: staggered variant choreography, rotating headline phrase (AnimatePresence), pointer-tilt illustration card with spring motion values, live SMIL routing dots, scroll-parallax backdrop, gesture CTAs, industry signal strip. Sections, legal pages (hero header + sticky TOC), modal, header, footer and 404 restyled. Before/after captures in `docs/screenshots/before` and `docs/screenshots/after`.
 
 ## 6. Implementation progress
 

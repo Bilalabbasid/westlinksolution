@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { onboardingStep1Schema, onboardingStep2Schema, validate, type FieldErrors } from "@/lib/validation";
@@ -75,6 +77,7 @@ function randomKey(): string {
 
 export function OnboardingModal({ onClose }: OnboardingModalProps) {
   const { toast } = useToast();
+  const reduce = useReducedMotionSafe();
   const titleId = useId();
   const descId = useId();
   const dialogRef = useRef<HTMLDivElement | null>(null);
@@ -293,16 +296,20 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
       onMouseDown={onBackdropClick}
       onKeyDown={onKeyDown}
     >
-      <div
+      <motion.div
         ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
         aria-describedby={descId}
+        initial={reduce ? false : { opacity: 0, y: 24, scale: 0.98 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.28, ease: [0.2, 0.7, 0.2, 1] }}
         className="relative flex max-h-[100dvh] w-full max-w-2xl flex-col overflow-hidden rounded-t-[1.5rem] bg-white shadow-modal sm:max-h-[92dvh] sm:rounded-[1.5rem]"
       >
         {/* Header */}
-        <div className="flex items-start justify-between gap-4 border-b border-line px-5 py-4 sm:px-7">
+        <div className="relative flex items-start justify-between gap-4 border-b border-line px-5 py-4 sm:px-7">
+          <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal via-teal to-amber" aria-hidden="true" />
           <div className="flex items-center gap-3">
             <LogoMark className="h-9 w-9" />
             <div>
@@ -591,7 +598,7 @@ export function OnboardingModal({ onClose }: OnboardingModalProps) {
             </form>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

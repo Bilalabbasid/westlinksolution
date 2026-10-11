@@ -4,7 +4,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export function Faq() {
   return (
-    <section id="faq" className="scroll-mt-24 bg-white py-16 sm:py-20" aria-labelledby="faq-title">
+    <section id="faq" className="scroll-mt-24 bg-white py-20 sm:py-28" aria-labelledby="faq-title">
       <div className="container-x grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal>
           <SectionHeading

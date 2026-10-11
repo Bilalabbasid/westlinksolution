@@ -56,9 +56,10 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-2 text-sm font-semibold text-navy-500 transition-colors hover:bg-teal-50 hover:text-teal-700"
+              className="group relative rounded-lg px-3 py-2 text-sm font-semibold text-navy-500 transition-colors hover:text-teal-700"
             >
               {item.label}
+              <span className="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-teal transition-transform duration-300 group-hover:scale-x-100" aria-hidden="true" />
             </Link>
           ))}
         </nav>

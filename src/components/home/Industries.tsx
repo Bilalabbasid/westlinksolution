@@ -1,5 +1,7 @@
 "use client";
 
+import { AnimatePresence, motion } from "motion/react";
+import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { useEffect, useId, useRef, useState } from "react";
 import { industries, type IndustryId } from "@/content/industries";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
@@ -25,6 +27,7 @@ export function Industries() {
   const [active, setActive] = useState<IndustryId>("insurance");
   const baseId = useId();
   const tabRefs = useRef<Record<string, HTMLButtonElement | null>>({});
+  const reduce = useReducedMotionSafe();
 
   // Support deep links like /#industries-legal.
   useEffect(() => {
@@ -52,7 +55,7 @@ export function Industries() {
   };
 
   return (
-    <section id="industries" className="scroll-mt-24 bg-white py-16 sm:py-20" aria-labelledby="industries-title">
+    <section id="industries" className="relative scroll-mt-24 overflow-hidden bg-white py-20 sm:py-28" aria-labelledby="industries-title">
       <div className="container-x">
         <SectionHeading
           id="industries-title"
@@ -78,8 +81,8 @@ export function Industries() {
                 tabIndex={selected ? 0 : -1}
                 onClick={() => setActive(ind.id)}
                 onKeyDown={(e) => onKeyDown(e, i)}
-                className={`flex flex-none items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-bold transition-colors ${
-                  selected ? "border-navy bg-navy text-white" : "border-line-strong bg-white text-navy hover:border-teal hover:text-teal-700"
+                className={`flex flex-none items-center gap-2 rounded-full border px-4 py-2.5 text-sm font-bold transition-all duration-200 ${
+                  selected ? "border-navy bg-navy text-white shadow-[0_10px_24px_-12px_rgba(20,37,61,0.6)]" : "border-line-strong bg-white text-navy hover:-translate-y-0.5 hover:border-teal hover:text-teal-700"
                 }`}
               >
                 <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
@@ -101,13 +104,21 @@ export function Industries() {
               aria-labelledby={`${baseId}-tab-${ind.id}`}
               hidden={!selected}
               tabIndex={0}
-              className="mt-6 rounded-[1.75rem] border border-line bg-canvas p-6 sm:p-8 lg:p-10"
+              className="mt-8 rounded-[1.75rem] border border-line bg-canvas p-6 shadow-card sm:p-8 lg:p-10"
             >
+              <AnimatePresence mode="wait" initial={false}>
               {selected ? (
-                <div className="grid gap-10 lg:grid-cols-[1fr_1.15fr]">
+                <motion.div
+                  key={ind.id}
+                  initial={reduce ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, y: -6 }}
+                  transition={{ duration: 0.28, ease: [0.2, 0.7, 0.2, 1] }}
+                  className="grid gap-10 lg:grid-cols-[1fr_1.15fr]"
+                >
                   <div>
                     <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">{ind.eyebrow}</p>
-                    <h3 className="mt-3 text-2xl font-extrabold tracking-tight text-navy sm:text-3xl">{ind.headline}</h3>
+                    <h3 className="mt-3 text-balance text-2xl font-extrabold tracking-[-0.02em] text-navy sm:text-[2rem]">{ind.headline}</h3>
                     <p className="mt-4 leading-relaxed text-ink-muted">{ind.description}</p>
                     <p className="mt-4 rounded-xl border border-amber/40 bg-amber-50 px-4 py-3 text-sm text-navy">{ind.buyerNote}</p>
                     <div className="mt-6">
@@ -121,7 +132,7 @@ export function Industries() {
                     <h4 className="text-sm font-extrabold uppercase tracking-[0.14em] text-ink-subtle">Campaign types</h4>
                     <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                       {ind.subServices.map((s) => (
-                        <li key={s.name} className="rounded-2xl border border-line bg-white p-4 shadow-card transition-shadow hover:shadow-card-hover">
+                        <li key={s.name} className="card-sheen rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-card-hover">
                           <p className="font-extrabold text-navy">{s.name}</p>
                           <p className="mt-1 text-sm leading-relaxed text-ink-muted">{s.summary}</p>
                         </li>
@@ -137,8 +148,9 @@ export function Industries() {
                       ))}
                     </ul>
                   </div>
-                </div>
+                </motion.div>
               ) : null}
+              </AnimatePresence>
             </div>
           );
         })}

@@ -13,6 +13,7 @@ import { HowItWorks } from "@/components/home/HowItWorks";
 import { Industries } from "@/components/home/Industries";
 import { Partners } from "@/components/home/Partners";
 import { Testimonials } from "@/components/home/Testimonials";
+import { VerticalMarquee } from "@/components/home/VerticalMarquee";
 
 export const metadata: Metadata = {
   title: `${siteConfig.brandName} | B2B Lead Generation, Inbound Calls & Campaign Support`,
@@ -107,6 +108,7 @@ export default function HomePage() {
       />
       <Hero />
       <Capabilities />
+      <VerticalMarquee />
       <About />
       <Industries />
       <HowItWorks />

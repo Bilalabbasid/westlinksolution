@@ -89,8 +89,12 @@ const log = (name, pass, detail = "") => {
   // Hero secondary CTA scrolls to industries
   await page.evaluate(() => window.scrollTo(0, 0));
   await page.getByRole("link", { name: "Explore industries" }).click();
-  await page.waitForTimeout(1800);
-  const indTop = await page.locator("#industries").evaluate((el) => el.getBoundingClientRect().top);
+  let indTop = 9999;
+  for (let i = 0; i < 16; i++) {
+    await page.waitForTimeout(250);
+    indTop = await page.locator("#industries").evaluate((el) => el.getBoundingClientRect().top);
+    if (indTop < 200) break;
+  }
   log("secondary CTA scrolls to industries", indTop < 200, `top=${Math.round(indTop)}`);
 
   // Onboarding modal: open, focus, trap, escape, restore
@@ -247,6 +251,21 @@ const log = (name, pass, detail = "") => {
   await mp.locator(".reveal.is-visible").first().waitFor({ timeout: 15000 });
   const overflow = await mp.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   log("no horizontal overflow at 375px", overflow <= 0, `overflow=${overflow}px`);
+  const clipped = await mp.evaluate(() => {
+    const w = document.documentElement.clientWidth;
+    const inScroller = (el) => {
+      for (let n = el.parentElement; n; n = n.parentElement) {
+        const o = getComputedStyle(n).overflowX;
+        if (o === "auto" || o === "scroll") return true;
+      }
+      return false;
+    };
+    return [...document.querySelectorAll("h1, h2, h3, p, button, a")].filter((el) => {
+      const r = el.getBoundingClientRect();
+      return r.width > 0 && r.right > w + 1 && !inScroller(el);
+    }).map((el) => el.tagName + ":" + (el.textContent || "").trim().slice(0, 30));
+  });
+  log("no element extends past the 375px viewport", clipped.length === 0, clipped.slice(0, 4).join(" | "));
   await mp.evaluate(() => document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible")));
   await mp.waitForTimeout(300);
   await mp.screenshot({ path: path.join(OUT, "mobile-full.png"), fullPage: true });

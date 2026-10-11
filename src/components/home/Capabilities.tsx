@@ -13,28 +13,37 @@ const icons: Record<Capability["id"], React.ReactNode> = {
   ),
 };
 
+const accents: Record<Capability["id"], string> = {
+  leads: "from-teal/15 to-transparent",
+  calls: "from-amber/20 to-transparent",
+  support: "from-navy/10 to-transparent",
+};
+
 export function Capabilities() {
   return (
-    <section className="relative -mt-4 pb-6 sm:-mt-6" aria-labelledby="capabilities-title">
+    <section className="relative py-10 sm:py-14" aria-labelledby="capabilities-title">
       <div className="container-x">
         <h2 id="capabilities-title" className="sr-only">
           What Westlink delivers
         </h2>
-        <ul className="grid gap-4 md:grid-cols-3">
+        <ul className="grid gap-5 md:grid-cols-3">
           {capabilities.map((c, i) => (
-            <Reveal key={c.id} as="li" delay={i * 90}>
-              <article className="group relative h-full overflow-hidden rounded-card border border-line bg-card p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
-                <span className="absolute -right-6 -top-6 h-24 w-24 rounded-full bg-teal-50 transition-transform duration-300 group-hover:scale-125" aria-hidden="true" />
-                <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-navy text-amber">
-                  <svg className="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
-                    {icons[c.id]}
-                  </svg>
+            <Reveal key={c.id} as="li" delay={i * 100}>
+              <article className="card-sheen group relative h-full overflow-hidden rounded-card border border-line bg-card p-7 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover">
+                <span className={`absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br ${accents[c.id]} transition-transform duration-500 group-hover:scale-125`} aria-hidden="true" />
+                <div className="relative flex items-center justify-between">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy text-amber shadow-[0_10px_20px_-12px_rgba(20,37,61,0.7)]">
+                    <svg className="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true">
+                      {icons[c.id]}
+                    </svg>
+                  </div>
+                  <span className="text-xs font-extrabold tracking-[0.2em] text-ink-subtle">0{i + 1}</span>
                 </div>
-                <h3 className="relative mt-4 text-lg font-extrabold tracking-tight text-navy">{c.title}</h3>
-                <p className="relative mt-2 text-sm leading-relaxed text-ink-muted">{c.description}</p>
-                <ul className="relative mt-4 space-y-1.5">
+                <h3 className="relative mt-5 text-xl font-extrabold tracking-tight text-navy">{c.title}</h3>
+                <p className="relative mt-2.5 text-sm leading-relaxed text-ink-muted">{c.description}</p>
+                <ul className="relative mt-5 space-y-2 border-t border-line pt-4">
                   {c.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2 text-sm font-semibold text-navy-500">
+                    <li key={p} className="flex items-start gap-2.5 text-sm font-semibold text-navy-500">
                       <span className="mt-[7px] h-1.5 w-1.5 flex-none rounded-full bg-teal" aria-hidden="true" />
                       {p}
                     </li>
