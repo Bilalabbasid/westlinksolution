@@ -143,17 +143,18 @@ export function HeroIllustration({ animated = false }: { animated?: boolean }) {
 
       {/* Hub */}
       <g transform={`translate(${HUB.x} ${HUB.y})`}>
-        <circle r={HUB_R + 22} fill="#008c82" opacity="0.07" className="node-pulse" />
+        <circle r={HUB_R + 12} fill="#008c82" opacity="0.07" className="node-pulse" />
         <circle r={HUB_R} fill="url(#hub-grad)" filter="url(#soft)" />
-        <path d="M-20 2 -12 -18 0 2 12 -18 20 2" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="28" cy="-26" r="6" fill="#e7ad52" />
-        <text y="26" textAnchor="middle" fontSize="10.5" fontWeight="800" fill="#ffffff" letterSpacing="2.5" fontFamily={FONT}>
+        {/* Smaller mark, centred */}
+        <path d="M-13 -1 -7.5 -14 0 -1 7.5 -14 13 -1" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+        <circle cx="18" cy="-18" r="4.2" fill="#e7ad52" />
+        <text y="20" textAnchor="middle" fontSize="8.5" fontWeight="800" fill="#ffffff" letterSpacing="2.2" fontFamily={FONT}>
           WESTLINK
         </text>
-        {/* Opaque chip so the subtitle never collides with connector lines */}
-        <g transform={`translate(0 ${HUB_R + 14})`}>
-          <rect x="-70" y="0" width="140" height="26" rx="13" fill="#ffffff" stroke="#e2e8f0" />
-          <text y="17" textAnchor="middle" fontSize="10.5" fontWeight="700" fill="#52637a" fontFamily={FONT}>
+        {/* Caption sits clear of the hub and its glow; opaque so lines never cross it */}
+        <g transform={`translate(0 ${HUB_R + 24})`}>
+          <rect x="-62" y="0" width="124" height="24" rx="12" fill="#ffffff" stroke="#e2e8f0" />
+          <text y="16" textAnchor="middle" fontSize="10" fontWeight="700" fill="#52637a" fontFamily={FONT}>
             matching and routing
           </text>
         </g>
