@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { useEffect, useId, useRef, useState } from "react";
 import { industries, type IndustryId } from "@/content/industries";
+import { ServiceIcon } from "./ServiceIcon";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
 import { ArrowIcon } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -120,6 +121,7 @@ export function Industries() {
                     <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-teal-700">{ind.eyebrow}</p>
                     <h3 className="mt-3 text-balance text-2xl font-extrabold tracking-[-0.02em] text-navy sm:text-[2rem]">{ind.headline}</h3>
                     <p className="mt-4 leading-relaxed text-ink-muted">{ind.description}</p>
+                    <p className="mt-3 font-semibold text-navy">{ind.tagline}</p>
                     <p className="mt-4 rounded-xl border border-amber/40 bg-amber-50 px-4 py-3 text-sm text-navy">{ind.buyerNote}</p>
                     <div className="mt-6">
                       <OpenOnboardingButton variant="primary">
@@ -130,12 +132,21 @@ export function Industries() {
                   </div>
                   <div>
                     <h4 className="text-sm font-extrabold uppercase tracking-[0.14em] text-ink-subtle">Campaign types</h4>
-                    <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-                      {ind.subServices.map((s) => (
-                        <li key={s.name} className="card-sheen rounded-2xl border border-line bg-white p-4 shadow-card transition-all duration-300 hover:-translate-y-0.5 hover:border-teal/40 hover:shadow-card-hover">
-                          <p className="font-extrabold text-navy">{s.name}</p>
-                          <p className="mt-1 text-sm leading-relaxed text-ink-muted">{s.summary}</p>
-                        </li>
+                    <ul className="mt-3 grid grid-cols-2 gap-3">
+                      {ind.subServices.map((s, i) => (
+                        <motion.li
+                          key={s.name}
+                          initial={reduce ? false : { opacity: 0, y: 14, scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.08 + i * 0.07 }}
+                          className="card-sheen group rounded-2xl border border-line bg-white p-4 text-center shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover sm:p-5"
+                        >
+                          <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                            <ServiceIcon name={s.icon} className="h-7 w-7" />
+                          </span>
+                          <p className="mt-3 font-extrabold text-navy">{s.name}</p>
+                          <p className="mt-1 text-xs leading-relaxed text-ink-muted sm:text-sm">{s.summary}</p>
+                        </motion.li>
                       ))}
                     </ul>
                     <h4 className="mt-7 text-sm font-extrabold uppercase tracking-[0.14em] text-ink-subtle">What partners receive</h4>

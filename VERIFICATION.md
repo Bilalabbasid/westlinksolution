@@ -89,6 +89,12 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - New responsiveness sweep (`docs/responsive.playwright.js`): 320, 375, 414, 768, 1024, 1280, 1440, 1920 px. Checks no horizontal overflow, no element past the viewport outside scroll containers, headline and phrase inside their column, and no console errors. 8 / 8 pass; captures in `docs/screenshots/responsive/`.
 - Browser suite 55 / 55, toast suite 14 / 14, production build pass.
 
+## Update: legal pages rewritten from the reference, hero wording, industry tiles (2026-10-12, later)
+- Terms of Use and Privacy Policy rewritten to follow the reference documents section by section (acceptance, matching tools and services, proprietary rights, disclaimers, indemnity, arbitration with class-action waiver, US-only provision, DMCA, call recording, health information, user content, third-party products, state availability, trademarks; privacy: categories collected, collection methods, cookies and ad networks, uses, service providers, sales/shares, email marketing, security, children, state consumer rights incl. Nevada and Do Not Track). Wording is Westlink's own; names, addresses, and contacts are Westlink's; review markers remain on items counsel must confirm (consent partner count, governing law, analytics tools, sale/share disclosures).
+- Hero headline reworded again with the same intent: "Leads worth calling. Calls worth taking. Growth worth keeping." The hidden duplicate used for screen readers was removed, so selecting or copying the headline no longer repeats each line.
+- Industry panel follows the reference layout: name, description, closing tagline, and a 2×2 grid of icon tiles (Final Expense, Auto Insurance, Medicare, Health, etc.) that spring in with a stagger when a tab is chosen. "Industries" in the navigation scrolls to this section.
+- Responsive sweep 8 / 8, browser suite 55 / 55, toast suite 14 / 14, production build pass, no console errors.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

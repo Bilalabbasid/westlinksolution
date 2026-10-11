@@ -87,7 +87,7 @@
   {
     "name": "secondary CTA scrolls to industries",
     "pass": true,
-    "detail": "top=178"
+    "detail": "top=176"
   },
   {
     "name": "modal opens from hero CTA",
@@ -177,7 +177,7 @@
   {
     "name": "UI onboarding submission accepted by backend",
     "pass": true,
-    "detail": "id=070d6ec8-2ba9-42bc-8bb4-012413501a6f"
+    "detail": "id=79834f91-365e-4d4f-83ac-e0b4d95c39d6"
   },
   {
     "name": "success state shown after backend confirmation",
@@ -207,12 +207,12 @@
   {
     "name": "UI contact submission accepted by backend",
     "pass": true,
-    "detail": "id=50dbea76-b54c-47c0-9ac3-b2cc862bf328"
+    "detail": "id=0a34f086-d0f9-483f-8e17-4f1e2fe07c6a"
   },
   {
     "name": "/terms: one h1, unique title, operator named",
     "pass": true,
-    "detail": "Terms of Service | Westlink Solutions"
+    "detail": "Terms of Use | Westlink Solutions"
   },
   {
     "name": "/privacy: one h1, unique title, operator named",

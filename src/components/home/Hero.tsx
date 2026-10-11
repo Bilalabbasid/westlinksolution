@@ -9,7 +9,7 @@ import { HeroBackdrop } from "./HeroBackdrop";
 import { HeroCta } from "./HeroCta";
 import { HeroVisual } from "./HeroVisual";
 
-const LINES = ["Leads that convert.", "Calls that connect.", "Growth that lasts."];
+const LINES = ["Leads worth calling.", "Calls worth taking.", "Growth worth keeping."];
 
 const column = {
   hidden: {},
@@ -43,14 +43,11 @@ export function Hero() {
           </Reveal>
 
           <h1 id="hero-title" className="mt-6 max-w-[16ch] break-words text-[clamp(2.1rem,9.4vw,2.9rem)] font-extrabold leading-[1.04] tracking-[-0.035em] text-navy sm:text-6xl lg:text-[3.5rem] xl:text-[4rem] 2xl:text-[4.3rem]">
-            <span className="sr-only">{LINES.join(" ")}</span>
-            <span aria-hidden="true">
-              {LINES.map((line, i) => (
-                <span key={line} className="block">
-                  <BlurText text={line} delay={70} startDelay={i * 240} highlightFrom={i === LINES.length - 1 ? 0 : undefined} highlightClassName="gradient-text" />
-                </span>
-              ))}
-            </span>
+            {LINES.map((line, i) => (
+              <span key={line} className="block">
+                <BlurText text={line} delay={70} startDelay={i * 240} highlightFrom={i === LINES.length - 1 ? 0 : undefined} highlightClassName="gradient-text" />
+              </span>
+            ))}
           </h1>
 
           <motion.p variants={item} className="mt-7 max-w-xl text-lg leading-relaxed text-ink-muted sm:text-xl">

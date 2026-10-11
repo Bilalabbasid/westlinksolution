@@ -116,7 +116,7 @@ export const siteConfig = {
     privacyLastUpdated: "October 11, 2026",
     californiaLastUpdated: "October 11, 2026",
     /** Governing law for the Terms draft. TODO(owner): confirm with counsel. */
-    governingState: "", // e.g. "the State of Delaware"
+    governingState: "the State of Delaware", // follows the reference document; confirm with counsel
   },
 
   cta: {

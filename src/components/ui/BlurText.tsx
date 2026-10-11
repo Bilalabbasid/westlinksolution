@@ -23,9 +23,9 @@ interface BlurTextProps {
 
 /**
  * React Bits style blur-in text reveal. Each word (or character) animates
- * from blurred and offset to crisp and in place. The full text is exposed
- * once to assistive technology; the animated segments are decorative. Under
- * reduced motion the text renders immediately.
+ * from blurred and offset to crisp and in place. The segments are the real
+ * text (no hidden duplicate), so selection, copy, and screen readers see it
+ * once. Under reduced motion the text renders immediately.
  */
 export function BlurText({
   text,
@@ -44,8 +44,7 @@ export function BlurText({
 
   return (
     <Tag className={cn("inline", className)}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden="true">
+      <span>
         {segments.map((seg, i) => {
           const highlighted = highlightFrom !== undefined && i >= highlightFrom;
           const inner = (
