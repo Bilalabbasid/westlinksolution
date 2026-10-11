@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { getSiteUrl, isIndexingAllowed, siteConfig } from "@/config/site";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -7,11 +7,14 @@ import { OnboardingProvider } from "@/components/forms/OnboardingProvider";
 import { ToastProvider } from "@/components/ui/Toaster";
 import "./globals.css";
 
-const manrope = Manrope({
-  subsets: ["latin"],
+// Self-hosted so builds never depend on reaching Google Fonts (Hostinger's
+// build environment blocks it). Variable font covering weights 200–800.
+const manrope = localFont({
+  src: [{ path: "./fonts/manrope-latin.woff2", weight: "200 800", style: "normal" }],
   variable: "--font-manrope",
   display: "swap",
-  weight: ["400", "500", "600", "700", "800"],
+  fallback: ["ui-sans-serif", "system-ui", "Segoe UI", "Arial", "sans-serif"],
+  adjustFontFallback: "Arial",
 });
 
 const siteUrl = getSiteUrl();

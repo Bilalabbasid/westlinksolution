@@ -96,6 +96,7 @@ This is a Node.js application (not static HTML), so it needs Hostinger's **Node.
 3. Run `db/supabase.sql` once in the Supabase SQL editor before the first request.
 4. Point the domain at the app and enable HTTPS. Then open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`.
 5. If you ever must deploy on a plan that cannot run Node, the forms will not work; the site relies on its API routes for submissions.
+6. The build has no outbound network dependencies: the Manrope font is self-hosted in `src/app/fonts/`, so builds succeed even when the build container cannot reach Google Fonts.
 
 On a VPS without hPanel's Node runner, the equivalent is:
 
