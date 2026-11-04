@@ -102,6 +102,13 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Google Search Console HTML verification file `public/google4e3facc496f919cf.html` is served at the site root with the exact token (200, text/html).
 - Production build with `ALLOW_INDEXING=true` and the production site URL: robots.txt allows crawling, disallows /api/, and points to the sitemap; sitemap lists /, /terms, /privacy, /california-privacy; browser suite 55 / 55, responsive sweep 8 / 8, one h1 per page.
 
+## Update: blog section and dependency security patches (2026-11-04)
+- New blog at `/blog` with one long-form guide, "Pay-per-call, live transfers, or web leads: which lead format fits your sales team?" (about 1,600 words, 9 sections, comparison table, five-question checklist). Posts live in `src/content/blog.tsx`; each has metadata, keywords, takeaways, and a JSX body. Article pages carry BlogPosting and BreadcrumbList JSON-LD, article OpenGraph tags, canonical URLs, an "On this page" table of contents, and a key-takeaways box. "Blog" was added to the header and footer navigation and the sitemap lists the index and every post.
+- Unknown post slugs return a real 404 (confirmed with curl on the production build). The route reads the slug at the top of the page with `instant = false`, because the Suspense variant streamed a not-found page with a 200 status.
+- Next.js upgraded 16.4.0 → 16.4.5 and zod → 4.6.7 after `npm audit` reported critical advisories (image optimization RCE, server action DoS, `use cache` RCE) and `next build` flagged the installed version once. `npm audit --omit=dev` is now clean.
+- Production build passes. Browser suite 54 / 55 against the built server (the single failure is the "preview is noindex" check, expected because this build set `ALLOW_INDEXING=true`), toast suite 14 / 14, responsive sweep 8 / 8, blog pages free of console errors at 1366px and 375px, no horizontal overflow (the comparison table scrolls inside its own container on phones). Screenshots: `docs/screenshots/blog-*.png`.
+- Found while testing: `.env.local` and `.env.production` now point `DATABASE_URL` at the Supabase pooler for project `vofhoblhaknhwmnlxpkv` in ap-northeast-1, and every form submission fails with `Tenant or user not found`. That project does not appear in the connected Supabase account, so the reference or region host is wrong or the project was deleted. The suites above ran with a local SQLite override; the code path is unchanged.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

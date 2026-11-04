@@ -192,6 +192,117 @@
   .prose-legal strong {
     color: var(--color-navy);
   }
+
+  .prose-post h2 {
+    margin-top: 2.75rem;
+    margin-bottom: 0.9rem;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--color-navy);
+  }
+
+  .prose-post h3 {
+    margin-top: 1.9rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--color-navy);
+  }
+
+  .prose-post p,
+  .prose-post li {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-ink-muted);
+  }
+
+  .prose-post p + p {
+    margin-top: 1.1rem;
+  }
+
+  .prose-post ul,
+  .prose-post ol {
+    margin: 1.1rem 0 1.1rem 1.4rem;
+  }
+
+  .prose-post ul {
+    list-style: disc;
+  }
+
+  .prose-post ol {
+    list-style: decimal;
+  }
+
+  .prose-post li + li {
+    margin-top: 0.6rem;
+  }
+
+  .prose-post li::marker {
+    color: var(--color-teal);
+    font-weight: 800;
+  }
+
+  .prose-post a {
+    color: var(--color-teal-700);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .prose-post strong {
+    color: var(--color-navy);
+  }
+
+  .prose-post .table-wrap {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+    border-radius: 1rem;
+    background: var(--color-card);
+  }
+
+  .prose-post table {
+    width: 100%;
+    min-width: 36rem;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+
+  .prose-post th,
+  .prose-post td {
+    padding: 0.8rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--color-line);
+    line-height: 1.55;
+  }
+
+  .prose-post thead th {
+    background: var(--color-teal-50);
+    color: var(--color-teal-700);
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .prose-post tbody th {
+    color: var(--color-navy);
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .prose-post td {
+    color: var(--color-ink-muted);
+  }
+
+  .prose-post tbody tr:last-child th,
+  .prose-post tbody tr:last-child td {
+    border-bottom: 0;
+  }
 }
 
 @layer utilities {

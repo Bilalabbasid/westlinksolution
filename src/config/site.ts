@@ -87,6 +87,7 @@ export const siteConfig = {
     { label: "Industries", href: "/#industries" },
     { label: "How it works", href: "/#how-it-works" },
     { label: "FAQ", href: "/#faq" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/#contact" },
   ],
 
@@ -97,6 +98,7 @@ export const siteConfig = {
       { label: "Industries", href: "/#industries" },
       { label: "How partnership works", href: "/#how-it-works" },
       { label: "FAQ", href: "/#faq" },
+      { label: "Blog", href: "/blog" },
       { label: "Contact", href: "/#contact" },
     ],
     legal: [
