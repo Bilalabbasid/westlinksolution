@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "../../../config/site";
-import { getDb, isPersistentStore } from "../../../lib/db";
+import { getStore } from "../../../lib/db";
 import {
   getNotificationRecipients,
   isConfirmationEmailEnabled,
@@ -59,12 +59,12 @@ export async function POST(request: Request) {
       return errorResponse(400, "rejected", "We could not accept this submission. Please refresh the page and try again.");
     }
 
-    if (!isPersistentStore() && !isNotificationEmailConfigured()) {
+    const { db, persistent } = await getStore();
+    if (!persistent && !isNotificationEmailConfigured()) {
       console.error("[contact] no delivery channel: set RESEND_API_KEY, NOTIFY_EMAIL_FROM, and NOTIFY_EMAIL_TO, or configure a database");
       return errorResponse(503, "not_configured", "Messages cannot be delivered right now. Please email us directly.");
     }
 
-    const db = await getDb();
     const id = crypto.randomUUID();
     const createdAt = new Date().toISOString();
     const phoneE164 = data.phone ? normalizePhone(data.phone, "US") : null;
@@ -154,7 +154,7 @@ export async function POST(request: Request) {
     if (errors.length > 0) console.error("[contact] delivery issues", { id, errors });
 
     // Email-only mode: the notification email is the only copy of the message.
-    if (!isPersistentStore() && !notificationEmailSent) {
+    if (!persistent && !notificationEmailSent) {
       return errorResponse(502, "delivery_failed", "We could not deliver your message. Please try again or email us directly.");
     }
 

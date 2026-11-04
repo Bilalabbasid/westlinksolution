@@ -1,5 +1,5 @@
 import { connection, NextResponse } from "next/server";
-import { describeDatabase, getDb, isPersistentStore } from "../../../lib/db";
+import { describeDatabase, getStore } from "../../../lib/db";
 import { isConfirmationEmailEnabled, isNotificationEmailConfigured } from "../../../lib/email";
 import { isTurnstileConfigured } from "../../../lib/spam";
 import { isWebhookConfigured } from "../../../lib/webhook";
@@ -11,24 +11,31 @@ import { isWebhookConfigured } from "../../../lib/webhook";
  */
 export async function GET() {
   await connection();
-  let database: "ok" | "error" = "ok";
-  try {
-    const db = await getDb();
-    await db.ping();
-  } catch (err) {
-    console.error("[health] database check failed", err);
-    database = "error";
+  const store = await getStore();
+  let database: "ok" | "error" = store.error ? "error" : "ok";
+  if (database === "ok") {
+    try {
+      await store.db.ping();
+    } catch (err) {
+      console.error("[health] database check failed", err);
+      database = "error";
+    }
   }
 
-  // Email-only mode has no database to fail, but it needs the notification email.
-  const deliverable = isPersistentStore() || isNotificationEmailConfigured();
-  const ok = database === "ok" && deliverable;
+  // Submissions are deliverable when a database is reachable or email is configured.
+  // A configured-but-unreachable database is reported, and email keeps forms working.
+  const emailReady = isNotificationEmailConfigured();
+  const ok = (store.persistent && database === "ok") || emailReady;
 
   return NextResponse.json(
     {
       ok,
-      delivery: isPersistentStore() ? "database" : "email-only",
-      database: { driver: describeDatabase(), status: database },
+      delivery: store.persistent && database === "ok" ? "database" : "email-only",
+      database: {
+        driver: describeDatabase(),
+        status: database,
+        ...(store.error ? { fallback: "email-only", error: store.error } : {}),
+      },
       integrations: {
         notificationEmail: isNotificationEmailConfigured(),
         confirmationEmail: isConfirmationEmailEnabled(),

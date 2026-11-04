@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { siteConfig } from "../../../config/site";
-import { getDb, isPersistentStore } from "../../../lib/db";
+import { getStore } from "../../../lib/db";
 import {
   getNotificationRecipients,
   isConfirmationEmailEnabled,
@@ -26,11 +26,11 @@ export async function POST(request: Request) {
     }
 
     const ip = getClientIp(request);
-    if (!isPersistentStore() && !isNotificationEmailConfigured()) {
+    const { db, persistent } = await getStore();
+    if (!persistent && !isNotificationEmailConfigured()) {
       console.error("[onboarding] no delivery channel: set RESEND_API_KEY, NOTIFY_EMAIL_FROM, and NOTIFY_EMAIL_TO, or configure a database");
       return errorResponse(503, "not_configured", "Applications cannot be delivered right now. Please email us directly.");
     }
-    const db = await getDb();
 
     // Duplicate protection: replay the stored response for a known key.
     const rawKey = request.headers.get("idempotency-key")?.trim() ?? "";
@@ -234,7 +234,7 @@ export async function POST(request: Request) {
     if (errors.length > 0) console.error("[onboarding] delivery issues", { id, errors });
 
     // Email-only mode: the notification email is the only copy of the application.
-    if (!isPersistentStore() && !notificationEmailSent) {
+    if (!persistent && !notificationEmailSent) {
       return errorResponse(502, "delivery_failed", "We could not deliver your application. Please try again or email us directly.");
     }
 

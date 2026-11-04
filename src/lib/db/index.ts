@@ -7,6 +7,7 @@ const DEFAULT_URL = "none";
 
 declare global {
   var __westlinkDb: Database | undefined;
+  var __westlinkFallbackDb: Database | undefined;
 }
 
 type Driver = "none" | "supabase" | "postgres" | "sqlite" | "unknown";
@@ -67,4 +68,29 @@ export function describeDatabase(): Driver {
 /** True when submissions are written to a real database rather than only emailed. */
 export function isPersistentStore(): boolean {
   return resolveDriver().driver !== "none";
+}
+
+export interface StoreHandle {
+  db: Database;
+  /** False when the configured database could not be reached and the email-only store is used instead. */
+  persistent: boolean;
+  error: string | null;
+}
+
+/**
+ * Returns the configured store, or falls back to the email-only store when the
+ * configured database cannot be reached (for example a stale connection string
+ * in the host's environment). Callers that fall back must deliver by email.
+ */
+export async function getStore(): Promise<StoreHandle> {
+  try {
+    const db = await getDb();
+    return { db, persistent: isPersistentStore(), error: null };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[db] database unavailable, falling back to email-only delivery:", message);
+    const { createMemoryDatabase } = await import("./memory");
+    globalThis.__westlinkFallbackDb ??= createMemoryDatabase();
+    return { db: globalThis.__westlinkFallbackDb, persistent: false, error: message.slice(0, 300) };
+  }
 }
