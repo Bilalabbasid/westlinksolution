@@ -12,6 +12,8 @@ export const verticalOptions: VerticalOption[] = [
   { value: "Auto Insurance", group: "Insurance" },
   { value: "Medicare", group: "Insurance" },
   { value: "Health", group: "Insurance" },
+  { value: "Life Insurance", group: "Insurance" },
+  { value: "Home Insurance", group: "Insurance" },
   { value: "ACA", group: "Insurance" },
   { value: "USA Health", group: "Insurance" },
   { value: "Home Services", group: "Home Services" },

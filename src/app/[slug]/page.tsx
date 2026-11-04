@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getSiteUrl, siteConfig } from "@/config/site";
 import { getLandingPage, landingPages } from "@/content/landing";
 import { industries } from "@/content/industries";
+import { getProductsFor } from "@/content/products";
 import { AnimatedGridPattern } from "@/components/ui/AnimatedGridPattern";
 import { BorderBeam } from "@/components/ui/BorderBeam";
 import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
@@ -102,6 +103,7 @@ export default async function LandingPageRoute({ params }: { params: Promise<Par
 
   const industry = page.industry ? industries.find((i) => i.id === page.industry) : undefined;
   const others = landingPages.filter((p) => p.slug !== page.slug);
+  const productPages = getProductsFor(page.slug);
 
   return (
     <>
@@ -201,17 +203,36 @@ export default async function LandingPageRoute({ params }: { params: Promise<Par
                 {page.tilesTitle}
               </h2>
               <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-                {page.tiles.map((t, i) => (
-                  <Reveal key={t.name} as="li" delay={i * 80}>
-                    <div className="card-sheen group h-full rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover">
-                      <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
-                        <ServiceIcon name={t.icon} className="h-6 w-6" />
-                      </span>
-                      <h3 className="mt-4 font-extrabold text-navy">{t.name}</h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t.summary}</p>
-                    </div>
-                  </Reveal>
-                ))}
+                {productPages.length > 0
+                  ? productPages.map((t, i) => (
+                      <Reveal key={t.slug} as="li" delay={i * 80}>
+                        <Link
+                          href={`/${t.parent}/${t.slug}`}
+                          className="card-sheen group block h-full rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover"
+                        >
+                          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                            <ServiceIcon name={t.icon} className="h-6 w-6" />
+                          </span>
+                          <h3 className="mt-4 font-extrabold text-navy">{t.name}</h3>
+                          <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t.description.split(". ")[0]}.</p>
+                          <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-bold text-teal-700">
+                            Details
+                            <ArrowIcon className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </span>
+                        </Link>
+                      </Reveal>
+                    ))
+                  : page.tiles.map((t, i) => (
+                      <Reveal key={t.name} as="li" delay={i * 80}>
+                        <div className="card-sheen group h-full rounded-2xl border border-line bg-white p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover">
+                          <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                            <ServiceIcon name={t.icon} className="h-6 w-6" />
+                          </span>
+                          <h3 className="mt-4 font-extrabold text-navy">{t.name}</h3>
+                          <p className="mt-1.5 text-sm leading-relaxed text-ink-muted">{t.summary}</p>
+                        </div>
+                      </Reveal>
+                    ))}
               </ul>
             </div>
           </div>

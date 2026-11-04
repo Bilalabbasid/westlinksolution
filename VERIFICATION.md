@@ -123,6 +123,12 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Internal links: a Campaigns column in the footer, a "More about …" link from each industry panel on the home page, links from the Capabilities cards to the format pages, cross-links between landing pages, and home-page OfferCatalog entries now carry the landing page URLs. Home and landing meta descriptions shortened for search snippets.
 - Checks: all ten new or changed pages return 200 with one H1, valid JSON-LD, no console errors, and no horizontal overflow at 1366px and 375px; unknown slugs return 404; sitemap lists 14 URLs. Production build passes. Browser suite 54 / 55 (expected noindex failure on an indexing-enabled build), toast 14 / 14, responsive 8 / 8. Screenshots: `docs/screenshots/landing-*.png`.
 
+## Update: product-level pages under each landing page (2026-11-04, later)
+- Fourteen product pages, each nested under its parent so breadcrumbs and topic clusters are explicit: insurance (final expense, auto, Medicare, health, life, home), home services (HVAC, plumbing, roofing), debt relief (debt settlement live transfers, student loans), legal intake (MVA, SSDI, mass tort). Life and home insurance were added at the owner's confirmation and also appear in the home industries panel, the application form options, and the insurance landing page.
+- Each page has content only that product can have: the recommended delivery format and the reason, the screening questions typically written into the specification, who buys it, timing and seasonality stated without numbers, items to confirm with counsel, four product-specific FAQs, related products, and sibling links. JSON-LD: WebPage, Service (related to the parent Service), FAQPage, BreadcrumbList. Meta descriptions under 160 characters. No prices, volumes, or performance claims.
+- Landing page tiles now link to the product pages; home-page OfferCatalog entries carry product URLs; the sitemap lists 28 URLs. Unknown nested slugs return 404.
+- Checks: all 24 new or changed pages pass at 1366px and 375px (200, one H1, valid JSON-LD, no console errors, no overflow). Production build 48 pages. Browser suite 54 / 55 (expected noindex failure), toast 14 / 14, responsive 8 / 8.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

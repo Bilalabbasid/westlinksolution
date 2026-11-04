@@ -5,6 +5,8 @@ export type ServiceIcon =
   | "auto"
   | "medicare"
   | "health"
+  | "life"
+  | "home"
   | "hvac"
   | "plumbing"
   | "roofing"
@@ -49,6 +51,8 @@ export const industries: Industry[] = [
       { name: "Auto Insurance", summary: "Auto insurance leads from drivers comparing quotes or switching carriers.", icon: "auto" },
       { name: "Medicare", summary: "Medicare leads and live transfers from beneficiaries reviewing plan options.", icon: "medicare" },
       { name: "Health", summary: "Health insurance leads from individuals and families choosing coverage.", icon: "health" },
+      { name: "Life Insurance", summary: "Term and whole life leads from people protecting a family, mortgage, or business.", icon: "life" },
+      { name: "Home Insurance", summary: "Homeowners leads from owners buying, renewing, or shopping after a rate increase.", icon: "home" },
     ],
     deliverables: [
       "Inbound calls routed to your agents during the hours you choose",

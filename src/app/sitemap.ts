@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 import { getPosts } from "@/content/blog";
 import { landingPages } from "@/content/landing";
+import { products } from "@/content/products";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
@@ -11,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
     ...landingPages.map((p) => ({ url: `${base}/${p.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
+    ...products.map((p) => ({ url: `${base}/${p.parent}/${p.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.7 })),
     { url: `${base}/blog`, lastModified: latestPost, changeFrequency: "weekly", priority: 0.7 },
     ...posts.map((p) => ({
       url: `${base}/blog/${p.slug}`,

@@ -3,6 +3,7 @@ import { getSiteUrl, hasAddress, hasContactEmail, hasContactPhone, siteConfig } 
 import { faqItems } from "@/content/faq";
 import { industries } from "@/content/industries";
 import { landingNav } from "@/content/landing";
+import { products } from "@/content/products";
 import { About } from "@/components/home/About";
 import { Capabilities } from "@/components/home/Capabilities";
 import { Challenges } from "@/components/home/Challenges";
@@ -102,10 +103,18 @@ function structuredData() {
         "@type": "OfferCatalog",
         name: ind.label,
         ...(landingNav.find((l) => l.industry === ind.id) ? { url: `${siteUrl}${landingNav.find((l) => l.industry === ind.id)!.href}` } : {}),
-        itemListElement: ind.subServices.map((s) => ({
-          "@type": "Offer",
-          itemOffered: { "@type": "Service", name: `${s.name} campaigns`, description: s.summary },
-        })),
+        itemListElement: ind.subServices.map((s) => {
+          const product = products.find((p) => p.icon === s.icon && landingNav.find((l) => l.industry === ind.id)?.href === `/${p.parent}`);
+          return {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "Service",
+              name: `${s.name} campaigns`,
+              description: s.summary,
+              ...(product ? { url: `${siteUrl}/${product.parent}/${product.slug}` } : {}),
+            },
+          };
+        }),
       })),
     },
   };

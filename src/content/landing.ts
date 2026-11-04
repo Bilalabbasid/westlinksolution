@@ -55,9 +55,9 @@ const scopeSteps = (what: string): LandingPage["steps"] => [
 export const landingPages: LandingPage[] = [
   {
     slug: "insurance-leads",
-    title: "Insurance Leads, Live Transfers & Pay-Per-Call for Agents and Agencies",
+    title: "Insurance Leads: Final Expense, Auto, Medicare, Health, Life & Home",
     description:
-      "Final expense, auto, Medicare, and health insurance leads as web leads, pay-per-call, or live transfers. US campaigns built to the criteria your agency approves.",
+      "Final expense, auto, Medicare, health, life, and home insurance leads as web leads, pay-per-call, or live transfers. Built to the criteria your agency approves.",
     keywords: [
       "insurance leads",
       "live transfer insurance leads",
@@ -65,12 +65,14 @@ export const landingPages: LandingPage[] = [
       "medicare live transfer leads",
       "auto insurance leads",
       "health insurance leads",
+      "life insurance leads",
+      "home insurance leads",
       "insurance lead generation company",
     ],
     eyebrow: "Insurance lead generation",
     h1: "Insurance leads and live transfers for agents who want to quote, not chase.",
     intro:
-      "Westlink Solution runs final expense, auto, Medicare, and health insurance campaigns for licensed agents and agencies across the United States. Choose web leads for your follow-up team, inbound pay-per-call for a staffed phone line, or live transfers when eligibility must be established before an agent spends time.",
+      "Westlink Solution runs final expense, auto, Medicare, health, life, and home insurance campaigns for licensed agents and agencies across the United States. Choose web leads for your follow-up team, inbound pay-per-call for a staffed phone line, or live transfers when eligibility must be established before an agent spends time.",
     chips: ["Licensed agents and agencies", "States and products you choose", "Consent and source documented"],
     industry: "insurance",
     audienceTitle: "Built for",
