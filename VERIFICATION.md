@@ -109,6 +109,13 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Production build passes. Browser suite 54 / 55 against the built server (the single failure is the "preview is noindex" check, expected because this build set `ALLOW_INDEXING=true`), toast suite 14 / 14, responsive sweep 8 / 8, blog pages free of console errors at 1366px and 375px, no horizontal overflow (the comparison table scrolls inside its own container on phones). Screenshots: `docs/screenshots/blog-*.png`.
 - Found while testing: `.env.local` and `.env.production` now point `DATABASE_URL` at the Supabase pooler for project `vofhoblhaknhwmnlxpkv` in ap-northeast-1, and every form submission fails with `Tenant or user not found`. That project does not appear in the connected Supabase account, so the reference or region host is wrong or the project was deleted. The suites above ran with a local SQLite override; the code path is unchanged.
 
+## Update: email-only form delivery, database made optional (2026-11-04, later)
+- Default storage is now `DATABASE_URL=none`: every contact message and partner application is emailed through Resend to `NOTIFY_EMAIL_TO` and nothing is stored on the server. A small in-process map still honours the onboarding idempotency key so a double submit does not send two emails. Postgres, SQLite, and Supabase remain available by setting the same variables as before.
+- In email-only mode the notification email is the delivery channel, so the routes now fail honestly: a rejected Resend send returns 502 `delivery_failed` and the form shows an error (tested with an invalid API key), and missing Resend configuration returns 503 `not_configured` (tested with the variables blank). `/api/health` reports `delivery: "email-only"` and returns 503 when no channel is configured.
+- Live test against the dev server with the real Resend key: contact submission accepted, `notificationEmailSent: true` (to abbasi.bilal2000@gmail.com), `confirmationEmailSent: true`.
+- Production build passes. Browser suite 54 / 55 against the built server in email-only mode (the single failure is the expected "preview is noindex" check for an indexing-enabled build), toast suite 14 / 14, no delivery errors in the server log.
+- The owner's local `.env.local` and `.env.production` were switched to `DATABASE_URL=none` and `NOTIFY_EMAIL_TO=abbasi.bilal2000@gmail.com`; the broken Supabase connection string was removed. Hostinger environment variables must be updated the same way.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

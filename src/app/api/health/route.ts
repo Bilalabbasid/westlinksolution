@@ -1,5 +1,5 @@
 import { connection, NextResponse } from "next/server";
-import { describeDatabase, getDb } from "../../../lib/db";
+import { describeDatabase, getDb, isPersistentStore } from "../../../lib/db";
 import { isConfirmationEmailEnabled, isNotificationEmailConfigured } from "../../../lib/email";
 import { isTurnstileConfigured } from "../../../lib/spam";
 import { isWebhookConfigured } from "../../../lib/webhook";
@@ -20,9 +20,14 @@ export async function GET() {
     database = "error";
   }
 
+  // Email-only mode has no database to fail, but it needs the notification email.
+  const deliverable = isPersistentStore() || isNotificationEmailConfigured();
+  const ok = database === "ok" && deliverable;
+
   return NextResponse.json(
     {
-      ok: database === "ok",
+      ok,
+      delivery: isPersistentStore() ? "database" : "email-only",
       database: { driver: describeDatabase(), status: database },
       integrations: {
         notificationEmail: isNotificationEmailConfigured(),
@@ -33,6 +38,6 @@ export async function GET() {
       },
       indexing: process.env.ALLOW_INDEXING === "true" && process.env.NODE_ENV === "production",
     },
-    { status: database === "ok" ? 200 : 503, headers: { "Cache-Control": "no-store" } },
+    { status: ok ? 200 : 503, headers: { "Cache-Control": "no-store" } },
   );
 }

@@ -3,7 +3,7 @@
 Marketing website and partner-application backend for **Westlink Solution**, a brand operated by **TOPDEVELOPER INC**
 
 - Next.js 16 (App Router, Cache Components) · React 19 · TypeScript · Tailwind CSS v4
-- Server-side form endpoints with durable storage (Supabase in production, SQLite for local development, plain Postgres also supported)
+- Server-side form endpoints that email every submission through Resend (email-only by default; optional Postgres, SQLite, or Supabase storage)
 - Configurable notification email (Resend), CRM/webhook delivery, Google Places address autocomplete, and Cloudflare Turnstile
 - No client-side analytics or third-party scripts by default
 
@@ -17,7 +17,7 @@ cp .env.example .env.local   # edit values
 npm run dev                  # http://localhost:3000
 ```
 
-The SQLite database is created automatically at `data/westlink.db`. No external services are required to run locally; integrations switch on when their environment variables are set.
+By default nothing is stored: each submission is emailed to `NOTIFY_EMAIL_TO` through Resend, so set `RESEND_API_KEY`, `NOTIFY_EMAIL_FROM`, and `NOTIFY_EMAIL_TO` in `.env.local` before testing the forms. Set `DATABASE_URL=file:./data/westlink.db` to also keep a local SQLite copy.
 
 ## Central configuration
 
@@ -41,8 +41,8 @@ Content lives in `src/content/` (industries, challenges, partnership steps, vert
 | --- | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Yes (prod) | Canonical origin, e.g. `https://westlinksolution.com`. Used for canonical links, sitemap, robots, Open Graph. |
 | `ALLOW_INDEXING` | Prod only | Must be `true` **and** `NODE_ENV=production` for search engines to be allowed. Leave unset on previews. |
-| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | Prod (recommended) | Supabase project URL and service-role key (server-only). Apply `db/supabase.sql` once. Takes priority over `DATABASE_URL`. |
-| `DATABASE_URL` | Alternative | `postgres://…` for any Postgres (including the Supabase connection string) or `file:./data/westlink.db` for local SQLite |
+| `DATABASE_URL` | Optional | `none` (default): email-only, nothing stored. `postgres://…` for any Postgres or `file:./data/westlink.db` for local SQLite to also keep a copy. |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY` | Optional | Supabase REST storage (server-only key). Apply `db/supabase.sql` once. Takes priority over `DATABASE_URL`. |
 | `DATABASE_SSL` | No | Set `false` to disable TLS for a local Postgres |
 | `RESEND_API_KEY` | For email | Resend API key (server-side only) |
 | `NOTIFY_EMAIL_TO` | For email | Comma-separated recipients for new-submission notifications |
@@ -80,7 +80,7 @@ npx tsc --noEmit # type check
 
 ## Deployment
 
-1. Create a Supabase project, run `db/supabase.sql` in the SQL editor, and set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`. (Alternatively set `DATABASE_URL` to a Postgres connection string; tables are then created on first request, see `db/postgres.sql`.)
+1. Set `RESEND_API_KEY`, `NOTIFY_EMAIL_FROM` (a sender on a domain verified in Resend), and `NOTIFY_EMAIL_TO`. Every submission is emailed there; no database is needed. To also store submissions, set `DATABASE_URL` to a Postgres connection string (tables are created on first request, see `db/postgres.sql`) or configure Supabase with `db/supabase.sql`.
 2. Set `NEXT_PUBLIC_SITE_URL` to the final domain and, for the production deployment only, `ALLOW_INDEXING=true`. Preview deployments must not set it; they serve `noindex` and a disallow-all `robots.txt`.
 3. Configure Resend (verify the sending domain), the CRM webhook, Google Places, and Turnstile as needed. Each integration is optional and independent.
 4. Set a long random `IP_HASH_SALT`.
@@ -106,14 +106,16 @@ Environment variables (hPanel → the app → Environment Variables), minimum fo
 ```
 NEXT_PUBLIC_SITE_URL=https://westlinksolution.com
 ALLOW_INDEXING=true
-SUPABASE_URL=https://<project>.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=<service role key>
+DATABASE_URL=none
+RESEND_API_KEY=<Resend API key>
+NOTIFY_EMAIL_FROM=Westlink Solution <info@westlinksolution.com>
+NOTIFY_EMAIL_TO=abbasi.bilal2000@gmail.com
 IP_HASH_SALT=<long random string>
 ```
 
-Add `RESEND_API_KEY`, `NOTIFY_EMAIL_TO`, and `NOTIFY_EMAIL_FROM` for email notifications, and the optional CRM, Places, and Turnstile variables as needed. Hostinger's **Connect a database → Supabase** wizard sets `SUPABASE_URL` and `SUPABASE_ANON_KEY`; this app writes with the **service-role key** (the tables have Row Level Security on), so add `SUPABASE_SERVICE_ROLE_KEY` manually from Supabase → Project Settings → API. Run `db/supabase.sql` once in the Supabase SQL editor before the first submission.
+Add `SEND_CONFIRMATION_EMAILS=true` if applicants should get a confirmation, and the optional CRM, Places, and Turnstile variables as needed. No database is required: forms are delivered by email, and the form shows an error if Resend rejects the send (for example when `NOTIFY_EMAIL_FROM` uses a domain that is not verified in Resend).
 
-After the build turns green, open `https://westlinksolution.com/api/health` and confirm `database.driver` is `supabase`, `status` is `ok`, and `indexing` is `true`. Pushes to `main` redeploy automatically. If a build fails, open the deployment in hPanel for the full log; the build has no outbound network dependencies (fonts are self-hosted) and uses webpack, which is the more robust bundler in Hostinger's build containers.
+After the build turns green, open `https://westlinksolution.com/api/health` and confirm `ok` is `true`, `delivery` is `email-only`, `integrations.notificationEmail` is `true`, and `indexing` is `true`. Pushes to `main` redeploy automatically. If a build fails, open the deployment in hPanel for the full log; the build has no outbound network dependencies (fonts are self-hosted) and uses webpack, which is the more robust bundler in Hostinger's build containers.
 
 ## Replacing placeholders before launch
 
