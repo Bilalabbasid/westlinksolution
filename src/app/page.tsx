@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getSiteUrl, hasAddress, hasContactEmail, hasContactPhone, siteConfig } from "@/config/site";
 import { faqItems } from "@/content/faq";
 import { industries } from "@/content/industries";
+import { landingNav } from "@/content/landing";
 import { About } from "@/components/home/About";
 import { Capabilities } from "@/components/home/Capabilities";
 import { Challenges } from "@/components/home/Challenges";
@@ -18,7 +19,7 @@ import { VerticalMarquee } from "@/components/home/VerticalMarquee";
 export const metadata: Metadata = {
   title: `Lead Generation Company for Insurance, Home Services, Debt & Legal | ${siteConfig.brandName}`,
   description:
-    "High-intent insurance leads, live-transfer and pay-per-call campaigns, home services leads, debt settlement and student loan leads, and SSDI, torts and MVA intake calls. Campaigns built to the criteria you approve. Apply to become a partner.",
+    "Insurance leads, pay-per-call and live transfers, home services leads, debt settlement leads, and legal intake calls for US businesses. Built to your criteria.",
   alternates: { canonical: "/" },
   openGraph: {
     title: `Lead Generation Company for Insurance, Home Services, Debt & Legal | ${siteConfig.brandName}`,
@@ -100,6 +101,7 @@ function structuredData() {
       itemListElement: industries.map((ind) => ({
         "@type": "OfferCatalog",
         name: ind.label,
+        ...(landingNav.find((l) => l.industry === ind.id) ? { url: `${siteUrl}${landingNav.find((l) => l.industry === ind.id)!.href}` } : {}),
         itemListElement: ind.subServices.map((s) => ({
           "@type": "Offer",
           itemOffered: { "@type": "Service", name: `${s.name} campaigns`, description: s.summary },

@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { useEffect, useId, useRef, useState } from "react";
+import { landingNav } from "@/content/landing";
 import { industries, type IndustryId } from "@/content/industries";
 import { ServiceIcon } from "./ServiceIcon";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
@@ -23,6 +25,8 @@ const icons: Record<IndustryId, React.ReactNode> = {
     <path d="M12 4v16M5 8h14M7 8l-3 6c1 1.5 2.5 2 3.5 2s2.5-.5 3.5-2L8 8M17 8l-3 6c1 1.5 2.5 2 3.5 2s2.5-.5 3.5-2L18 8M8 20h8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
   ),
 };
+
+const landingFor = (id: string) => landingNav.find((l) => l.industry === id);
 
 export function Industries() {
   const [active, setActive] = useState<IndustryId>("insurance");
@@ -123,11 +127,17 @@ export function Industries() {
                     <p className="mt-4 leading-relaxed text-ink-muted">{ind.description}</p>
                     <p className="mt-3 font-semibold text-navy">{ind.tagline}</p>
                     <p className="mt-4 rounded-xl border border-amber/40 bg-amber-50 px-4 py-3 text-sm text-navy">{ind.buyerNote}</p>
-                    <div className="mt-6">
+                    <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                       <OpenOnboardingButton variant="primary">
                         Discuss a {ind.label.toLowerCase()} campaign
                         <ArrowIcon />
                       </OpenOnboardingButton>
+                      {landingFor(ind.id) ? (
+                        <Link href={landingFor(ind.id)!.href} className="inline-flex items-center gap-1.5 px-1 text-sm font-bold text-teal-700 hover:underline">
+                          More about {landingFor(ind.id)!.label.toLowerCase()}
+                          <ArrowIcon className="h-4 w-4" />
+                        </Link>
+                      ) : null}
                     </div>
                   </div>
                   <div>

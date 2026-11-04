@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
 import { contactFieldsSchema, validate, type FieldErrors } from "@/lib/validation";
@@ -191,9 +192,9 @@ export function ContactForm() {
       <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-ink-subtle">
           By sending this message you agree to our{" "}
-          <a href="/privacy" className="font-semibold text-teal-700 underline underline-offset-2">
+          <Link href="/privacy" className="font-semibold text-teal-700 underline underline-offset-2">
             Privacy Policy
-          </a>
+          </Link>
           .
         </p>
         <Button type="submit" variant="primary" disabled={phase === "submitting"}>

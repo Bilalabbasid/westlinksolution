@@ -2,6 +2,7 @@ import Link from "next/link";
 import { formatAddress, hasAddress, hasContactEmail, hasContactPhone, siteConfig } from "@/config/site";
 import { ContactLink } from "@/components/ui/ContactLink";
 import { CurrentYear } from "@/components/ui/CurrentYear";
+import { landingNav } from "@/content/landing";
 import { Logo } from "./Logo";
 
 export function Footer() {
@@ -12,13 +13,28 @@ export function Footer() {
       <span className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber/70 to-transparent" aria-hidden="true" />
       <div className="pointer-events-none absolute -right-40 -top-40 h-96 w-96 rounded-full bg-teal/20 blur-3xl" aria-hidden="true" />
       <div className="container-x relative py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.3fr_1fr_1fr_1fr_1.1fr]">
           <div>
             <Link href="/" className="inline-block rounded-lg" aria-label={`${siteConfig.brandName} home`}>
               <Logo variant="inverse" />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/70">{siteConfig.tagline}</p>
           </div>
+
+          <nav aria-labelledby="footer-solutions">
+            <h2 id="footer-solutions" className="text-xs font-extrabold uppercase tracking-[0.18em] text-amber">
+              Campaigns
+            </h2>
+            <ul className="mt-4 space-y-2.5">
+              {landingNav.map((l) => (
+                <li key={l.href}>
+                  <Link href={l.href} className="text-sm text-white/80 transition-colors hover:text-white">
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
           <nav aria-labelledby="footer-company">
             <h2 id="footer-company" className="text-xs font-extrabold uppercase tracking-[0.18em] text-amber">

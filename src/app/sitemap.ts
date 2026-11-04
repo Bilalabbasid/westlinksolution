@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 import { getPosts } from "@/content/blog";
+import { landingPages } from "@/content/landing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl();
@@ -9,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const latestPost = posts[0] ? new Date(`${posts[0].updatedAt}T00:00:00Z`) : now;
   return [
     { url: `${base}/`, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    ...landingPages.map((p) => ({ url: `${base}/${p.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
     { url: `${base}/blog`, lastModified: latestPost, changeFrequency: "weekly", priority: 0.7 },
     ...posts.map((p) => ({
       url: `${base}/blog/${p.slug}`,

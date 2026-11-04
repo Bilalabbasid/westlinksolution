@@ -264,6 +264,201 @@ export const posts: BlogPost[] = [
       </>
     ),
   },
+  {
+    slug: "exclusive-vs-shared-leads",
+    title: "Exclusive vs shared leads: what actually changes for your sales team",
+    description:
+      "Exclusive leads cost more and shared leads convert less, but the real difference is operational. Here is what changes in follow-up, pricing, and campaign rules, and how to decide which one your team should buy.",
+    category: "Buying guide",
+    publishedAt: "2026-11-04",
+    updatedAt: "2026-11-04",
+    readingMinutes: 6,
+    keywords: ["exclusive leads", "shared leads", "exclusive insurance leads", "exclusive HVAC leads", "lead exclusivity"],
+    takeaways: [
+      "Exclusivity is a campaign rule, not a quality grade. It changes how many competitors are calling the same person, nothing else.",
+      "Shared leads reward speed and persistence. Exclusive leads reward a consultative close and tolerate a slower first call.",
+      "Calls and live transfers are exclusive by nature. Exclusivity questions mostly apply to web leads.",
+      "Whatever you buy, get the distribution rule in writing, including the window and the number of buyers.",
+    ],
+    body: () => (
+      <>
+        <p>
+          “Are your leads exclusive?” is the first question most buyers ask, and it is usually the wrong first question.
+          Exclusivity is a distribution rule: it says how many businesses receive the same prospect. It does not say whether
+          the prospect was interested, whether the contact details are right, or whether your team will reach them. Those
+          depend on the campaign criteria and on your own follow-up.
+        </p>
+        <p>
+          This guide explains what changes between exclusive and shared delivery, where each one fits, and what to put in
+          writing before you buy either.
+        </p>
+
+        <h2>What “exclusive” and “shared” mean in practice</h2>
+        <p>
+          An <strong>exclusive lead</strong> is delivered to one buyer. A <strong>shared lead</strong> is delivered to more
+          than one, typically a small number of buyers in the same vertical and territory, either at the same moment or
+          over a short window. The prospect filled in one form and may receive several calls.
+        </p>
+        <p>
+          Two things follow. Shared leads are cheaper per contact because the cost of generating them is split. And shared
+          leads turn the first minutes after submission into a race, because the business that reaches the prospect first
+          has the conversation while the others reach voicemail.
+        </p>
+
+        <h2>Calls and transfers are exclusive by nature</h2>
+        <p>
+          A phone call can only ring one line at a time, and a live transfer is handed to one rep. For pay-per-call and
+          live transfer campaigns, the exclusivity question is really a routing question: is the call routed only to you,
+          or to a rotation of buyers? Ask that instead, and ask what happens when your line is busy, because a call that
+          rolls to another buyer is not yours. The exclusive-versus-shared decision mostly applies to{" "}
+          <Link href="/blog/pay-per-call-vs-live-transfers-vs-web-leads">web leads</Link>.
+        </p>
+
+        <h2>What changes for your team</h2>
+        <h3>Follow-up speed</h3>
+        <p>
+          With shared leads, a callback that happens an hour later is a callback to someone who has already talked to two
+          competitors. Teams that win on shared leads dial within minutes and run a written sequence of texts and emails
+          behind the calls. With exclusive leads the pressure is lower. The prospect is still cooling, so speed matters,
+          but a slightly slower, more consultative first call is not fatal.
+        </p>
+        <h3>Price per contact and price per sale</h3>
+        <p>
+          Exclusive leads cost more per contact and, for most teams, less per sale, because fewer contacts are lost to
+          competitors. Shared leads reverse that: cheaper per contact, more contacts needed per sale. Which one is cheaper
+          overall depends on your contact rate and close rate, which is why the decision is yours and not a vendor’s.
+        </p>
+        <h3>What “bad lead” means</h3>
+        <p>
+          On a shared campaign, “I could not reach them” is often a speed problem, not a lead problem, and return policies
+          reflect that. On an exclusive campaign the same complaint is taken more seriously. Make sure the return rules in
+          your agreement match the delivery model you chose.
+        </p>
+
+        <h2>Where each one fits</h2>
+        <ul>
+          <li>
+            <strong>Exclusive fits</strong> products with a high value per customer, teams built around consultative
+            closing, and verticals where the prospect is already overwhelmed with calls, such as Medicare or debt relief.
+          </li>
+          <li>
+            <strong>Shared fits</strong> teams with outbound discipline and a fast dialer, lower value per customer, and
+            buyers who would rather pay less per contact and work harder for each one.
+          </li>
+          <li>
+            <strong>Neither fits</strong> a team that returns inquiries the next morning. Fix the callback first; no
+            distribution rule saves a slow follow-up.
+          </li>
+        </ul>
+
+        <h2>Put the rule in writing</h2>
+        <p>Before launch, the campaign specification should state:</p>
+        <ul>
+          <li>Whether delivery is exclusive, and if shared, the maximum number of buyers per lead.</li>
+          <li>The window: can the same prospect be resold after a period, and how long is it?</li>
+          <li>For calls, the routing rule and what happens on busy or no-answer.</li>
+          <li>The return rules, and whether unreachable contacts count against your spend.</li>
+        </ul>
+        <p>
+          We scope exclusivity per campaign and record it in the specification you approve. If you are unsure which model
+          suits your team, <Link href="/#contact">tell us how you follow up</Link> and we will recommend one with the
+          reasoning spelled out.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "speed-to-lead-first-five-minutes",
+    title: "Speed to lead: why the first five minutes decide most campaigns",
+    description:
+      "Most lead campaigns are judged on the vendor and won or lost on the callback. A practical plan for the first five minutes after a lead arrives, for insurance agencies, contractors, and intake desks.",
+    category: "Operations",
+    publishedAt: "2026-11-04",
+    updatedAt: "2026-11-04",
+    readingMinutes: 6,
+    keywords: ["speed to lead", "lead response time", "lead follow-up process", "insurance lead follow up", "contractor lead follow up"],
+    takeaways: [
+      "A web lead is a moment of interest. The longer the callback waits, the more that moment belongs to someone else.",
+      "Route leads to a person, not an inbox. Inboxes have no sense of urgency.",
+      "Write the sequence down: first call, text, second call, email, and when to stop.",
+      "If you cannot staff fast callbacks, choose a format where the prospect is already on the line.",
+    ],
+    body: () => (
+      <>
+        <p>
+          When a lead campaign disappoints, the vendor gets the blame and the callback gets ignored. Yet the callback is
+          the part the buyer controls. A prospect who filled in a quote form at lunch is thinking about the purchase at
+          lunch, not at nine the next morning. This guide is a plain plan for the first five minutes after a lead lands,
+          and for what to do when five minutes is not realistic.
+        </p>
+
+        <h2>Why the first minutes matter so much</h2>
+        <p>
+          A form submission captures a moment of intent. The prospect has the problem in front of them, the phone in
+          their hand, and a reason to talk. Every minute after that, something else gets their attention, and if the lead
+          is shared, a competitor may already be calling. Speed does not make a weak lead strong. It stops a good lead
+          from going cold while it waits in a queue.
+        </p>
+
+        <h2>Route to a person, not an inbox</h2>
+        <p>
+          The most common failure is delivery to a shared mailbox that someone checks “regularly.” Leads should land where
+          a person is notified immediately: a CRM with an assignment rule and a push notification, a dialer queue, or at
+          minimum a text alert to whoever is on duty. If your campaign delivers by email, forward that address into a
+          system that assigns and alerts.
+        </p>
+
+        <h2>The first five minutes, written down</h2>
+        <ol>
+          <li>
+            <strong>Minute 0 to 2: first call.</strong> Dial from a number the prospect can call back, and leave a short
+            voicemail that names what they asked about. Do not leave a generic “returning your inquiry.”
+          </li>
+          <li>
+            <strong>Minute 2 to 3: text.</strong> One line, with your name, the company, what they asked about, and a
+            question that is easy to answer. Only where you have consent to text.
+          </li>
+          <li>
+            <strong>Minute 3 to 5: second call attempt.</strong> Many people ignore the first unknown call and answer the
+            second once the text explains who is calling.
+          </li>
+          <li>
+            <strong>Same day: email.</strong> A short summary of what you can offer and how to reach you, so the prospect
+            has something to find later.
+          </li>
+          <li>
+            <strong>Days 2 to 7: scheduled attempts, then stop.</strong> Decide in advance how many attempts you make and
+            on what schedule, and close the lead when the sequence ends so the team moves on.
+          </li>
+        </ol>
+
+        <h2>Staffing for it</h2>
+        <p>
+          A fast callback is a staffing decision. Someone must own the queue during campaign hours, including lunch and the
+          end of the day, and leads should pause when nobody can answer rather than pile up. If your campaign runs in the
+          evening and your office closes at five, either staff the evening or ask for delivery hours that match your team.
+        </p>
+
+        <h2>When five minutes is not realistic</h2>
+        <p>
+          Some teams cannot staff fast callbacks: a two-person contracting office on job sites all day, or an agency whose
+          producers are in appointments. That is not a failing, it is a reason to choose a different format. Inbound
+          pay-per-call puts the prospect on your line when they want to talk. Live transfers hand you a screened prospect
+          who is already waiting. Our guide to{" "}
+          <Link href="/blog/pay-per-call-vs-live-transfers-vs-web-leads">choosing a lead format</Link> walks through
+          that decision.
+        </p>
+
+        <h2>Measure the thing you control</h2>
+        <p>
+          Before judging a campaign, measure your own median time to first call and your contact rate within the first
+          hour. If the median is thirty minutes, the campaign is being judged on leads that were cold before anyone
+          dialed. Fix the number, then review the campaign with your account manager. In our experience that conversation
+          changes once the callback is measured.
+        </p>
+      </>
+    ),
+  },
 ];
 
 export function getPost(slug: string): BlogPost | undefined {

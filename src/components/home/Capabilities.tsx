@@ -1,5 +1,12 @@
 import { capabilities, type Capability } from "@/content/capabilities";
+import Link from "next/link";
 import { Reveal } from "@/components/ui/Reveal";
+
+const links: Record<Capability["id"], { label: string; href: string } | null> = {
+  leads: { label: "Insurance, home services, debt, and legal leads", href: "/insurance-leads" },
+  calls: { label: "Pay-per-call and live transfer campaigns", href: "/pay-per-call-leads" },
+  support: null,
+};
 
 const icons: Record<Capability["id"], React.ReactNode> = {
   leads: (
@@ -55,6 +62,12 @@ export function Capabilities() {
                     </li>
                   ))}
                 </ul>
+                {links[c.id] ? (
+                  <Link href={links[c.id]!.href} className="relative mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-teal-700 hover:underline">
+                    {links[c.id]!.label}
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                ) : null}
               </article>
             </Reveal>
           ))}

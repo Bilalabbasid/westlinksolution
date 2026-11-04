@@ -10,7 +10,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 export const metadata: Metadata = {
   title: "Blog: Lead Generation Guides for Insurance, Home Services, Debt & Legal Teams",
   description:
-    "Practical guides on buying leads and calls: pay-per-call versus live transfers versus web leads, writing a campaign specification, and running campaigns for insurance, home services, debt relief, and legal intake.",
+    "Practical guides on buying leads and calls for insurance, home services, debt relief, and legal intake teams: lead formats, exclusivity, and follow-up.",
   alternates: { canonical: "/blog" },
   openGraph: {
     title: `Blog | ${siteConfig.brandName}`,

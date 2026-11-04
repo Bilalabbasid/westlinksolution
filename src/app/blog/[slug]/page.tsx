@@ -23,19 +23,26 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!post) return { title: "Article not found" };
   return {
     title: post.title,
-    description: post.description,
+    description: metaDescription(post.description),
     keywords: post.keywords,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
       type: "article",
       title: post.title,
-      description: post.description,
+      description: metaDescription(post.description),
       url: `/blog/${post.slug}`,
       publishedTime: `${post.publishedAt}T00:00:00Z`,
       modifiedTime: `${post.updatedAt}T00:00:00Z`,
       authors: [siteConfig.brandName],
     },
   };
+}
+
+/** First sentence of the card text, so search snippets are not cut mid-sentence. */
+function metaDescription(text: string): string {
+  if (text.length <= 160) return text;
+  const first = text.split(/(?<=\.)\s/)[0];
+  return first.length <= 160 ? first : text.slice(0, 157).replace(/\s+\S*$/, "") + "…";
 }
 
 function structuredData(slug: string) {
