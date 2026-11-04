@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost" | "inverse";
 type Size = "md" | "lg";
@@ -44,11 +44,12 @@ interface ButtonLinkProps {
   className?: string;
   children: ReactNode;
   ariaLabel?: string;
+  onClick?: MouseEventHandler<HTMLAnchorElement>;
 }
 
-export function ButtonLink({ href, variant = "primary", size = "md", className = "", children, ariaLabel }: ButtonLinkProps) {
+export function ButtonLink({ href, variant = "primary", size = "md", className = "", children, ariaLabel, onClick }: ButtonLinkProps) {
   return (
-    <Link href={href} className={buttonClasses(variant, size, className)} aria-label={ariaLabel}>
+    <Link href={href} className={buttonClasses(variant, size, className)} aria-label={ariaLabel} onClick={onClick}>
       {children}
     </Link>
   );

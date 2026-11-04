@@ -129,6 +129,11 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - Landing page tiles now link to the product pages; home-page OfferCatalog entries carry product URLs; the sitemap lists 28 URLs. Unknown nested slugs return 404.
 - Checks: all 24 new or changed pages pass at 1366px and 375px (200, one H1, valid JSON-LD, no console errors, no overflow). Production build 48 pages. Browser suite 54 / 55 (expected noindex failure), toast 14 / 14, responsive 8 / 8.
 
+## Update: in-page navigation fix and campaign card restyle (2026-11-04, later)
+- Reported on the live site: "Explore industries" did nothing when the address bar already showed `/#industries`, and the campaign tiles in the industries panel were not clickable. Cause: Next's router ignores a link click when the URL would not change. A shared `handleHashClick` handler now scrolls to the section itself and updates the hash; it is wired to the hero button and the header links (desktop and mobile), and cross-page hash links still navigate normally.
+- Industry tiles on the home page and the landing pages link to the product pages and were restyled: navy icon tile, delivery-format badge (live transfers, pay-per-call, web leads), accent gradient and top bar on hover, and a "See campaign details" affordance. Single column on phones.
+- Checks: navigation suite (`docs/nav-check.js`) passes on dev and on the production build, including a second click with the same hash, header links, tile navigation to `/home-services-leads/hvac-leads`, and life/home insurance tiles; page suite 24 / 24; browser suite 54 / 55 (expected noindex failure), toast 14 / 14, responsive 8 / 8. Screenshots: `docs/screenshots/cards-*.png`.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

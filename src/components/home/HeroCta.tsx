@@ -6,6 +6,7 @@ import { useOnboarding } from "@/components/forms/OnboardingProvider";
 import { ArrowIcon, ButtonLink } from "@/components/ui/Button";
 import { ShimmerButton } from "@/components/ui/ShimmerButton";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
+import { handleHashClick } from "@/lib/scrollToHash";
 
 export function HeroCta() {
   const { open } = useOnboarding();
@@ -21,7 +22,7 @@ export function HeroCta() {
         </ShimmerButton>
       </motion.div>
       <motion.div {...gesture} transition={{ type: "spring", stiffness: 400, damping: 22 }} className="w-full sm:w-auto">
-        <ButtonLink href="#industries" variant="secondary" size="lg" className="w-full sm:w-auto">
+        <ButtonLink href="#industries" variant="secondary" size="lg" className="w-full sm:w-auto" onClick={handleHashClick}>
           {siteConfig.cta.secondary}
         </ButtonLink>
       </motion.div>

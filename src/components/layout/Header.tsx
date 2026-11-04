@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { siteConfig } from "@/config/site";
+import { handleHashClick } from "@/lib/scrollToHash";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
 import { Logo } from "./Logo";
 
@@ -56,6 +57,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={handleHashClick}
               className="group relative rounded-lg px-3 py-2 text-sm font-semibold text-navy-500 transition-colors hover:text-teal-700"
             >
               {item.label}
@@ -99,7 +101,10 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              onClick={() => setMenuOpen(false)}
+              onClick={(e) => {
+                setMenuOpen(false);
+                handleHashClick(e);
+              }}
               className="rounded-lg px-3 py-3 text-base font-semibold text-navy transition-colors hover:bg-teal-50 hover:text-teal-700"
             >
               {item.label}

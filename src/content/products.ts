@@ -6,6 +6,8 @@ export interface ProductPage {
   parent: string;
   name: string;
   icon: ServiceIcon;
+  /** Short delivery-format label shown on cards. */
+  badge: string;
   title: string;
   description: string;
   keywords: string[];
@@ -33,6 +35,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Final expense leads",
     icon: "final-expense",
+    badge: "Live transfers",
     title: "Final Expense Leads & Live Transfers for Agents",
     description:
       "Final expense leads and live transfers from seniors seeking burial and end-of-life coverage. Screened for age, state, and intent before your agent's time.",
@@ -92,6 +95,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Auto insurance leads",
     icon: "auto",
+    badge: "Pay-per-call",
     title: "Auto Insurance Leads & Inbound Quote Calls",
     description:
       "Auto insurance leads and pay-per-call quote campaigns from drivers comparing rates or switching carriers. Scoped by state, with calls routed to your quote desk.",
@@ -151,6 +155,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Medicare leads",
     icon: "medicare",
+    badge: "Live transfers",
     title: "Medicare Leads & Live Transfers for Licensed Agents",
     description:
       "Medicare leads and live transfers from beneficiaries reviewing plan options, screened for eligibility and timing before your licensed agent picks up.",
@@ -210,6 +215,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Health insurance leads",
     icon: "health",
+    badge: "Calls + web leads",
     title: "Health Insurance Leads for Individual & Family Plans",
     description:
       "Health insurance leads and calls from individuals and families choosing marketplace or private coverage, scoped by state and the plan types you sell.",
@@ -269,6 +275,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Life insurance leads",
     icon: "life",
+    badge: "Web leads",
     title: "Life Insurance Leads for Term & Whole Life Agents",
     description:
       "Life insurance leads from people protecting a family, mortgage, or business. Term and whole life prospects screened for age, state, and coverage goal.",
@@ -328,6 +335,7 @@ export const products: ProductPage[] = [
     parent: "insurance-leads",
     name: "Home insurance leads",
     icon: "home",
+    badge: "Web leads",
     title: "Home Insurance Leads & Homeowners Quote Calls",
     description:
       "Home insurance leads from homeowners buying, renewing, or shopping after a rate increase, screened for property state, ownership, and current coverage.",
@@ -389,6 +397,7 @@ export const products: ProductPage[] = [
     parent: "home-services-leads",
     name: "HVAC leads",
     icon: "hvac",
+    badge: "Pay-per-call",
     title: "HVAC Leads & Pay-Per-Call for Heating and Cooling Contractors",
     description:
       "HVAC leads and inbound calls for repair, replacement, and maintenance, routed to your office in the service areas you choose during the hours you set.",
@@ -448,6 +457,7 @@ export const products: ProductPage[] = [
     parent: "home-services-leads",
     name: "Plumbing leads",
     icon: "plumbing",
+    badge: "Pay-per-call",
     title: "Plumbing Leads & Pay-Per-Call for Plumbing Companies",
     description:
       "Plumbing leads and inbound calls for emergency repairs, water heaters, and planned work, routed to your dispatcher in the areas you serve during your hours.",
@@ -507,6 +517,7 @@ export const products: ProductPage[] = [
     parent: "home-services-leads",
     name: "Roofing leads",
     icon: "roofing",
+    badge: "Calls + web leads",
     title: "Roofing Leads for Repairs, Inspections & Replacements",
     description:
       "Roofing leads from homeowners needing repairs, storm inspections, or full replacements, scoped to the counties you serve and delivered as calls or web leads.",
@@ -568,6 +579,7 @@ export const products: ProductPage[] = [
     parent: "debt-settlement-leads",
     name: "Debt settlement live transfers",
     icon: "debt",
+    badge: "Live transfers",
     title: "Debt Settlement Live Transfers Screened for Enrollment",
     description:
       "Debt settlement live transfers from consumers with unsecured debt above your minimum, screened for debt types and state before your enrollment specialist picks up.",
@@ -627,6 +639,7 @@ export const products: ProductPage[] = [
     parent: "debt-settlement-leads",
     name: "Student loan leads",
     icon: "student",
+    badge: "Live transfers",
     title: "Student Loan Leads & Live Transfers for Assistance Firms",
     description:
       "Student loan leads and live transfers from borrowers exploring consolidation, repayment, or forgiveness, screened for loan type and status first.",
@@ -688,6 +701,7 @@ export const products: ProductPage[] = [
     parent: "legal-intake-leads",
     name: "MVA leads",
     icon: "mva",
+    badge: "Live transfers",
     title: "MVA Leads: Motor Vehicle Accident Intake Calls for Law Firms",
     description:
       "Motor vehicle accident leads as screened live transfers or pay-per-call, qualified for injury, treatment, fault, and representation before intake.",
@@ -747,6 +761,7 @@ export const products: ProductPage[] = [
     parent: "legal-intake-leads",
     name: "SSDI leads",
     icon: "ssdi",
+    badge: "Live transfers",
     title: "SSDI Leads & Live Transfers for Disability Practices",
     description:
       "Social Security Disability leads and live transfers screened for work history, claim status, and representation before your intake specialist's time.",
@@ -806,6 +821,7 @@ export const products: ProductPage[] = [
     parent: "legal-intake-leads",
     name: "Mass tort leads",
     icon: "torts",
+    badge: "Live transfers",
     title: "Mass Tort Leads & Intake Calls for Specific Litigations",
     description:
       "Mass tort intake as screened live transfers or inbound calls for your litigations, with product, exposure, diagnosis, and date criteria asked consistently.",

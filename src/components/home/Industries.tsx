@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useReducedMotionSafe } from "@/lib/useReducedMotionSafe";
 import { useEffect, useId, useRef, useState } from "react";
 import { landingNav } from "@/content/landing";
+import { products } from "@/content/products";
 import { industries, type IndustryId } from "@/content/industries";
 import { ServiceIcon } from "./ServiceIcon";
 import { OpenOnboardingButton } from "@/components/forms/OpenOnboardingButton";
@@ -27,6 +28,10 @@ const icons: Record<IndustryId, React.ReactNode> = {
 };
 
 const landingFor = (id: string) => landingNav.find((l) => l.industry === id);
+const productFor = (industryId: string, icon: string) => {
+  const parent = landingFor(industryId)?.href.replace(/^\//, "");
+  return products.find((p) => p.parent === parent && p.icon === icon);
+};
 
 export function Industries() {
   const [active, setActive] = useState<IndustryId>("insurance");
@@ -142,20 +147,45 @@ export function Industries() {
                   </div>
                   <div>
                     <h4 className="text-sm font-extrabold uppercase tracking-[0.14em] text-ink-subtle">Campaign types</h4>
-                    <ul className="mt-3 grid grid-cols-2 gap-3">
+                    <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                       {ind.subServices.map((s, i) => (
                         <motion.li
                           key={s.name}
                           initial={reduce ? false : { opacity: 0, y: 14, scale: 0.97 }}
                           animate={{ opacity: 1, y: 0, scale: 1 }}
                           transition={{ type: "spring", stiffness: 260, damping: 24, delay: 0.08 + i * 0.07 }}
-                          className="card-sheen group rounded-2xl border border-line bg-white p-4 text-center shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/40 hover:shadow-card-hover sm:p-5"
+                          className="group relative overflow-hidden rounded-2xl border border-line bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-teal/50 hover:shadow-card-hover"
                         >
-                          <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
-                            <ServiceIcon name={s.icon} className="h-7 w-7" />
-                          </span>
-                          <p className="mt-3 font-extrabold text-navy">{s.name}</p>
-                          <p className="mt-1 text-xs leading-relaxed text-ink-muted sm:text-sm">{s.summary}</p>
+                          {(() => {
+                            const product = productFor(ind.id, s.icon);
+                            const inner = (
+                              <>
+                                <span className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-gradient-to-br from-teal/15 to-transparent transition-transform duration-500 group-hover:scale-150" aria-hidden="true" />
+                                <span className="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-teal via-teal-700 to-amber opacity-0 transition-opacity duration-300 group-hover:opacity-100" aria-hidden="true" />
+                                <span className="relative flex items-start justify-between gap-3">
+                                  <span className="flex h-12 w-12 flex-none items-center justify-center rounded-xl bg-navy text-amber shadow-[0_10px_20px_-12px_rgba(20,37,61,0.7)] transition-colors duration-300 group-hover:bg-teal group-hover:text-white">
+                                    <ServiceIcon name={s.icon} className="h-6 w-6" />
+                                  </span>
+                                  {product ? (
+                                    <span className="rounded-full border border-teal/30 bg-teal-50 px-2.5 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-teal-700">{product.badge}</span>
+                                  ) : null}
+                                </span>
+                                <span className="relative mt-4 block text-base font-extrabold tracking-tight text-navy">{s.name}</span>
+                                <span className="relative mt-1.5 block text-sm leading-relaxed text-ink-muted">{s.summary}</span>
+                              </>
+                            );
+                            return product ? (
+                              <Link href={`/${product.parent}/${product.slug}`} className="flex h-full flex-col p-5 text-left" aria-label={`${s.name}: see campaign details`}>
+                                {inner}
+                                <span className="relative mt-auto inline-flex items-center gap-1.5 pt-4 text-sm font-bold text-teal-700">
+                                  See campaign details
+                                  <ArrowIcon className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                                </span>
+                              </Link>
+                            ) : (
+                              <div className="flex h-full flex-col p-5 text-left">{inner}</div>
+                            );
+                          })()}
                         </motion.li>
                       ))}
                     </ul>
