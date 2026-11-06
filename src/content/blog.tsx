@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import { InlineCta } from "@/components/blog/InlineCta";
 
 export interface BlogPost {
   slug: string;
@@ -27,6 +28,464 @@ export function formatPostDate(iso: string): string {
 }
 
 export const posts: BlogPost[] = [
+  {
+    slug: "how-to-vet-a-lead-generation-company",
+    title: "How to vet a lead generation company: 12 questions to ask before you buy leads or calls",
+    description:
+      "A buyer's checklist for choosing a lead vendor: 12 questions on sourcing, consent, screening, billing, and returns, and the answers that should worry you.",
+    category: "Buying guide",
+    publishedAt: "2026-11-07",
+    updatedAt: "2026-11-07",
+    readingMinutes: 10,
+    keywords: [
+      "how to choose a lead generation company",
+      "lead vendor questions",
+      "best lead generation company for insurance agents",
+      "questions to ask a lead vendor",
+      "pay per call vendor",
+      "live transfer vendor",
+    ],
+    takeaways: [
+      "The vendor's answers about sourcing and consent matter more than its price per lead.",
+      "Ask for the billing rule, the return rule, and the rejection window in writing before you spend anything.",
+      "A vendor that will not run a small, scoped test is telling you something.",
+      "Good vendors ask you as many questions as you ask them.",
+    ],
+    body: () => (
+      <>
+        <p>
+          Most lead buyers choose a vendor the way they would choose a printer: compare a price, read a few testimonials,
+          and sign. Then the first month arrives, the contact rate is poor, half the calls are short, and nobody can
+          explain where the prospects came from. Almost every one of those problems could have been predicted by asking
+          the right questions before the first dollar was spent.
+        </p>
+        <p>
+          This checklist is written for owners and sales managers buying leads, inbound calls, or live transfers for
+          insurance, home services, debt relief, or legal intake. It is twelve questions, grouped by what they protect you
+          from, with notes on what a good answer and a worrying answer sound like.
+        </p>
+
+        <h2>Sourcing: where do the prospects come from?</h2>
+        <h3>1. How are prospects generated for my vertical?</h3>
+        <p>
+          You are asking about the channel: search ads, social ads, content sites, comparison forms, inbound phone
+          listings, outbound calling, or a mix. A good answer names the channels for your product specifically and
+          explains why they fit it. A worrying answer is a vague “proprietary network” with nothing behind it.
+        </p>
+        <h3>2. Are any of the leads bought from other vendors and resold?</h3>
+        <p>
+          Many vendors buy from each other. That is not automatically bad, but it lengthens the chain between the
+          prospect’s consent and your phone call, and every link is a place where the record can break. You want to know
+          whether you are buying first-party leads or someone else’s inventory.
+        </p>
+        <h3>3. Are the leads fresh, or can they be aged?</h3>
+        <p>
+          A lead submitted minutes ago and a lead submitted three weeks ago are different products. Aged leads have a
+          place at a lower price, but they should never be delivered as if they were real time. Ask how quickly leads are
+          delivered after submission and whether the timestamp is passed with each one.
+        </p>
+
+        <h2>Consent and compliance: can you prove you were allowed to call?</h2>
+        <h3>4. What consent language does the prospect see, and does it name my business?</h3>
+        <p>
+          Ask for a screenshot of the actual form or the script for calls. The consent should be clear enough that a
+          reasonable person understands they will be contacted, by whom, and how. Our{" "}
+          <Link href="/blog/tcpa-consent-for-lead-buyers-2026">guide to consent for lead buyers</Link> covers what to look
+          for in more detail.
+        </p>
+        <h3>5. What record of consent do I receive with each lead?</h3>
+        <p>
+          A good vendor can give you, per lead, the time of submission, the page or script, the consent text, and often a
+          third-party certificate that records the session. If the answer is “we keep that on our side,” ask how quickly
+          you can get it when a complaint arrives. The answer should be hours, not weeks.
+        </p>
+        <h3>6. How are do-not-call lists and opt-outs handled?</h3>
+        <p>
+          The vendor should scrub against the national registry where required and pass opt-outs both ways. You also need
+          a plan for your own side: when a prospect asks you to stop, that request has to be honored promptly.
+        </p>
+
+        <InlineCta
+          title="Want these answers in writing for your campaign?"
+          body="Every Westlink campaign starts with a written specification that answers these questions for your vertical, states, and delivery format, before anything launches."
+        />
+
+        <h2>Screening: what makes a lead or call qualified?</h2>
+        <h3>7. Which screening questions are asked, and can I change them?</h3>
+        <p>
+          The criteria should be yours. A good vendor proposes questions that usually work for your product, such as age
+          and state for <Link href="/insurance-leads/final-expense-leads">final expense</Link> or debt amount and type for{" "}
+          <Link href="/debt-settlement-leads/debt-settlement-live-transfers">debt settlement</Link>, and then lets you add,
+          remove, or reword them. A vendor that sells one fixed product to everyone in your vertical is optimizing for
+          its own volume, not your close rate.
+        </p>
+        <h3>8. For calls, how is a billable call defined?</h3>
+        <p>
+          For <Link href="/pay-per-call-leads">pay-per-call</Link>, the usual definition is a call that passes a duration
+          threshold and matches the criteria. Ask what the threshold is, whether hold time counts, what happens when your
+          line is busy, and whether you can hear the recording when you dispute a call.
+        </p>
+
+        <h2>Money: what exactly are you paying for?</h2>
+        <h3>9. What can I return or reject, and within what window?</h3>
+        <p>
+          Every vendor has a return policy. What matters is whether it is written into your agreement, whether the
+          reasons are specific, such as wrong number, outside my states, or already represented, and how long you have to
+          flag a problem. A return window you cannot realistically meet is not a return policy.
+        </p>
+        <h3>10. Is delivery exclusive, and if not, how many buyers share each lead?</h3>
+        <p>
+          This changes how fast you need to call and how much each lead is worth to you. We wrote a separate guide on{" "}
+          <Link href="/blog/exclusive-vs-shared-leads">exclusive versus shared leads</Link>. The short version: get the
+          rule and the maximum number of buyers in writing.
+        </p>
+
+        <h2>Working together: what happens after launch?</h2>
+        <h3>11. Will you run a small, scoped test first?</h3>
+        <p>
+          A test should be large enough to learn from and small enough not to hurt. It should have a start date, an end
+          date, and a review meeting on the calendar. A vendor that insists on a large commitment before you have seen a
+          single lead is pricing in the risk that you will not stay.
+        </p>
+        <h3>12. Who reviews results with me, and how often?</h3>
+        <p>
+          You want a named person, a reporting cadence, and a way to change criteria based on what you learn. Ask what the
+          vendor will need from you, too: conversion feedback, disposition codes, or a weekly call. The best campaigns are
+          the ones where both sides look at the same numbers.
+        </p>
+
+        <h2>Red flags that should end the conversation</h2>
+        <ul>
+          <li>Guaranteed conversion rates or sales, before the vendor knows anything about your team.</li>
+          <li>No sample of the consent language or the screening script.</li>
+          <li>Pricing that is fixed before anyone has asked about your states, hours, or criteria.</li>
+          <li>Pressure to prepay a large balance with no test period.</li>
+          <li>Vague answers about where prospects come from.</li>
+        </ul>
+
+        <h2>The question vendors should be asking you</h2>
+        <p>
+          A good vendor interviews you back. Which states are you licensed in? What hours can you answer? How fast do you
+          call back web leads? What does a closed deal look like, and what is it worth? If a vendor never asks, it cannot
+          build a campaign for your team, only sell you its inventory.
+        </p>
+        <p>
+          That is the conversation we start every campaign with. If you want to see how your answers translate into a
+          campaign specification, <Link href="/#contact">send us a short note</Link> about what you sell and where, or
+          apply as a partner and your account manager will come prepared.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "how-much-can-you-pay-per-lead",
+    title: "How much can you afford to pay per lead? The cost-per-acquisition math for lead and call buyers",
+    description:
+      "A simple way to work out the most you can pay per lead, call, or live transfer before a campaign loses money, with a worked example and the levers that change the answer.",
+    category: "Economics",
+    publishedAt: "2026-11-07",
+    updatedAt: "2026-11-07",
+    readingMinutes: 8,
+    keywords: [
+      "how much to pay per lead",
+      "cost per acquisition insurance leads",
+      "lead cost calculator",
+      "pay per call pricing",
+      "live transfer cost",
+      "cost per lead vs cost per acquisition",
+    ],
+    takeaways: [
+      "Price per lead is the wrong number to compare. Cost per sale is the number that decides whether a campaign works.",
+      "Your break-even price per lead is your value per sale multiplied by your lead-to-sale rate.",
+      "A pricier format can be cheaper per sale when it lifts your contact or close rate.",
+      "Measure your own rates for a few weeks before you judge any vendor's price.",
+    ],
+    body: () => (
+      <>
+        <p>
+          Buyers compare lead vendors on price per lead because it is the only number on the quote. But nobody keeps a
+          business running on cheap leads. They keep it running on sales that cost less than they earn. This guide shows
+          the arithmetic that connects the two, so you can work out the most you can afford to pay for a web lead, an
+          inbound call, or a live transfer before you sign anything.
+        </p>
+        <p>
+          The numbers in the examples below are illustrative, chosen to make the math easy to follow. They are not our
+          prices and not industry benchmarks. Plug in your own.
+        </p>
+
+        <h2>Three numbers you need first</h2>
+        <ul>
+          <li>
+            <strong>Value per sale.</strong> What a closed deal is worth to you: first-year commission for an agency,
+            gross profit on the job for a contractor, the fee you expect for a case or an enrollment. Use profit, not
+            revenue, if you have it.
+          </li>
+          <li>
+            <strong>Contact rate.</strong> Out of every hundred leads, how many do you actually speak with? For inbound
+            calls and live transfers this is close to all of them by definition. For web leads it depends heavily on how
+            fast you call back.
+          </li>
+          <li>
+            <strong>Close rate.</strong> Out of every hundred conversations, how many become a sale?
+          </li>
+        </ul>
+        <p>
+          Multiply contact rate by close rate and you have your lead-to-sale rate, the share of everything you buy that
+          turns into revenue.
+        </p>
+
+        <h2>The break-even formula</h2>
+        <p>The most you can pay per lead without losing money is:</p>
+        <p>
+          <strong>Break-even price per lead = value per sale × contact rate × close rate</strong>
+        </p>
+        <p>
+          Anything below that number makes money on paper. In practice you also need room for your team’s time, your
+          tools, and a margin, so a sensible target sits well below break-even.
+        </p>
+
+        <h2>A worked example</h2>
+        <p>
+          Take an agency where a sale is worth 600 in first-year commission. Compare three formats with illustrative
+          rates for a team like theirs:
+        </p>
+        <div className="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Illustrative figures</th>
+                <th scope="col">Web leads</th>
+                <th scope="col">Inbound calls</th>
+                <th scope="col">Live transfers</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Contact rate</th>
+                <td>40%</td>
+                <td>100%</td>
+                <td>100%</td>
+              </tr>
+              <tr>
+                <th scope="row">Close rate on contacts</th>
+                <td>10%</td>
+                <td>12%</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <th scope="row">Lead-to-sale rate</th>
+                <td>4%</td>
+                <td>12%</td>
+                <td>20%</td>
+              </tr>
+              <tr>
+                <th scope="row">Break-even price per lead</th>
+                <td>24</td>
+                <td>72</td>
+                <td>120</td>
+              </tr>
+              <tr>
+                <th scope="row">Leads needed per sale</th>
+                <td>25</td>
+                <td>about 8</td>
+                <td>5</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          The live transfer looks five times more expensive per lead than the web lead and still breaks even at the same
+          cost per sale. That is the whole point: price per lead tells you very little until you know what happens after
+          the lead arrives.
+        </p>
+
+        <InlineCta
+          title="Send us your three numbers"
+          body="Tell us your value per sale, your contact rate, and your close rate. We will tell you which format we would test first for your team and why, before any pricing conversation."
+        />
+
+        <h2>The levers that move your break-even</h2>
+        <h3>Speed of follow-up</h3>
+        <p>
+          For web leads, contact rate is the biggest lever and it is almost entirely in your hands. Calling back within
+          minutes instead of hours can change the economics of a campaign more than any discount from the vendor. Our
+          guide on <Link href="/blog/speed-to-lead-first-five-minutes">speed to lead</Link> covers how to set that up.
+        </p>
+        <h3>Screening before the conversation</h3>
+        <p>
+          Screening raises close rate by removing conversations that could never close. That is what you pay for in a{" "}
+          <Link href="/live-transfer-leads">live transfer</Link>. It is worth more in products with strict eligibility,
+          such as <Link href="/insurance-leads/medicare-leads">Medicare</Link> or{" "}
+          <Link href="/legal-intake-leads/ssdi-leads">disability claims</Link>, and less in products where almost anyone
+          who asks can buy.
+        </p>
+        <h3>Value per sale over time</h3>
+        <p>
+          If customers renew, refer, or buy a second product, the first sale is worth more than its first-year number.
+          Agencies that bundle home and auto, or contractors with maintenance plans, can afford a higher price per lead
+          than the first transaction suggests. Be conservative, though: use what customers actually do, not what you hope
+          they will do.
+        </p>
+        <h3>Returns and rejections</h3>
+        <p>
+          A clear return policy effectively lowers your price per usable lead. A vague one raises it. Read the return
+          rules before comparing prices.
+        </p>
+
+        <h2>How to use this before you buy</h2>
+        <ol>
+          <li>Measure your current contact rate, close rate, and value per sale for a few weeks, from any source you have.</li>
+          <li>Work out a break-even price per lead for each format you are considering.</li>
+          <li>Set a target well below break-even to cover your team’s time and leave a margin.</li>
+          <li>Run a small, scoped test and recompute with the real rates from that campaign.</li>
+          <li>Scale the format that wins on cost per sale, not the one that is cheapest per lead.</li>
+        </ol>
+        <p>
+          We quote campaigns after this conversation, not before it, because the right price depends on your rates as
+          much as ours. If you want help running the numbers for your vertical,{" "}
+          <Link href="/#contact">get in touch</Link>.
+        </p>
+      </>
+    ),
+  },
+  {
+    slug: "tcpa-consent-for-lead-buyers-2026",
+    title: "TCPA consent for lead buyers in 2026: what changed and what to still check",
+    description:
+      "The one-to-one consent rule was vacated and repealed, but lead buyers still carry consent risk. What to ask your vendor and what to keep on your side.",
+    category: "Compliance",
+    publishedAt: "2026-11-07",
+    updatedAt: "2026-11-07",
+    readingMinutes: 8,
+    keywords: [
+      "TCPA consent lead buyers",
+      "one to one consent rule vacated",
+      "TCPA compliance for insurance agents",
+      "prior express written consent leads",
+      "lead consent records",
+      "TCPA revocation of consent",
+    ],
+    takeaways: [
+      "The FCC's one-to-one consent rule never took effect: a federal appeals court vacated it in January 2025 and the FCC later removed it.",
+      "Prior express written consent is still required for many marketing calls and texts. The vacatur removed one extra requirement, not the underlying one.",
+      "Opt-out rules that took effect in April 2025 still apply, and state telemarketing laws can be stricter than federal law.",
+      "Ask for a consent record with every lead and keep your own opt-out process tight.",
+    ],
+    body: () => (
+      <>
+        <p>
+          <em>
+            This article is general information for business owners, not legal advice. Telemarketing rules change and
+            vary by state. Confirm your own obligations with counsel before you launch or change a campaign.
+          </em>
+        </p>
+        <p>
+          Few topics cause more anxiety for lead buyers than consent under the Telephone Consumer Protection Act. The rules
+          changed several times in the last two years, and a lot of what circulated in 2024 no longer applies. This guide
+          summarizes what changed, what did not, and the practical checks that protect you whichever way the rules move
+          next.
+        </p>
+
+        <h2>What happened to the one-to-one consent rule</h2>
+        <p>
+          In late 2023 the FCC adopted a rule that would have required consent to be given to one seller at a time,
+          effectively ending the practice of a single comparison form authorizing calls from a list of companies. It was
+          due to take effect in January 2025.
+        </p>
+        <p>
+          It never did. On January 24, 2025, the U.S. Court of Appeals for the Eleventh Circuit vacated the rule in{" "}
+          <em>Insurance Marketing Coalition v. FCC</em>, holding that the FCC had gone beyond what the statute allows. The
+          FCC later removed the rule from its regulations in 2025. Consent requirements returned to where they were before
+          the rule was adopted.
+        </p>
+
+        <h2>What did not change</h2>
+        <p>
+          The vacatur removed an additional requirement. It did not remove consent. For many marketing calls and texts,
+          particularly those made with automated technology or prerecorded messages to mobile numbers, prior express
+          written consent is still required. Do-not-call obligations still apply. Calling-time restrictions still apply.
+          And many states have their own telemarketing statutes, some stricter than the federal rules, with Florida and
+          Oklahoma among the best known.
+        </p>
+        <p>
+          In practice, the clearest consent is still the safest. A prospect who understood that your business, or a
+          business like yours for the product they asked about, would contact them is a prospect who is less likely to
+          complain and far easier to defend if they do.
+        </p>
+
+        <h2>Opt-outs: the rule that did take effect</h2>
+        <p>
+          Separate FCC rules on revoking consent took effect on April 11, 2025. Consumers can revoke consent by any
+          reasonable means, and callers must honor the request promptly, within a short fixed window. A related provision,
+          often called “revoke all,” which would make one opt-out apply across a caller’s messages, has been delayed and
+          revised by the FCC since then. Check its current status with counsel, but build your process as if every opt-out
+          must be honored quickly and everywhere it reasonably applies.
+        </p>
+
+        <InlineCta
+          title="See the consent record before you buy"
+          body="Westlink campaigns document the consent language and source for every lead, and the specification you approve says how opt-outs are passed between us. Ask for a sample during the campaign discussion."
+        />
+
+        <h2>What to ask your vendor</h2>
+        <ol>
+          <li>
+            <strong>Show me the exact consent language.</strong> A screenshot of the form or the call script, not a
+            description of it.
+          </li>
+          <li>
+            <strong>What record comes with each lead?</strong> Timestamp, page or script, consent text, and where
+            available a third-party session certificate. Know how fast you can retrieve it.
+          </li>
+          <li>
+            <strong>How are do-not-call and litigator lists handled?</strong> Which lists are scrubbed and when.
+          </li>
+          <li>
+            <strong>How do opt-outs travel?</strong> If a prospect opts out with the vendor, how do you find out, and
+            vice versa?
+          </li>
+          <li>
+            <strong>Is any lead resold from another source?</strong> Every extra hop is another place the consent record
+            can break.
+          </li>
+          <li>
+            <strong>Which states are included, and are any excluded for compliance reasons?</strong>
+          </li>
+        </ol>
+        <p>
+          Our <Link href="/blog/how-to-vet-a-lead-generation-company">vendor vetting checklist</Link> covers these
+          alongside sourcing, billing, and reporting questions.
+        </p>
+
+        <h2>What to keep on your own side</h2>
+        <ul>
+          <li>Store the consent record with the lead in your CRM, not only in the vendor’s system.</li>
+          <li>Call and text within the hours allowed in the prospect’s time zone.</li>
+          <li>Keep an internal do-not-call list and honor opt-outs across every channel you use.</li>
+          <li>Use texts only where the consent covers texting.</li>
+          <li>Train anyone who dials to recognize and record an opt-out, however it is phrased.</li>
+        </ul>
+
+        <h2>Vertical-specific rules on top</h2>
+        <p>
+          Some products carry their own marketing rules in addition to telemarketing law. Medicare marketing is governed
+          by CMS requirements, debt relief telemarketing has its own federal rules and state licensing, and legal intake
+          is shaped by state bar advertising and solicitation rules. Our product pages for{" "}
+          <Link href="/insurance-leads/medicare-leads">Medicare</Link>,{" "}
+          <Link href="/debt-settlement-leads/debt-settlement-live-transfers">debt settlement</Link>, and{" "}
+          <Link href="/legal-intake-leads/mva-leads">MVA intake</Link> list the items we ask partners to confirm with
+          counsel before launch.
+        </p>
+
+        <h2>The practical bottom line</h2>
+        <p>
+          The rule that worried the industry is gone, but consent risk is not. Buy from vendors who can show you the
+          consent behind every lead, keep your own records, and make opt-outs easy and fast. That protects you under
+          today’s rules and under whatever the FCC or the states do next.
+        </p>
+      </>
+    ),
+  },
   {
     slug: "pay-per-call-vs-live-transfers-vs-web-leads",
     title: "Pay-per-call, live transfers, or web leads: which lead format fits your sales team?",

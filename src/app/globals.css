@@ -256,6 +256,14 @@
     color: var(--color-navy);
   }
 
+  .prose-post .not-prose a {
+    text-decoration: none;
+  }
+
+  .prose-post .not-prose p + p {
+    margin-top: 0.5rem;
+  }
+
   .prose-post .table-wrap {
     margin: 1.5rem 0;
     overflow-x: auto;
