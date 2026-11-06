@@ -139,6 +139,11 @@ Implemented with the `animated-component-libraries` skill pattern: Magic UI / Re
 - A web search on 2026-11-07 returned no pages from westlinksolution.com, so an IndexNow key file was added at the site root to notify Bing and other IndexNow engines of new URLs.
 - Checks: new posts pass at 1366px and 375px (200, one H1, meta description within snippet length, no overflow, no console errors), the in-article button opens the application, all internal links resolve, the blog index lists six posts, the sitemap lists 31 URLs. Landing, navigation, browser (54 / 55, expected noindex), toast (14 / 14), and responsive (8 / 8) suites pass on the production build.
 
+## Update: true 404 status for unknown URLs (2026-11-07)
+- Found on the live site: the first request for an unknown URL under a dynamic route (for example `/zz-123`, `/blog/zz-123`, `/insurance-leads/zz-123`) returned 200 with the not-found page and `noindex`, and only later requests returned 404. With Cache Components the static shell starts streaming before `notFound()` runs, so the status is fixed at 200 (documented in the bundled Next.js docs under streaming and status codes). Search engines report these as soft 404s.
+- Fix, following the docs' recommendation: `src/proxy.ts` checks the path against the known landing, product, blog, and static routes before rendering and rewrites unknown paths to an unmatched route with status 404. The blog slug list lives in `src/content/blog-slugs.ts` so the proxy does not bundle page code, and `blog.tsx` throws at build time if the list drifts from the posts.
+- Checks on the production build: five unknown paths return 404 with the "Page not found" page; nineteen known pages, metadata images, sitemap, robots, manifest, verification and key files, and the health API return 200. Post, landing, navigation, browser (54 / 55, expected noindex), toast (14 / 14), and responsive (8 / 8) suites pass.
+
 ## Known limitations
 - Rate limiting is in-memory per server instance. Multi-instance or serverless deployments need a shared store.
 - SQLite is for local use; production should use PostgreSQL (`DATABASE_URL=postgres://…`), which is implemented but untested here.

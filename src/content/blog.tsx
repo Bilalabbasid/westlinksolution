@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import { InlineCta } from "@/components/blog/InlineCta";
+import { blogSlugs } from "./blog-slugs";
 
 export interface BlogPost {
   slug: string;
@@ -919,6 +920,15 @@ export const posts: BlogPost[] = [
     ),
   },
 ];
+
+// Fail the build if the proxy's slug list drifts from the posts above.
+{
+  const expected = [...blogSlugs].sort().join(",");
+  const actual = posts.map((p) => p.slug).sort().join(",");
+  if (expected !== actual) {
+    throw new Error(`src/content/blog-slugs.ts is out of date. Posts: ${actual}`);
+  }
+}
 
 export function getPost(slug: string): BlogPost | undefined {
   return posts.find((p) => p.slug === slug);
